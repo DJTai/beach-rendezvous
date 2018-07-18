@@ -7,9 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+// Butter Knife imports
+// see https://jakewharton.github.io/butterknife/ for more details
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    // Reference to TextView on UI
+    @BindView(R.id.message)
+    TextView mTextMessage;
+
+    // Reference to the bottom nav bar
+    @BindView(R.id.navigation)
+    BottomNavigationView navigation;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -36,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        // !! - Needed to complete binding of views - !!
+        // Needs to be before any Butter Knife references as well
+        ButterKnife.bind(this);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
