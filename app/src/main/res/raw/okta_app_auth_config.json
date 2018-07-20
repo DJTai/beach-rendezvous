@@ -1,0 +1,10 @@
+{
+  "client_id": "0oafriadh1GCmmtrP0h7",
+  "redirect_url": "com.oktapreview.dev-694558:/callback",
+  "scopes": [
+    "openid",
+    "profile",
+    "offline_access"
+  ],
+  "issuer_uri": "https://dev-694558.oktapreview.com/oauth2/default"
+}

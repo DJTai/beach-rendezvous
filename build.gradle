@@ -9,6 +9,7 @@ buildscript {
     ext.junit_version = '4.12'
 
     ext.butterknife_version = '8.8.1'
+    ext.okta_version = '0.1.0'
     
     repositories {
         google()

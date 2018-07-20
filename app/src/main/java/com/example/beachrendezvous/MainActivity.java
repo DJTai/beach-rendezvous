@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -13,6 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String TAG = "main_activity";
+    public static final String DEBUG = "debug";
 
     // Reference to TextView on UI
     @BindView(R.id.message)
@@ -29,13 +33,18 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected (@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    // TODO: Open fragment
+                    mTextMessage.setText(R.string.nav_info);
                     return true;
+
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    // TODO: Open fragment
+                    mTextMessage.setText(R.string.nav_profile);
                     return true;
+
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                    // TODO: Open fragment
+                    mTextMessage.setText(R.string.nav_settings);
                     return true;
             }
             return false;
@@ -46,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.i(DEBUG, "main activity created");
 
         // !! - Needed to complete binding of views - !!
         // Needs to be before any Butter Knife references as well

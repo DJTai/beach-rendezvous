@@ -1,10 +1,15 @@
 apply plugin: 'com.android.application'
 
+// Required for Okta
+android.defaultConfig.manifestPlaceholders = [
+        "appAuthRedirectScheme": "com.oktapreview.dev-694558"
+]
+
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.beachrendezvous"
-        minSdkVersion 15
+        minSdkVersion 16
         //noinspection OldTargetApi
         targetSdkVersion 27
         versionCode 1
@@ -21,6 +26,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
     implementation "com.android.support.constraint:constraint-layout:$support_constraint_version"
@@ -32,4 +38,7 @@ dependencies {
     // Butter Knife
     implementation "com.jakewharton:butterknife:$butterknife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
+
+    // Okta
+    implementation "com.okta.android:appauth-android:$okta_version"
 }
