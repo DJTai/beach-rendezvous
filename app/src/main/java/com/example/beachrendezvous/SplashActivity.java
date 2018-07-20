@@ -23,8 +23,10 @@ public class SplashActivity extends Activity {
 //        startActivity(intent);
 
         Intent intent = new Intent(this, MainActivity.class);
-        Log.d(DEBUG, "signInHandler: CLICKED");
+        Log.d(DEBUG, "signInHandler: clicked");
         startActivity(intent);
+        finish();
+        return;
     }
 
     @Override
