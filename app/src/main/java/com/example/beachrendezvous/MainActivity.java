@@ -1,11 +1,12 @@
 package com.example.beachrendezvous;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             if (choice == R.id.nav_info) {
                 fragment = new InfoFragment();
 
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction
                         .replace(R.id.frame_fragment, fragment)
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (choice == R.id.nav_profile) {
                 fragment = new ProfileFragment();
 
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction
                         .replace(R.id.frame_fragment, fragment)
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (choice == R.id.nav_settings) {
                 fragment = new SettingsFragment();
 
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction
                         .replace(R.id.frame_fragment, fragment)
@@ -89,5 +90,4 @@ public class MainActivity extends AppCompatActivity {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
 }
