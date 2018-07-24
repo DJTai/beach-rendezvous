@@ -31,4 +31,7 @@
     <string name="label_place">Place:</string>
     <string name="label_time">Time:</string>
     <string name="label_num_people"># of People:</string>
+
+    <!-- Movies Fragment -->
+    <string name="action_return">&lt; RETURN</string>
 </resources>

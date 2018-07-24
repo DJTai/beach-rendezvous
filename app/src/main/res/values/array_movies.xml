@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="moviesList">
+        <item>Titanic</item>
+        <item>Avatar</item>
+        <item>Pulp Fiction</item>
+        <item>Star Wars 1</item>
+        <item>Harry Potter II</item>
+        <item>Good Fellas</item>
+    </string-array>
+</resources>
