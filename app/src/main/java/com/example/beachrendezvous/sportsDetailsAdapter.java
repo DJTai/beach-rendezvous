@@ -14,14 +14,14 @@ import android.widget.TextView;
 
  */
 
-public class sportsDetailsAdapter extends ArrayAdapter<String> {
+public class sportsDetailsAdapter extends ArrayAdapter<String>  {
 
 
     Context mContext;
 
 
     String[] type1;
-    String[] date1;
+    String [] date1;
     String[] place1;
 
     public sportsDetailsAdapter(@NonNull Context context, String[] type1, String[] date1, String[] place1) {

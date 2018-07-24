@@ -36,7 +36,7 @@
 
         <!-- 3rd activity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".findsports"
             android:label="@string/app_name">
 
         </activity>

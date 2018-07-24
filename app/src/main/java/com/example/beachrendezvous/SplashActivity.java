@@ -22,7 +22,7 @@ public class SplashActivity extends Activity {
 //        Log.d(DEBUG, "signInHandler: CLICKED");
 //        startActivity(intent);
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, findSports.class);
         Log.d(DEBUG, "signInHandler: clicked");
         startActivity(intent);
         finish();

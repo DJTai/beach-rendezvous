@@ -31,7 +31,7 @@ public class LoginActivity extends Activity {
 
         if (mOktaAuth.isUserLoggedIn()) {
             Log.i(TAG, "User is already authenticated, proceeding to app");
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, findSports.class));
             finish();
             return;
         }
@@ -46,14 +46,14 @@ public class LoginActivity extends Activity {
                         // Handle a successful initialization (e.g., display login button)
                         // Unsure about below
 //                        Intent intent = new Intent(LoginActivity.this,
-//                                                   MainActivity.class);
+//                                                   findSports.class);
 //                        startActivity(intent);
 //                        finish();
                         // Unsure about above
                         Log.d(DEBUG, "onSuccess: OktaAppAuth success");
 
                         Intent completionIntent =
-                                new Intent(LoginActivity.this, MainActivity.class);
+                                new Intent(LoginActivity.this, findSports.class);
                         Intent cancelIntent =
                                 new Intent(LoginActivity.this, LoginActivity.class);
                         cancelIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

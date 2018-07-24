@@ -1,4 +1,4 @@
-package com.example.beachrendezvous;
+package com.example.beachrendezvous; 
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,7 +35,7 @@ public class findsports extends AppCompatActivity {
         sportsheader=(TextView)findViewById(R.id.sportsheader);
         sportsheader.setText("You want to join a game? \n No Problem, which Sport?");
         mListView = (ListView) findViewById(R.id.listview);
-        sportsListAdapter myAdapter = new sportsListAdapter(MainActivity.this, gameNames, gameImages);
+        sportsListAdapter myAdapter = new sportsListAdapter(findsports.this, gameNames, gameImages);
         mListView.setAdapter(myAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
