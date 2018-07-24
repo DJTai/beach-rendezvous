@@ -17,6 +17,7 @@ import com.example.beachrendezvous.ui.InfoFragment;
 import com.example.beachrendezvous.ui.MainMenuFragment;
 import com.example.beachrendezvous.ui.ProfileFragment;
 import com.example.beachrendezvous.ui.SettingsFragment;
+import com.example.beachrendezvous.ui.SportsCreateDetailsFragment;
 import com.example.beachrendezvous.ui.SubMenuFragment;
 import com.example.beachrendezvous.viewModel.MainViewModel;
 
@@ -108,7 +109,7 @@ public class MainActivity
 
             } else if (choice == R.id.nav_search) {
                 fragment = new SubMenuFragment();
-
+                
                 Bundle args = new Bundle();
                 args.putString(ARG_PARAM, "search");
                 fragment.setArguments(args);

@@ -27,4 +27,8 @@
     <string name="action_signOut">Sign Out</string>
     <string name="action_info">Info</string>
     <string name="action_profile">Profile</string>
+    <string name="label_date">Date:</string>
+    <string name="label_place">Place:</string>
+    <string name="label_time">Time:</string>
+    <string name="label_num_people"># of People:</string>
 </resources>
