@@ -1,8 +1,4 @@
-
-
-
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,7 +38,7 @@
         android:layout_width="179dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="?attr/colorAccent"
+        android:background="@color/colorAccent"
         android:text="Map" />
 
     <Button
@@ -52,7 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="97dp"
-        android:background="?attr/colorAccent"
+        android:background="@color/colorAccent"
         android:text="Meet People" />
 
     <Button
@@ -62,7 +58,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="163dp"
-        android:background="?attr/colorAccent"
+        android:background="@color/colorAccent"
         android:text="Menus" />
 
     <TextView

@@ -1,4 +1,4 @@
-package com.example.beachrendezvous;
+package com.example.beachrendezvous.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,28 +6,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.beachrendezvous.R;
 
 ///**
 // * A simple {@link Fragment} subclass.
 // * Activities that contain this fragment must implement the
-// * {@link SportsFindDetailsFragment.OnFragmentInteractionListener} interface
+// * {@link SportsSearchDetailsFragment.OnFragmentInteractionListener} interface
 // * to handle interaction events.
-// * Use the {@link SportsFindDetailsFragment#newInstance} factory method to
+// * Use the {@link SportsSearchDetailsFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class SportsFindDetailsFragment extends Fragment {
-//    // TODO: Rename parameter arguments, choose names that match
+public class SportsSearchDetailsFragment extends Fragment {
+    //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-//
+    //
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 //
 //    private OnFragmentInteractionListener mListener;
 
-    public SportsFindDetailsFragment () {
+    public SportsSearchDetailsFragment () {
         // Required empty public constructor
     }
 
@@ -37,11 +38,11 @@ public class SportsFindDetailsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SportsFindDetailsFragment.
+     * @return A new instance of fragment SportsSearchDetailsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SportsFindDetailsFragment newInstance (String param1, String param2) {
-        SportsFindDetailsFragment fragment = new SportsFindDetailsFragment();
+    public static SportsSearchDetailsFragment newInstance (String param1, String param2) {
+        SportsSearchDetailsFragment fragment = new SportsSearchDetailsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,10 +64,13 @@ public class SportsFindDetailsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView (LayoutInflater inflater, ViewGroup container,
+    public View onCreateView (LayoutInflater inflater,
+                              ViewGroup container,
                               Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sports_find_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_sports_search_details, container, false);
+
+        return view;
     }
 
 //    // TODO: Rename method, update argument and hook method into UI event

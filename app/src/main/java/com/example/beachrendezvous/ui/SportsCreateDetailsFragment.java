@@ -50,7 +50,7 @@ public class SportsCreateDetailsFragment extends Fragment {
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_create_event, container, false);
+        View view = inflater.inflate(R.layout.fragment_sports_create_event, container, false);
 
         mUnbinder = ButterKnife.bind(this, view);
 
