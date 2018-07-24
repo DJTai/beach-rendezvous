@@ -3,6 +3,7 @@ package com.example.beachrendezvous.ui;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,12 @@ import butterknife.Unbinder;
 // * create an instance of this fragment.
 // */
 public class SubMenuFragment extends Fragment {
-//    // TODO: Rename parameter arguments, choose names that match
+    //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
 //    private static final String ARG_PARAM2 = "param2";
 //
 //    // TODO: Rename and change types of parameters
-//    private String mParam1;
+    private String mParam;
 //    private String mParam2;
 //
 //    private OnFragmentInteractionListener mListener;
@@ -44,6 +44,9 @@ public class SubMenuFragment extends Fragment {
 
     @BindView(R.id.subMenu_btn_sports)
     Button btnSports;
+
+    private static final String TAG = "sub_menu_fragment";
+    private static final String ARG_PARAM = "param";
 
     public SubMenuFragment () {
         // Required empty public constructor
@@ -70,10 +73,10 @@ public class SubMenuFragment extends Fragment {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
+        if (getArguments() != null) {
+            mParam = getArguments().getString(ARG_PARAM);
+            Log.i(TAG, "onCreate: mParam = " + mParam);
+        }
     }
 
     @Override
@@ -81,7 +84,17 @@ public class SubMenuFragment extends Fragment {
                               ViewGroup container,
                               Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_sub_menu_search, container, false);
+        View view = null;
+
+        if (mParam != null) {
+            if (mParam.equals("create")) {
+                Log.i(TAG, "onCreateView: type equals create");
+                view = inflater.inflate(R.layout.fragment_sub_menu_create, container, false);
+            } else {
+                Log.i(TAG, "onCreateView: type not equal to create");
+                view = inflater.inflate(R.layout.fragment_sub_menu_search, container, false);
+            }
+        }
 
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);

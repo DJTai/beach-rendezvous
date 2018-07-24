@@ -32,7 +32,8 @@ public class MainActivity
         implements MainMenuFragment.OnFragmentInteractionListener,
         SubMenuFragment.OnFragmentInteractionListener {
 
-    public static final String TAG = "main_activity";
+    private static final String TAG = "main_activity";
+    private static final String ARG_PARAM = "param";
 
     // References
     @BindView(R.id.navigation)
@@ -107,10 +108,20 @@ public class MainActivity
 
             } else if (choice == R.id.nav_search) {
                 fragment = new SubMenuFragment();
+
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM, "search");
+                fragment.setArguments(args);
+
                 return initFragment(fragment);
 
             } else if (choice == R.id.nav_create) {
                 fragment = new SubMenuFragment();
+
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM, "create");
+                fragment.setArguments(args);
+
                 return initFragment(fragment);
             }
             return false;

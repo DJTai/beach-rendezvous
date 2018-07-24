@@ -81,7 +81,6 @@
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
             android:text="CREDITS"
-            android:background="color"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
