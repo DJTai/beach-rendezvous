@@ -24,4 +24,7 @@
     <string name="submenu_btn_food">Food</string>
     <string name="submenu_btn_movies">Movies</string>
     <string name="submenu_btn_sports">Sports</string>
+
+    <!-- Movies Fragment -->
+    <string name="action_return">&lt; RETURN</string>
 </resources>

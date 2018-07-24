@@ -1,7 +1,7 @@
 package com.example.beachrendezvous.ui;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +20,15 @@ import butterknife.Unbinder;
 // * create an instance of this fragment.
 // */
 public class ProfileFragment extends Fragment {
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-//
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
 //    private OnFragmentInteractionListener mListener;
 
     Unbinder mUnbinder;
@@ -86,7 +86,7 @@ public class ProfileFragment extends Fragment {
 //            mListener.onFragmentInteraction(uri);
 //        }
 //    }
-//
+
 //    @Override
 //    public void onAttach (Context context) {
 //        super.onAttach(context);
@@ -97,13 +97,13 @@ public class ProfileFragment extends Fragment {
 //                                               + " must implement OnFragmentInteractionListener");
 //        }
 //    }
-//
-//    @Override
-//    public void onDetach () {
-//        super.onDetach();
+
+    @Override
+    public void onDetach () {
+        super.onDetach();
 //        mListener = null;
-//    }
-//
+    }
+
 //    /**
 //     * This interface must be implemented by activities that contain this
 //     * fragment to allow an interaction in this fragment to be communicated
