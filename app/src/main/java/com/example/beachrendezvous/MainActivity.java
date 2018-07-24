@@ -1,6 +1,6 @@
 package com.example.beachrendezvous;
 
-import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.beachrendezvous.ui.InfoFragment;
@@ -38,6 +39,57 @@ public class MainActivity
     BottomNavigationView navigation;
     private MainViewModel mViewModel;
 
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_options, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_profile) {
+            Fragment fragment = new ProfileFragment();
+            return initFragment(fragment);
+
+        } else if (id == R.id.action_settings) {
+            Fragment fragment = new SettingsFragment();
+            return initFragment(fragment);
+
+        } else if (id == R.id.action_info) {
+            Fragment fragment = new InfoFragment();
+            return initFragment(fragment);
+
+        } else if (id == R.id.action_signOut) {
+            Intent intent = new Intent(this, SplashActivity.class);
+            Log.i(TAG, "onOptionsItemSelected: Signing Out");
+            startActivity(intent);
+            finish();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Initialize, inflate, and add to the back stack, the supplied fragment
+     *
+     * @param fragment - Fragment to be initialized
+     * @return true
+     */
+    private boolean initFragment (Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction
+                .replace(R.id.frame_fragment, fragment)
+                .addToBackStack(fragment.getClass().toString())
+                .commit();
+        return true;
+    }
+
     /**
      * Determines which fragment to open upon nav selection
      */
@@ -49,40 +101,17 @@ public class MainActivity
             Fragment fragment;
             int choice = item.getItemId();
 
-            if (choice == R.id.nav_info) {
-                fragment = new InfoFragment();
+            if (choice == R.id.nav_home) {
+                fragment = new MainMenuFragment();
+                return initFragment(fragment);
 
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction
-                        .replace(R.id.frame_fragment, fragment)
-                        .addToBackStack(fragment.getClass().toString())
-                        .commit();
-                return true;
+            } else if (choice == R.id.nav_search) {
+                fragment = new SubMenuFragment();
+                return initFragment(fragment);
 
-            } else if (choice == R.id.nav_profile) {
-                fragment = new ProfileFragment();
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction
-                        .replace(R.id.frame_fragment, fragment)
-                        .addToBackStack(fragment.getClass().toString())
-                        .commit();
-
-                return true;
-
-            } else if (choice == R.id.nav_settings) {
-                fragment = new SettingsFragment();
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction
-                        .replace(R.id.frame_fragment, fragment)
-                        .addToBackStack(fragment.getClass().toString())
-                        .commit();
-
-                return true;
+            } else if (choice == R.id.nav_create) {
+                fragment = new SubMenuFragment();
+                return initFragment(fragment);
             }
             return false;
         }
@@ -93,7 +122,7 @@ public class MainActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Fragment fragmentSeen;
+        Fragment fragment;
 
         Log.i(TAG, "main activity created");
 
@@ -107,22 +136,15 @@ public class MainActivity
 
         Log.i(TAG, "bottom nav set");
 
-        initViewModel();
-
-        fragmentSeen = new MainMenuFragment();
+        fragment = new MainMenuFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction
-                .replace(R.id.frame_fragment, fragmentSeen)
+                .replace(R.id.frame_fragment, fragment)
                 .commit();
 
         Log.i(TAG, "fragment transaction successful");
 
-    }
-
-    private void initViewModel () {
-        mViewModel = ViewModelProviders.of(this)
-                .get(MainViewModel.class);
     }
 
     @Override

@@ -49,7 +49,7 @@ public class SubMenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-//    /**
+    //    /**
 //     * Use this factory method to create a new instance of
 //     * this fragment using the provided parameters.
 //     *
@@ -81,7 +81,7 @@ public class SubMenuFragment extends Fragment {
                               ViewGroup container,
                               Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_sub_menu_search, container, false);
 
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
@@ -97,7 +97,7 @@ public class SubMenuFragment extends Fragment {
         mUnbinder.unbind();
     }
 
-    //    // TODO: Rename method, update argument and hook method into UI event
+//    // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed (Uri uri) {
 //        if (mListener != null) {
 //            mListener.onFragmentInteraction(uri);
@@ -121,6 +121,7 @@ public class SubMenuFragment extends Fragment {
 //        mListener = null;
 //    }
 //
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

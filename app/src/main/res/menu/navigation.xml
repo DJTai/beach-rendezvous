@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_info"
+        android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_black"
         android:title="@string/nav_home" />
 
     <item
-        android:id="@+id/nav_profile"
+        android:id="@+id/nav_search"
         android:icon="@drawable/ic_search_black"
         android:title="@string/nav_search" />
 
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_create"
         android:icon="@drawable/ic_add_circle_outline_black"
         android:title="@string/nav_create" />
 

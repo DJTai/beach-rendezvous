@@ -62,7 +62,7 @@ public class MainMenuFragment extends Fragment {
     }
 
     @OnClick(R.id.mainMenu_createEvent)
-    void toSubMenu () {
+    void createEvent () {
         Log.i(TAG, "Create event clicked");
         Log.i(TAG, "Find event clicked");
         Fragment fragment = new SubMenuFragment();

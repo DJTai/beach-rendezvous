@@ -20,7 +20,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/submenu_header"
+            android:text="@string/submenu_header_create"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
