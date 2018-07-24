@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.beachrendezvous.R;
 
@@ -38,7 +39,7 @@ public class MainMenuFragment extends Fragment {
 //
 //    private OnFragmentInteractionListener mListener;
 
-    private static final String TAG = "MainMenuFragment";
+    private static final String TAG = "main_menu_fragment";
 
     Unbinder mUnbinder;
 
@@ -50,29 +51,12 @@ public class MainMenuFragment extends Fragment {
 
     @OnClick(R.id.mainMenu_findEvent)
     void findEventClicked () {
-        Log.i(TAG, "Find event clicked");
-        Fragment fragment = new SubMenuFragment();
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction
-                .replace(R.id.frame_fragment, fragment)
-                .addToBackStack("leaving main menu")
-                .commit();
-        Log.i(TAG, "Fragment success");
+        Toast.makeText(getContext(), "CLICK BELOW", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.mainMenu_createEvent)
-    void toSubMenu () {
-        Log.i(TAG, "Create event clicked");
-        Log.i(TAG, "Find event clicked");
-        Fragment fragment = new SubMenuFragment();
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction
-                .replace(R.id.frame_fragment, fragment)
-                .addToBackStack("leaving main menu")
-                .commit();
-        Log.i(TAG, "Fragment success");
+    void createEvent () {
+        Toast.makeText(getContext(), "CLICK BELOW", Toast.LENGTH_SHORT).show();
     }
 
     public MainMenuFragment () {

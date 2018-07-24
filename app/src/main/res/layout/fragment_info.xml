@@ -1,14 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.InfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Info Fragment" />
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/frag_info_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="FAQ"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/frag_info_q01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="Q: Question 1"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/frag_info_a01"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_header" />
+
+        <TextView
+            android:id="@+id/frag_info_a01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="A: Answer 1"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_q01" />
+
+        <TextView
+            android:id="@+id/frag_info_q02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:text="Q: Question 2"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_a01" />
+
+        <TextView
+            android:id="@+id/frag_info_a02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="A: Answer 2"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_q02" />
+
+        <TextView
+            android:id="@+id/frag_info_credits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:text="CREDITS"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_a02" />
+
+        <TextView
+            android:id="@+id/frag_info_skd"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:text="Sukhleen Kaur Dhillon"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_credits" />
+
+        <TextView
+            android:id="@+id/frag_info_pl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Patrick Ly"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_skd" />
+        <TextView
+            android:id="@+id/frag_info_ap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Alex Philayvanh"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_pl" />
+
+        <TextView
+            android:id="@+id/frag_info_js"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Jeremy Sellem"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_ap" />
+
+        <TextView
+            android:id="@+id/frag_info_dt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="David Taitingfong"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_js" />
+
+        <TextView
+            android:id="@+id/frag_info_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Chaitanya Vooradi"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frag_info_dt" />
+
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>
