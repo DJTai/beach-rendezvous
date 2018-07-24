@@ -1,12 +1,15 @@
 package com.example.beachrendezvous.ui;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.beachrendezvous.R;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 ///**
 // * A simple {@link Fragment} subclass.
@@ -27,6 +30,8 @@ public class SettingsFragment extends Fragment {
 //    private String mParam2;
 //
 //    private OnFragmentInteractionListener mListener;
+
+    Unbinder mUnbinder;
 
     public SettingsFragment () {
         // Required empty public constructor
@@ -50,14 +55,10 @@ public class SettingsFragment extends Fragment {
 //        return fragment;
 //    }
 //
-//    @Override
-//    public void onCreate (Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
+    @Override
+    public void onCreate (Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView (LayoutInflater inflater,
@@ -67,10 +68,20 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
+        mUnbinder = ButterKnife.bind(this, view);
+
         return view;
     }
 
-//    // TODO: Rename method, update argument and hook method into UI event
+    @Override
+    public void onDestroyView () {
+        super.onDestroyView();
+
+        // Unbind the view to free some memory
+        mUnbinder.unbind();
+    }
+
+    //    // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed (Uri uri) {
 //        if (mListener != null) {
 //            mListener.onFragmentInteraction(uri);
