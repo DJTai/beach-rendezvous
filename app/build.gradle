@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -32,6 +33,7 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$support_constraint_version"
     implementation "com.android.support:support-vector-drawable:$support_version"
     implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:support-vector-drawable:27.1.1'
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
@@ -42,4 +44,11 @@ dependencies {
 
     // Okta
     implementation "com.okta.android:appauth-android:$okta_version"
+
+    // Android Arch Lifecycle
+    implementation "android.arch.lifecycle:extensions:$arch_version"
+
+    // Room library
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 }

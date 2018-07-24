@@ -38,7 +38,7 @@ public class MainMenuFragment extends Fragment {
 //
 //    private OnFragmentInteractionListener mListener;
 
-    private static final String TAG = "MainMenuFragment";
+    private static final String TAG = "main_menu_fragment";
 
     Unbinder mUnbinder;
 

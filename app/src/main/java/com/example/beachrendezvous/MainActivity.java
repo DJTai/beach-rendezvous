@@ -1,5 +1,6 @@
 package com.example.beachrendezvous;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,32 +11,32 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.beachrendezvous.ui.InfoFragment;
 import com.example.beachrendezvous.ui.MainMenuFragment;
 import com.example.beachrendezvous.ui.ProfileFragment;
 import com.example.beachrendezvous.ui.SettingsFragment;
 import com.example.beachrendezvous.ui.SubMenuFragment;
+import com.example.beachrendezvous.viewModel.MainViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 // Butter Knife imports
 // see https://jakewharton.github.io/butterknife/ for more details
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity
+        extends AppCompatActivity
         implements MainMenuFragment.OnFragmentInteractionListener,
         SubMenuFragment.OnFragmentInteractionListener {
 
     public static final String TAG = "main_activity";
-    public static final String DEBUG = "debug";
 
-    // Reference to the bottom nav bar
+    // References
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
+    private MainViewModel mViewModel;
 
     /**
      * Determines which fragment to open upon nav selection
@@ -94,24 +95,19 @@ public class MainActivity extends AppCompatActivity
 
         Fragment fragmentSeen;
 
-        Log.i(DEBUG, "main activity created");
+        Log.i(TAG, "main activity created");
 
         // !! - Needed to complete binding of views - !!
         // Needs to be before any Butter Knife references as well
         ButterKnife.bind(this);
 
-        Log.i(DEBUG, "butterknife binded");
+        Log.i(TAG, "butterknife binded");
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-//        fragmentSeen = new SubMenuFragment();
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction
-//                .replace(R.id.frame_fragment, fragmentSeen)
-//                .commit();
+        Log.i(TAG, "bottom nav set");
 
-        Log.i(DEBUG, "bottom nav set");
+        initViewModel();
 
         fragmentSeen = new MainMenuFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -120,8 +116,13 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.frame_fragment, fragmentSeen)
                 .commit();
 
-        Log.i(DEBUG, "fragment transaction successful");
+        Log.i(TAG, "fragment transaction successful");
 
+    }
+
+    private void initViewModel () {
+        mViewModel = ViewModelProviders.of(this)
+                .get(MainViewModel.class);
     }
 
     @Override

@@ -10,6 +10,8 @@ buildscript {
 
     ext.butterknife_version = '8.8.1'
     ext.okta_version = '0.1.0'
+    ext.arch_version = '1.1.1'
+    ext.room_version = '1.0.0'
     
     repositories {
         google()
