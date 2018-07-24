@@ -17,4 +17,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Movies Fragment -->
+    <string name="action_return">&lt; RETURN</string>
 </resources>

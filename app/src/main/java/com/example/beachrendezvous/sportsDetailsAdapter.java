@@ -1,4 +1,4 @@
-package com.example.beachrendevous;
+package com.example.beachrendezvous;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,14 +14,14 @@ import android.widget.TextView;
 
  */
 
-public class sportsDetailsAdapter extends ArrayAdapter<String>  {
+public class sportsDetailsAdapter extends ArrayAdapter<String> {
 
 
     Context mContext;
 
 
     String[] type1;
-    String [] date1;
+    String[] date1;
     String[] place1;
 
     public sportsDetailsAdapter(@NonNull Context context, String[] type1, String[] date1, String[] place1) {
@@ -42,7 +42,7 @@ public class sportsDetailsAdapter extends ArrayAdapter<String>  {
         if (convertView1 == null) {
             LayoutInflater mInflater = (LayoutInflater) mContext.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView1 = mInflater.inflate(R.layout.listviewgames, parent, false);
+            convertView1 = mInflater.inflate(R.layout.sportsinfoview, parent, false);
             mViewHolder.adminImage= (ImageView) convertView1.findViewById(R.id.admin);
             mViewHolder.gametext = (TextView) convertView1.findViewById(R.id.typeofgame);
             mViewHolder.date=(TextView)convertView1.findViewById(R.id.dateofgame);

@@ -1,8 +1,8 @@
-package com.example.beachrendevous;
+package com.example.beachrendezvous;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -31,7 +31,7 @@ public class findsportsDetails extends AppCompatActivity {
     ImageButton returnbutton;
 
     String[] type1={"Indoor", "Outdoor", "Indoor", "Outdoor"};
-    String [] date1={"07/9", "08/10", "09/20", "07/5"};
+    String[] date1={"07/9", "08/10", "09/20", "07/5"};
     String[] place1 ={"Gym", "ASI", "Pyramid", "Place4"};
     String gameName;
 

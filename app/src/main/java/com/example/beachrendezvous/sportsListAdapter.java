@@ -1,4 +1,4 @@
-package com.example.beachrendevous;
+package com.example.beachrendezvous;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -23,7 +23,7 @@ public class sportsListAdapter extends ArrayAdapter<String> {
     Context mContext;
 
     public sportsListAdapter(Context context, String[] countryNames, int[] countryFlags) {
-        super(context, R.layout.listview_item);
+        super(context, R.layout.sportsview);
         this.names = countryNames;
         this.flags = countryFlags;
         this.mContext = context;
@@ -41,7 +41,7 @@ public class sportsListAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater) mContext.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.listview_item, parent, false);
+            convertView = mInflater.inflate(R.layout.sportsview, parent, false);
             viewHolder.mFlag = (ImageView) convertView.findViewById(R.id.imageView);
             viewHolder.mName = (TextView) convertView.findViewById(R.id.textView);
             convertView.setTag(viewHolder);
