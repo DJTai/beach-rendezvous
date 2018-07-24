@@ -80,12 +80,12 @@
         android:text="What do you want to eat today?" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_width="138dp"
+        android:layout_height="155dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="83dp"
-        app:srcCompat="@drawable/food" />
+        android:layout_marginTop="67dp"
+        app:srcCompat="@drawable/fast_food" />
 
 </RelativeLayout>
