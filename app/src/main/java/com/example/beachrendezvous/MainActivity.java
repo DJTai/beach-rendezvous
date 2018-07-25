@@ -29,10 +29,11 @@ import butterknife.ButterKnife;
 
 public class MainActivity
         extends AppCompatActivity
-        implements MainMenu.OnFragmentInteractionListener,
-        SubMenu.OnFragmentInteractionListener {
+        implements SubMenu.OnFragmentInteractionListener {
 
+    /* Logging Tags */
     private static final String TAG = "main_activity";
+    private static final String DEBUG = "debug_mainActivity";
 
     /* Parameter used to pass arguments within Bundle objects */
     private static final String ARG_PARAM = "param";
@@ -40,9 +41,11 @@ public class MainActivity
     // References
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
+
     private MainViewModel mViewModel;
 
 
+    //region Options Menu
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
         getMenuInflater().inflate(R.menu.menu_options, menu);
@@ -55,15 +58,15 @@ public class MainActivity
 
         if (id == R.id.action_profile) {
             Fragment fragment = new Profile();
-            return initFragment(fragment);
+            return initFragment(fragment, "profile");
 
         } else if (id == R.id.action_settings) {
             Fragment fragment = new Settings();
-            return initFragment(fragment);
+            return initFragment(fragment, "settings");
 
         } else if (id == R.id.action_info) {
             Fragment fragment = new Info();
-            return initFragment(fragment);
+            return initFragment(fragment, "info");
 
         } else if (id == R.id.action_signOut) {
             Intent intent = new Intent(this, SplashActivity.class);
@@ -76,6 +79,7 @@ public class MainActivity
 
         return super.onOptionsItemSelected(item);
     }
+    //endregion
 
     /**
      * Initialize, inflate, and add to the back stack, the supplied fragment
@@ -83,13 +87,22 @@ public class MainActivity
      * @param fragment - Fragment to be initialized
      * @return true
      */
-    private boolean initFragment (Fragment fragment) {
+    private boolean initFragment (Fragment fragment, String value) {
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM, value);
+        fragment.setArguments(args);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction
                 .replace(R.id.frame_fragment, fragment)
-                .addToBackStack(fragment.getClass().toString())
+                .addToBackStack(value)
                 .commit();
+        Log.i(TAG, "initFragment: " + value);
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        Log.i(TAG, "onCreate: in stack = " + count);
+
         return true;
     }
 
@@ -103,28 +116,20 @@ public class MainActivity
         public boolean onNavigationItemSelected (@NonNull MenuItem item) {
             Fragment fragment;
             int choice = item.getItemId();
+            int count = getSupportFragmentManager().getBackStackEntryCount();
+            String last = getSupportFragmentManager().getBackStackEntryAt(count - 1).getName();
 
             if (choice == R.id.nav_home) {
                 fragment = new MainMenu();
-                return initFragment(fragment);
+                return initFragment(fragment, "home");
 
             } else if (choice == R.id.nav_search) {
                 fragment = new SubMenu();
-                
-                Bundle args = new Bundle();
-                args.putString(ARG_PARAM, "search");
-                fragment.setArguments(args);
-
-                return initFragment(fragment);
+                return initFragment(fragment, "search");
 
             } else if (choice == R.id.nav_create) {
                 fragment = new SubMenu();
-
-                Bundle args = new Bundle();
-                args.putString(ARG_PARAM, "create");
-                fragment.setArguments(args);
-
-                return initFragment(fragment);
+                return initFragment(fragment, "create");
             }
             return false;
         }
@@ -137,27 +142,27 @@ public class MainActivity
 
         Fragment fragment;
 
-        Log.i(TAG, "main activity created");
-
         // !! - Needed to complete binding of views - !!
         // Needs to be before any Butter Knife references as well
         ButterKnife.bind(this);
 
-        Log.i(TAG, "butterknife binded");
-
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        Log.i(TAG, "bottom nav set");
-
         fragment = new MainMenu();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction
-                .replace(R.id.frame_fragment, fragment)
-                .commit();
+        initFragment(fragment, "home");
 
-        Log.i(TAG, "fragment transaction successful");
+//        String last = getSupportFragmentManager()
+//                .getBackStackEntryAt(count - 1)
+//                .getName();
+//        Log.i(TAG, "onCreate: Last frag = " + last);
+    }
 
+    @Override
+    public void onBackPressed () {
+        super.onBackPressed();
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        Log.i(TAG, "onCreate: in stack = " + count);
+        Log.i(TAG, "onBackPressed");
     }
 
     @Override

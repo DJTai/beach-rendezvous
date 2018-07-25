@@ -25,8 +25,13 @@ import butterknife.Unbinder;
 // * create an instance of this fragment.
 // */
 public class SubMenu extends Fragment {
+
+    /* Logging Tags */
+    private static final String TAG = "sub_menu_fragment";
+    private static final String ARG_PARAM = "param";
+
     //    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 //    private static final String ARG_PARAM2 = "param2";
 //
     /* Parameter to determine the context of the SubMenu fragment, e.g., Creating or Searching */
@@ -37,7 +42,6 @@ public class SubMenu extends Fragment {
     Unbinder mUnbinder;
 
     //region Handle button clicks
-
     @OnClick(R.id.subMenu_btn_food)
     void foodClicked () {
         if (mParam != null) {
@@ -75,7 +79,6 @@ public class SubMenu extends Fragment {
             }
         }
     }
-
     @OnClick(R.id.subMenu_btn_sports)
     void sportsClicked () {
         if (mParam != null) {
@@ -96,8 +99,6 @@ public class SubMenu extends Fragment {
     }
     //endregion
 
-    private static final String TAG = "sub_menu_fragment";
-    private static final String ARG_PARAM = "param";
 
     public SubMenu () {
         // Required empty public constructor
