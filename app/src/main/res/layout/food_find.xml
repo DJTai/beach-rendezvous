@@ -62,7 +62,7 @@
         android:text="Menus" />
 
     <TextView
-        android:id="@+id/header"
+        android:id="@+id/subMenu_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

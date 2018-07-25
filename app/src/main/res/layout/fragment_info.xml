@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.InfoFragment">
+    tools:context=".fragments.Info">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="FAQ"
+            android:text="@string/info_header_faq"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
             android:layout_marginTop="8dp"
             android:paddingBottom="20dp"
             android:paddingTop="20dp"
-            android:text="CREDITS"
+            android:text="@string/info_header_credits"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.example.beachrendezvous.ui;
+package com.example.beachrendezvous.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,48 +7,99 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beachrendezvous.R;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 ///**
 // * A simple {@link Fragment} subclass.
 // * Activities that contain this fragment must implement the
-// * {@link SubMenuFragment.OnFragmentInteractionListener} interface
+// * {@link SubMenu.OnFragmentInteractionListener} interface
 // * to handle interaction events.
-// * Use the {@link SubMenuFragment#newInstance} factory method to
+// * Use the {@link SubMenu#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class SubMenuFragment extends Fragment {
+public class SubMenu extends Fragment {
     //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 //    private static final String ARG_PARAM2 = "param2";
 //
-    // TODO: Rename and change types of parameters
+    /* Parameter to determine the context of the SubMenu fragment, e.g., Creating or Searching */
     private String mParam;
-//    private String mParam2;
-//
+
 //    private OnFragmentInteractionListener mListener;
 
     Unbinder mUnbinder;
 
-    @BindView(R.id.subMenu_btn_food)
-    Button btnFood;
+    //region Handle button clicks
 
-    @BindView(R.id.subMenu_btn_movies)
-    Button btnMovies;
+    @OnClick(R.id.subMenu_btn_food)
+    void foodClicked () {
+        if (mParam != null) {
+            String msg = "";
+            if (mParam.equals("search")) {
 
-    @BindView(R.id.subMenu_btn_sports)
-    Button btnSports;
+                // TODO: Handle searching for food
+                msg = "search food opened";
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                // TODO: Handle creating an event for food
+                msg = "create food opened";
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @OnClick(R.id.subMenu_btn_movies)
+    void moviesClicked () {
+        if (mParam != null) {
+            String msg = "";
+            if (mParam.equals("search")) {
+
+                // TODO: Handle searching for a movie
+                msg = "search movies opened";
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                // TODO: Handle creating an event for a movie
+                msg = "create movies opened";
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @OnClick(R.id.subMenu_btn_sports)
+    void sportsClicked () {
+        if (mParam != null) {
+            String msg = "";
+            if (mParam.equals("search")) {
+
+                // TODO: Open SportsSearchDetails fragment
+                msg = "search sports opened";
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                // TODO: Open SportsCreateDetails fragment
+                msg = "create sports opened";
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    //endregion
 
     private static final String TAG = "sub_menu_fragment";
     private static final String ARG_PARAM = "param";
 
-    public SubMenuFragment () {
+    public SubMenu () {
         // Required empty public constructor
     }
 
@@ -58,11 +109,11 @@ public class SubMenuFragment extends Fragment {
 //     *
 //     * @param param1 Parameter 1.
 //     * @param param2 Parameter 2.
-//     * @return A new instance of fragment SubMenuFragment.
+//     * @return A new instance of fragment SubMenu.
 //     */
 //    // TODO: Rename and change types and number of parameters
-//    public static SubMenuFragment newInstance (String param1, String param2) {
-//        SubMenuFragment fragment = new SubMenuFragment();
+//    public static SubMenu newInstance (String param1, String param2) {
+//        SubMenu fragment = new SubMenu();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -89,10 +140,14 @@ public class SubMenuFragment extends Fragment {
         if (mParam != null) {
             if (mParam.equals("create")) {
                 Log.i(TAG, "onCreateView: type equals create");
-                view = inflater.inflate(R.layout.fragment_sub_menu_create, container, false);
+                view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
+                TextView header = view.findViewById(R.id.subMenu_header);
+                header.setText(R.string.submenu_header_create);
             } else {
                 Log.i(TAG, "onCreateView: type not equal to create");
-                view = inflater.inflate(R.layout.fragment_sub_menu_search, container, false);
+                view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
+                TextView header = view.findViewById(R.id.subMenu_header);
+                header.setText(R.string.action_info);
             }
         }
 

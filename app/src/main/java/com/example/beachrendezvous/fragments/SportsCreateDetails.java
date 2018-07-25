@@ -1,4 +1,4 @@
-package com.example.beachrendezvous.ui;
+package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class SportsCreateDetailsFragment extends Fragment {
+public class SportsCreateDetails extends Fragment {
 
     private String mParam;
     private static final String TAG = "sports_create_details";
@@ -30,7 +30,7 @@ public class SportsCreateDetailsFragment extends Fragment {
     @BindView(R.id.createEvent_commentLabel)
     TextView commentTextView;
 
-    public SportsCreateDetailsFragment() {
+    public SportsCreateDetails () {
         // Required empty public constructor
     }
 

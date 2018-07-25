@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SubMenuFragment">
+    tools:context=".fragments.SubMenu">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/subMenu_constraintLayout"
@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/header"
+            android:id="@+id/subMenu_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -37,7 +37,6 @@
             android:layout_marginBottom="30dp"
             android:layout_marginTop="50dp"
             android:autoLink="none"
-            android:autoText="true"
             android:background="@color/colorAccent"
             android:text="@string/submenu_btn_food"
             app:layout_constraintBottom_toTopOf="@+id/subMenu_btn_movies"

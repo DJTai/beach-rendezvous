@@ -13,12 +13,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.beachrendezvous.ui.InfoFragment;
-import com.example.beachrendezvous.ui.MainMenuFragment;
-import com.example.beachrendezvous.ui.ProfileFragment;
-import com.example.beachrendezvous.ui.SettingsFragment;
-import com.example.beachrendezvous.ui.SportsCreateDetailsFragment;
-import com.example.beachrendezvous.ui.SubMenuFragment;
+import com.example.beachrendezvous.fragments.Info;
+import com.example.beachrendezvous.fragments.MainMenu;
+import com.example.beachrendezvous.fragments.Profile;
+import com.example.beachrendezvous.fragments.Settings;
+import com.example.beachrendezvous.fragments.SubMenu;
 import com.example.beachrendezvous.viewModel.MainViewModel;
 
 import butterknife.BindView;
@@ -30,10 +29,12 @@ import butterknife.ButterKnife;
 
 public class MainActivity
         extends AppCompatActivity
-        implements MainMenuFragment.OnFragmentInteractionListener,
-        SubMenuFragment.OnFragmentInteractionListener {
+        implements MainMenu.OnFragmentInteractionListener,
+        SubMenu.OnFragmentInteractionListener {
 
     private static final String TAG = "main_activity";
+
+    /* Parameter used to pass arguments within Bundle objects */
     private static final String ARG_PARAM = "param";
 
     // References
@@ -53,15 +54,15 @@ public class MainActivity
         int id = item.getItemId();
 
         if (id == R.id.action_profile) {
-            Fragment fragment = new ProfileFragment();
+            Fragment fragment = new Profile();
             return initFragment(fragment);
 
         } else if (id == R.id.action_settings) {
-            Fragment fragment = new SettingsFragment();
+            Fragment fragment = new Settings();
             return initFragment(fragment);
 
         } else if (id == R.id.action_info) {
-            Fragment fragment = new InfoFragment();
+            Fragment fragment = new Info();
             return initFragment(fragment);
 
         } else if (id == R.id.action_signOut) {
@@ -104,11 +105,11 @@ public class MainActivity
             int choice = item.getItemId();
 
             if (choice == R.id.nav_home) {
-                fragment = new MainMenuFragment();
+                fragment = new MainMenu();
                 return initFragment(fragment);
 
             } else if (choice == R.id.nav_search) {
-                fragment = new SubMenuFragment();
+                fragment = new SubMenu();
                 
                 Bundle args = new Bundle();
                 args.putString(ARG_PARAM, "search");
@@ -117,7 +118,7 @@ public class MainActivity
                 return initFragment(fragment);
 
             } else if (choice == R.id.nav_create) {
-                fragment = new SubMenuFragment();
+                fragment = new SubMenu();
 
                 Bundle args = new Bundle();
                 args.putString(ARG_PARAM, "create");
@@ -148,7 +149,7 @@ public class MainActivity
 
         Log.i(TAG, "bottom nav set");
 
-        fragment = new MainMenuFragment();
+        fragment = new MainMenu();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction

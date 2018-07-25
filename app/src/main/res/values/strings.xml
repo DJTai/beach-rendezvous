@@ -34,4 +34,6 @@
 
     <!-- Movies Fragment -->
     <string name="action_return">&lt; RETURN</string>
+    <string name="info_header_faq">FAQ</string>
+    <string name="info_header_credits">CREDITS</string>
 </resources>

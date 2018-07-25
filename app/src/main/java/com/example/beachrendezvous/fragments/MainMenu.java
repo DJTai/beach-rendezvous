@@ -1,11 +1,8 @@
-package com.example.beachrendezvous.ui;
+package com.example.beachrendezvous.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,12 +19,12 @@ import butterknife.Unbinder;
 ///**
 // * A simple {@link Fragment} subclass.
 // * Activities that contain this fragment must implement the
-// * {@link MainMenuFragment.OnFragmentInteractionListener} interface
+// * {@link MainMenu.OnFragmentInteractionListener} interface
 // * to handle interaction events.
-// * Use the {@link MainMenuFragment#newInstance} factory method to
+// * Use the {@link MainMenu#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class MainMenuFragment extends Fragment {
+public class MainMenu extends Fragment {
 //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 //    private static final String ARG_PARAM1 = "param1";
@@ -59,7 +56,7 @@ public class MainMenuFragment extends Fragment {
         Toast.makeText(getContext(), "CLICK BELOW", Toast.LENGTH_SHORT).show();
     }
 
-    public MainMenuFragment () {
+    public MainMenu () {
         // Required empty public constructor
     }
 
@@ -69,11 +66,11 @@ public class MainMenuFragment extends Fragment {
 //     *
 //     * @param param1 Parameter 1.
 //     * @param param2 Parameter 2.
-//     * @return A new instance of fragment MainMenuFragment.
+//     * @return A new instance of fragment MainMenu.
 //     */
 //    // TODO: Rename and change types and number of parameters
-//    public static MainMenuFragment newInstance (String param1, String param2) {
-//        MainMenuFragment fragment = new MainMenuFragment();
+//    public static MainMenu newInstance (String param1, String param2) {
+//        MainMenu fragment = new MainMenu();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);

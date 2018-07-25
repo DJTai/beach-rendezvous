@@ -64,14 +64,14 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/header"
+        android:layout_alignStart="@+id/subMenu_header"
         android:layout_marginBottom="207dp"
         android:fontFamily="sans-serif-medium"
         android:text="Indian food"
         android:textColor="#000000"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:layout_alignLeft="@+id/header" />
+        android:layout_alignLeft="@+id/subMenu_header" />
 
     <TextView
         android:id="@+id/header5"
@@ -79,14 +79,14 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/header"
+        android:layout_alignStart="@+id/subMenu_header"
         android:layout_marginBottom="156dp"
         android:fontFamily="sans-serif-medium"
         android:text="American food"
         android:textColor="#000000"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:layout_alignLeft="@+id/header" />
+        android:layout_alignLeft="@+id/subMenu_header" />
 
     <TextView
         android:id="@+id/header6"
@@ -94,14 +94,14 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/header"
+        android:layout_alignStart="@+id/subMenu_header"
         android:layout_marginTop="228dp"
         android:fontFamily="sans-serif-medium"
         android:text="Mexican food"
         android:textColor="#000000"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:layout_alignLeft="@+id/header" />
+        android:layout_alignLeft="@+id/subMenu_header" />
 
     <TextView
         android:id="@+id/header4"
@@ -109,14 +109,14 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/header"
+        android:layout_alignStart="@+id/subMenu_header"
         android:layout_marginTop="181dp"
         android:fontFamily="sans-serif-medium"
         android:text="French Cuisine"
         android:textColor="#000000"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:layout_alignLeft="@+id/header" />
+        android:layout_alignLeft="@+id/subMenu_header" />
 
     <FrameLayout
         android:id="@+id/frame_fragment"
@@ -144,7 +144,7 @@
         app:menu="@menu/navigation" />
 
     <TextView
-        android:id="@+id/header"
+        android:id="@+id/subMenu_header"
         android:layout_width="114dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/seekBar2"
