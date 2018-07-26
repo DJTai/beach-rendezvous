@@ -27,13 +27,13 @@
 
         </activity>
 
-        <!-- 2nd activity -->
-        <!--  TODO: NOT IMPLEMENTED YET -->
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
+        <!--&lt;!&ndash; 2nd activity &ndash;&gt;-->
+        <!--&lt;!&ndash;  TODO: NOT IMPLEMENTED YET &ndash;&gt;-->
+        <!--<activity-->
+            <!--android:name=".LoginActivity"-->
+            <!--android:label="@string/title_activity_login">-->
 
-        </activity>
+        <!--</activity>-->
 
         <!-- 3rd activity -->
         <activity

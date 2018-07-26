@@ -1,10 +1,5 @@
 apply plugin: 'com.android.application'
 
-// Required for Okta
-android.defaultConfig.manifestPlaceholders = [
-        "appAuthRedirectScheme": "com.oktapreview.dev-694558"
-]
-
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -32,8 +27,12 @@ dependencies {
     implementation "com.android.support:design:$support_version"
     implementation "com.android.support.constraint:constraint-layout:$support_constraint_version"
     implementation "com.android.support:support-vector-drawable:$support_version"
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:support-vector-drawable:27.1.1'
+    implementation "com.android.support:support-v4:$support_version"
+    implementation "com.android.support:support-vector-drawable:$support_version"
+
+    //noinspection GradleDependency
+    implementation "com.google.firebase:firebase-database:$firebase_version"
+
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
@@ -42,13 +41,13 @@ dependencies {
     implementation "com.jakewharton:butterknife:$butterknife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
 
-    // Okta
-    implementation "com.okta.android:appauth-android:$okta_version"
-
     // Android Arch Lifecycle
     implementation "android.arch.lifecycle:extensions:$arch_version"
 
     // Room library
+    //noinspection GradleDependency
     implementation "android.arch.persistence.room:runtime:$room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 }
+
+apply plugin: 'com.google.gms.google-services'

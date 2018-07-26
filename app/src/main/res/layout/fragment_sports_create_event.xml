@@ -24,7 +24,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:text="TYPE OF EVENT"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="125dp" />
+                app:layout_constraintGuide_begin="100dp" />
 
             <EditText
                 android:id="@+id/createEvent_dateText"
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="175dp" />
+                app:layout_constraintGuide_begin="150dp" />
 
             <TextView
                 android:id="@+id/createEvent_timeLabel"
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="245dp" />
+                app:layout_constraintGuide_begin="210dp" />
 
             <TextView
                 android:id="@+id/createEvent_numOfPeople"
@@ -172,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="315dp" />
+                app:layout_constraintGuide_begin="280dp" />
 
             <TextView
                 android:id="@+id/createEvent_commentLabel"
@@ -194,18 +194,20 @@
             <EditText
                 android:id="@+id/createEvent_commentText"
                 android:layout_width="286dp"
-                android:layout_height="300dp"
+                android:layout_height="100dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Comments go here"
-                app:layout_constraintBottom_toTopOf="@+id/createEvent_createBtn"
+                app:layout_constraintBottom_toTopOf="@+id/sportsCreate_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_numComments" />
 
             <Button
-                android:id="@+id/createEvent_createBtn"
-                android:layout_width="wrap_content"
+                android:id="@+id/sportsCreate_btn"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="Create"
