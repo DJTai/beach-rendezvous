@@ -7,9 +7,9 @@
     tools:context=".fragments.SportsCreateDetails">
 
     <ScrollView
+        android:id="@+id/createEvent_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/createEvent_scrollView">
+        android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
 
@@ -24,7 +24,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:text="TYPE OF EVENT"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,24 +32,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/sportsCreate_dateLabel"
+                android:id="@+id/sportsSearch_dateLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="@string/label_date"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_datePlace"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_datePlace"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_datePlace"
+                android:id="@+id/guideline_search_datePlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="125dp" />
+                app:layout_constraintGuide_begin="100dp" />
 
             <EditText
-                android:id="@+id/createEvent_dateText"
+                android:id="@+id/searchEvent_dateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -57,24 +57,24 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:ems="10"
-                android:inputType="date"
                 android:hint="MM/DD/YYYY"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_datePlace"
+                android:inputType="date"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.785"
-                app:layout_constraintStart_toEndOf="@+id/sportsCreate_dateLabel" />
+                app:layout_constraintStart_toEndOf="@+id/sportsSearch_dateLabel" />
 
             <TextView
-                android:id="@+id/createEvent_placeLabel"
+                android:id="@+id/searchEvent_placeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/label_place"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_placeTime"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_placeTime"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_datePlace" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_datePlace" />
 
             <Spinner
                 android:id="@+id/createEvent_placeText"
@@ -84,22 +84,22 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_placeTime"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_placeTime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.689"
-                app:layout_constraintStart_toEndOf="@+id/createEvent_placeLabel"
-                app:layout_constraintTop_toBottomOf="@+id/createEvent_dateText"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_placeLabel"
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_dateText"
                 app:layout_constraintVertical_bias="0.8" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_placeTime"
+                android:id="@+id/guideline_search_placeTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="175dp" />
+                app:layout_constraintGuide_begin="150dp" />
 
             <TextView
-                android:id="@+id/createEvent_timeLabel"
+                android:id="@+id/searchEvent_timeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -108,9 +108,9 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/label_time"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_timeNum"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_timeNum"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_placeTime" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_placeTime" />
 
             <EditText
                 android:id="@+id/createEvent_timeText"
@@ -121,24 +121,24 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="4dp"
                 android:ems="10"
-                android:inputType="time"
                 android:hint="HH:MM"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_timeNum"
+                android:inputType="time"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_timeNum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.769"
-                app:layout_constraintStart_toEndOf="@+id/createEvent_timeLabel"
-                app:layout_constraintTop_toTopOf="@+id/guideline_placeTime"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_timeLabel"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_placeTime"
                 app:layout_constraintVertical_bias="1.0" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_timeNum"
+                android:id="@+id/guideline_search_timeNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="245dp" />
+                app:layout_constraintGuide_begin="210dp" />
 
             <TextView
-                android:id="@+id/createEvent_numOfPeople"
+                android:id="@+id/searchEvent_numOfPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -146,9 +146,9 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_numComments"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_timeNum" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum" />
 
             <EditText
                 android:id="@+id/createEvent_numText"
@@ -160,19 +160,19 @@
                 android:layout_marginRight="4dp"
                 android:ems="10"
                 android:inputType="number"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_numComments"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.566"
-                app:layout_constraintStart_toEndOf="@+id/createEvent_numOfPeople"
-                app:layout_constraintTop_toTopOf="@+id/guideline_timeNum"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_numOfPeople"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum"
                 app:layout_constraintVertical_bias="0.625" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_numComments"
+                android:id="@+id/guideline_search_numComments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="315dp" />
+                app:layout_constraintGuide_begin="280dp" />
 
             <TextView
                 android:id="@+id/createEvent_commentLabel"
@@ -186,37 +186,41 @@
                 android:layout_marginTop="8dp"
                 android:text="Comments:"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/createEvent_commentText"
+                app:layout_constraintBottom_toTopOf="@+id/searchEvent_commentText"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.529"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_numComments" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintVertical_bias="0.0" />
 
             <EditText
-                android:id="@+id/createEvent_commentText"
+                android:id="@+id/searchEvent_commentText"
                 android:layout_width="286dp"
-                android:layout_height="300dp"
+                android:layout_height="86dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Comments go here"
-                app:layout_constraintBottom_toTopOf="@+id/createEvent_createBtn"
+                app:layout_constraintBottom_toTopOf="@+id/sportsSearch_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments" />
 
             <Button
-                android:id="@+id/createEvent_createBtn"
-                android:layout_width="wrap_content"
+                android:id="@+id/sportsSearch_btn"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="12dp"
                 android:text="Create"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_commentText" />
 
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
 </FrameLayout>
-
-
-

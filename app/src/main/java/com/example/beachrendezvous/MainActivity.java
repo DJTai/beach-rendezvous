@@ -87,7 +87,7 @@ public class MainActivity
      * @param fragment - Fragment to be initialized
      * @return true
      */
-    private boolean initFragment (Fragment fragment, String value) {
+    public boolean initFragment (Fragment fragment, String value) {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM, value);
         fragment.setArguments(args);

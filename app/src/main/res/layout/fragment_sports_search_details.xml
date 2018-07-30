@@ -3,12 +3,222 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SportsFindDetailsFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.SportsSearchDetails">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:id="@+id/createEvent_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/sportsSearch_eventType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="TYPE OF EVENT"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/sportsSearch_dateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="39dp"
+                android:layout_margin="8dp"
+                android:text="@string/label_date"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_datePlace"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_datePlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="100dp" />
+
+            <TextView
+                android:id="@+id/searchEvent_dateText"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:ems="10"
+                android:inputType="date"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_datePlace"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintStart_toEndOf="@+id/sportsSearch_dateLabel" />
+
+            <TextView
+                android:id="@+id/searchEvent_placeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/label_place"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_placeTime"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_datePlace" />
+
+            <TextView
+                android:id="@+id/searchEvent_placeText"
+                android:layout_width="200dp"
+                android:layout_height="31dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_placeTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.663"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_placeLabel"
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_dateText"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_placeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="150dp" />
+
+            <TextView
+                android:id="@+id/searchEvent_timeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/label_time"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_timeNum"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_placeTime" />
+
+            <TextView
+                android:id="@+id/searchEvent_timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:ems="10"
+                android:hint="HH:MM"
+                android:inputType="time"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_timeNum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.546"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_timeLabel"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_placeTime"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_timeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="210dp" />
+
+            <TextView
+                android:id="@+id/searchEvent_numOfPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/label_num_people"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum" />
+
+            <TextView
+                android:id="@+id/searchEvent_numText"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.327"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_numOfPeople"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum"
+                app:layout_constraintVertical_bias="0.821" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_numComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="280dp" />
+
+            <TextView
+                android:id="@+id/searchEvent_commentLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Comments:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/searchEvent_commentText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.529"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/searchEvent_commentText"
+                android:layout_width="286dp"
+                android:layout_height="86dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Comments go here"
+                app:layout_constraintBottom_toTopOf="@+id/sportsSearch_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments" />
+
+            <Button
+                android:id="@+id/sportsSearch_btn"
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/holo_orange_light"
+                android:text="Join"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_commentText" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>

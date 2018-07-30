@@ -3,6 +3,8 @@ package com.example.beachrendezvous.fragments;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ public class SubMenu extends Fragment {
     /* Logging Tags */
     private static final String TAG = "sub_menu_fragment";
     private static final String ARG_PARAM = "param";
+    private static final String ARG_PARAM1 = "param1";
 
     //    // TODO: Rename parameter arguments, choose names that match
     //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,6 +54,7 @@ public class SubMenu extends Fragment {
                 // TODO: Handle searching for food
                 msg = "search food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+
 
             } else {
 
@@ -88,12 +92,36 @@ public class SubMenu extends Fragment {
                 // TODO: Open SportsSearchDetails fragment
                 msg = "search sports opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                Fragment f=new sportinfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1,"search");
+                args.putString(ARG_PARAM,"sports");
+                f.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, f)
+                        .addToBackStack("search")
+                        .commit();
+
+
 
             } else {
 
                 // TODO: Open SportsCreateDetails fragment
                 msg = "create sports opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                Fragment f=new sportinfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1,"create");
+                args.putString(ARG_PARAM,"sports");
+                f.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, f)
+                        .addToBackStack("create")
+                        .commit();
             }
         }
     }
@@ -148,12 +176,12 @@ public class SubMenu extends Fragment {
                 Log.i(TAG, "onCreateView: type not equal to create");
                 view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
                 TextView header = view.findViewById(R.id.subMenu_header);
-                header.setText(R.string.action_info);
+                header.setText("Let's Find an Event!");
             }
         }
-
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
+
 
         return view;
     }
