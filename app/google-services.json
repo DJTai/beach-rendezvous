@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "13579184223",
+    "firebase_url": "https://beach-rendezvous.firebaseio.com",
+    "project_id": "beach-rendezvous",
+    "storage_bucket": "beach-rendezvous.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13579184223:android:f797b78e8b03ac51",
+        "android_client_info": {
+          "package_name": "com.example.beachrendezvous"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13579184223-p7a93c3grne6fiktkdabmthp3lvp793j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beachrendezvous",
+            "certificate_hash": "f9c9ede16f28bcace36dfb6e29b425d5af80d886"
+          }
+        },
+        {
+          "client_id": "13579184223-dbd5q62bds8kg4f677aqqgtk32pmisva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3mig4dA3Yc1s6eTNJvPxu3yeF7XAZ5QY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13579184223-dbd5q62bds8kg4f677aqqgtk32pmisva.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
