@@ -30,8 +30,8 @@ public class SubMenu extends Fragment {
     private static final String TAG = "sub_menu_fragment";
     private static final String ARG_PARAM = "param";
 
-    //    // TODO: Rename parameter arguments, choose names that match
-    //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        // TODO: Rename parameter arguments, choose names that match
+        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 //    private static final String ARG_PARAM2 = "param2";
 //
     /* Parameter to determine the context of the SubMenu fragment, e.g., Creating or Searching */
@@ -148,7 +148,7 @@ public class SubMenu extends Fragment {
                 Log.i(TAG, "onCreateView: type not equal to create");
                 view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
                 TextView header = view.findViewById(R.id.subMenu_header);
-                header.setText(R.string.action_info);
+                header.setText(R.string.submenu_header_search);
             }
         }
 
@@ -191,18 +191,18 @@ public class SubMenu extends Fragment {
 //    }
 //
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction (Uri uri);
-    }
+//    /**
+//     * This interface must be implemented by activities that contain this
+//     * fragment to allow an interaction in this fragment to be communicated
+//     * to the activity and potentially other fragments contained in that
+//     * activity.
+//     * <p>
+//     * See the Android Training lesson <a href=
+//     * "http://developer.android.com/training/basics/fragments/communicating.html"
+//     * >Communicating with Other Fragments</a> for more information.
+//     */
+//    public interface OnFragmentInteractionListener {
+//        // TODO: Update argument type and name
+//        void onFragmentInteraction (Uri uri);
+//    }
 }
