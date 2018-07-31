@@ -9,16 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.beachrendezvous.R;
+import com.example.beachrendezvous.database.SportsEntity;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 import static android.R.layout.simple_spinner_item;
@@ -33,6 +41,7 @@ public class SportsCreateDetails extends Fragment {
 
     Unbinder mUnbinder;
     Spinner spinner;
+    View view = null;
 
     // TODO: MAKE BINDING CALLS TO EVERY THING ON THE XML LAYOUT
     @BindView(R.id.createEvent_commentLabel)
@@ -40,6 +49,35 @@ public class SportsCreateDetails extends Fragment {
 
     public SportsCreateDetails () {
         // Required empty public constructor
+    }
+
+    @OnClick(R.id.sportsCreate_btn)
+    void joinClicked () {
+
+        try {
+           // Toast.makeText(getContext(), "create button clicked", Toast.LENGTH_SHORT).show();
+            TextView date =(TextView) view.findViewById(R.id.createEvent_dateText);
+            Spinner place = (Spinner)view.findViewById(R.id.createEvent_placeText);
+            EditText time = (EditText)view.findViewById(R.id.createEvent_timeText);
+            EditText people = (EditText)view.findViewById(R.id.createEvent_numText);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            Date dob_var;
+            TextView comments = (TextView)view.findViewById(R.id.createEvent_commentText);
+             dob_var = dateFormat.parse(date.getText().toString());
+            String time1 = time.getText().toString();
+            SportsEntity eventdetais=new SportsEntity(time1,dob_var,place.getSelectedItem().toString(),Integer.parseInt(people.getText().toString()),comments.getText().toString());
+            Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
+        }
+        catch (java.text.ParseException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            Log.i("Exception", e.toString());
+        }
+
+
+
+
     }
 
     @Override
@@ -73,7 +111,7 @@ public class SportsCreateDetails extends Fragment {
                               @Nullable ViewGroup container,
                               @Nullable Bundle savedInstanceState) {
 
-        View view = null;
+
 
         if (mParam != null) {
                 Log.i(TAG, "sports create details");
