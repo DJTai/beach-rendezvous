@@ -28,8 +28,7 @@ import butterknife.ButterKnife;
 
 
 public class MainActivity
-        extends AppCompatActivity
-        implements SubMenu.OnFragmentInteractionListener {
+        extends AppCompatActivity {
 
     /* Logging Tags */
     private static final String TAG = "main_activity";
@@ -47,13 +46,13 @@ public class MainActivity
 
     //region Options Menu
     @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_options, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected (MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == R.id.action_profile) {
@@ -113,7 +112,7 @@ public class MainActivity
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
-        public boolean onNavigationItemSelected (@NonNull MenuItem item) {
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
             int choice = item.getItemId();
             int count = getSupportFragmentManager().getBackStackEntryCount();
@@ -136,7 +135,7 @@ public class MainActivity
     };
 
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -158,15 +157,11 @@ public class MainActivity
     }
 
     @Override
-    public void onBackPressed () {
+    public void onBackPressed() {
         super.onBackPressed();
         int count = getSupportFragmentManager().getBackStackEntryCount();
         Log.i(TAG, "onCreate: in stack = " + count);
         Log.i(TAG, "onBackPressed");
     }
-
-    @Override
-    public void onFragmentInteraction (Uri uri) {
-
-    }
+    
 }
