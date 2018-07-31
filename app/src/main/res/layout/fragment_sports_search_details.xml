@@ -7,7 +7,7 @@
     tools:context=".fragments.SportsSearchDetails">
 
     <ScrollView
-        android:id="@+id/createEvent_scrollView"
+        android:id="@+id/searchEvent_scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
