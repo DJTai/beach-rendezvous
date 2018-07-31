@@ -16,4 +16,7 @@
     <!-- Text Colors -->
     <color name="colorPrimaryText">#FFFFFF</color>
     <color name="colorSecondaryText">#000000</color>
+    <color name="colorPrimaryGrey">#FFB2ADAD</color>
+
+
 </resources>
