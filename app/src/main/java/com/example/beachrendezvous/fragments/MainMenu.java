@@ -41,24 +41,6 @@ public class MainMenu extends Fragment {
 
     private Unbinder mUnbinder;
 
-    //region ButterKnife Binds
-    @BindView(R.id.mainMenu_findEvent)
-    Button btnFindEvent;
-
-    @BindView(R.id.mainMenu_createEvent)
-    Button btnCreateEvent;
-
-    @OnClick(R.id.mainMenu_findEvent)
-    void findEventClicked () {
-        Toast.makeText(getContext(), "CLICK BELOW", Toast.LENGTH_SHORT).show();
-    }
-
-    @OnClick(R.id.mainMenu_createEvent)
-    void createEvent () {
-        Toast.makeText(getContext(), "CLICK BELOW", Toast.LENGTH_SHORT).show();
-    }
-    //endregion
-
     public MainMenu () {
         // Required empty public constructor
     }
