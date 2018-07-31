@@ -7,9 +7,9 @@
     tools:context=".fragments.SportsCreateDetails">
 
     <ScrollView
+        android:id="@+id/createEvent_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/createEvent_scrollView">
+        android:layout_height="wrap_content">
 
         <android.support.constraint.ConstraintLayout
 
@@ -204,13 +204,13 @@
                 android:layout_height="87dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:padding="4dp"
+                android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="textPersonName"
+                android:padding="4dp"
                 android:text="Comments go here"
                 android:textColor="@color/colorPrimaryGrey"
-                android:background="@drawable/rounded_edittext"
                 app:layout_constraintBottom_toTopOf="@+id/sportsCreate_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -222,10 +222,14 @@
                 android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginBottom="232dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
                 android:background="@color/colorAccent"
                 android:text="Create"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createEvent_commentText" />
+            />
 
 
         </android.support.constraint.ConstraintLayout>

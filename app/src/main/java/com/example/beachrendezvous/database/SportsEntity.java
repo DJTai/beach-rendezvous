@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class SportsEntity {
 
-    private Time time;
+    private String time;
     private Date date;
     private String location;
     private int attending;
@@ -15,7 +15,7 @@ public class SportsEntity {
 
     }
 
-    public SportsEntity(Time time, Date date, String location, int attending, String comments) {
+    public SportsEntity(String time, Date date, String location, int attending, String comments) {
         this.time = time;
         this.date = date;
         this.location = location;
@@ -24,11 +24,11 @@ public class SportsEntity {
     }
 
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

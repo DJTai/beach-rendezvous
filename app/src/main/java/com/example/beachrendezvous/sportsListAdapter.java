@@ -41,7 +41,7 @@ public class sportsListAdapter extends ArrayAdapter<String> {
         if (convertView == null) {
             LayoutInflater mInflater = (LayoutInflater) mContext.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = mInflater.inflate(R.layout.sportsview, parent, false);
+            convertView = mInflater.inflate(R.layout.sports_listview, parent, false);
             viewHolder.mFlag = (ImageView) convertView.findViewById(R.id.imageView);
             viewHolder.mName = (TextView) convertView.findViewById(R.id.textView);
             viewHolder.mFlag1 = (ImageView) convertView.findViewById(R.id.arrowdown);
