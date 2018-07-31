@@ -14,23 +14,22 @@ import android.widget.TextView;
 
  */
 
-public class sportsDetailsAdapter extends ArrayAdapter<String> {
+public class sportsEventDetailsAdapter extends ArrayAdapter<String> {
 
 
     Context mContext;
 
-
     String[] type1;
-    String[] date1;
+    String [] date1;
     String[] place1;
 
-    public sportsDetailsAdapter(@NonNull Context context, String[] type1, String[] date1, String[] place1) {
+    public sportsEventDetailsAdapter(@NonNull Context context, String[] type1, String[] date1, String[] place1) {
         super(context, 0);
         this.mContext = context;
         this.type1=type1;
         this.date1=date1;
         this.place1=place1;
-    }
+        }
     @Override
     public int getCount() {
         return type1.length;

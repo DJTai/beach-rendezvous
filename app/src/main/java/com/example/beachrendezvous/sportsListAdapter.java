@@ -22,14 +22,14 @@ public class sportsListAdapter extends ArrayAdapter<String> {
     int[] flags;
     Context mContext;
 
-    public sportsListAdapter(Context context, String[] countryNames, int[] countryFlags) {
-        super(context, R.layout.sportsview);
-        this.names = countryNames;
-        this.flags = countryFlags;
+    public sportsListAdapter(Context context, String[] gameNames, int[] gameImages) {
+        super(context, R.layout.sports_listview);
+        this.names = gameNames;
+        this.flags = gameImages;
         this.mContext = context;
     }
 
-    @Override
+       @Override
     public int getCount() {
         return names.length;
     }
@@ -44,18 +44,22 @@ public class sportsListAdapter extends ArrayAdapter<String> {
             convertView = mInflater.inflate(R.layout.sportsview, parent, false);
             viewHolder.mFlag = (ImageView) convertView.findViewById(R.id.imageView);
             viewHolder.mName = (TextView) convertView.findViewById(R.id.textView);
+            viewHolder.mFlag1 = (ImageView) convertView.findViewById(R.id.arrowdown);
+
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.mFlag.setImageResource(flags[position]);
         viewHolder.mName.setText(names[position]);
+        viewHolder.mFlag1.setImageResource(R.drawable.downloadarrow);
 
         return convertView;
     }
 
     static class ViewHolder {
-        ImageView mFlag;
+        ImageView mFlag, mFlag1;
         TextView mName;
+
     }
 }
