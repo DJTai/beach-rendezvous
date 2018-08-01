@@ -16,15 +16,9 @@ public class SplashActivity extends Activity {
     @OnClick(R.id.email_sign_in_button)
     void signInHandler () {
 
-        // TODO: Connect login services
-//        Intent intent = new Intent(this, LoginActivity.class);
-//        Log.d(DEBUG, "signInHandler: CLICKED");
-//        startActivity(intent);
-
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-        return;
     }
 
     @Override
