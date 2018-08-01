@@ -137,16 +137,12 @@ public class MainActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Don't delete this!!
         ButterKnife.bind(this);
         
         if (savedInstanceState == null) {
-            Fragment fragment;
-
-            // !! - Needed to complete binding of views - !!
-            // Needs to be before any Butter Knife references as well
-
-
-            fragment = new MainMenu();
+            Fragment fragment = new MainMenu();
             initFragment(fragment, "home");
         }
 
