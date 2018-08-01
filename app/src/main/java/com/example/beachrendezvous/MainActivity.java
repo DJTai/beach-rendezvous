@@ -32,7 +32,7 @@ public class MainActivity
 
     /* Logging Tags */
     private static final String TAG = "main_activity";
-    private static final String DEBUG = "debug_mainActivity";
+    public static final String DEBUG = "debug";
 
     /* Parameter used to pass arguments within Bundle objects */
     private static final String ARG_PARAM = "param";
@@ -40,6 +40,8 @@ public class MainActivity
     // References
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
+
+    private static String bottomSelection;
 
     private MainViewModel mViewModel;
 
@@ -97,10 +99,6 @@ public class MainActivity
                 .replace(R.id.frame_fragment, fragment)
                 .addToBackStack(value)
                 .commit();
-        Log.i(TAG, "initFragment: " + value);
-
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-        Log.i(TAG, "onCreate: in stack = " + count);
 
         return true;
     }
@@ -115,19 +113,20 @@ public class MainActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
             int choice = item.getItemId();
-            int count = getSupportFragmentManager().getBackStackEntryCount();
-            String last = getSupportFragmentManager().getBackStackEntryAt(count - 1).getName();
 
             if (choice == R.id.nav_home) {
                 fragment = new MainMenu();
+                bottomSelection = "home";
                 return initFragment(fragment, "home");
 
             } else if (choice == R.id.nav_search) {
                 fragment = new SubMenu();
+                bottomSelection = "search";
                 return initFragment(fragment, "search");
 
             } else if (choice == R.id.nav_create) {
                 fragment = new SubMenu();
+                bottomSelection = "create";
                 return initFragment(fragment, "create");
             }
             return false;
@@ -138,30 +137,26 @@ public class MainActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Fragment fragment;
-
-        // !! - Needed to complete binding of views - !!
-        // Needs to be before any Butter Knife references as well
         ButterKnife.bind(this);
+        
+        if (savedInstanceState == null) {
+            Fragment fragment;
+
+            // !! - Needed to complete binding of views - !!
+            // Needs to be before any Butter Knife references as well
+
+
+            fragment = new MainMenu();
+            initFragment(fragment, "home");
+        }
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        fragment = new MainMenu();
-        initFragment(fragment, "home");
-
-//        String last = getSupportFragmentManager()
-//                .getBackStackEntryAt(count - 1)
-//                .getName();
-//        Log.i(TAG, "onCreate: Last frag = " + last);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-        Log.i(TAG, "onCreate: in stack = " + count);
-        Log.i(TAG, "onBackPressed");
+
+        // TODO: Link backpress with FragmentManager to update BottomNav selection
     }
-    
 }
