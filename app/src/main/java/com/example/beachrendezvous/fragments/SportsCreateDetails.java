@@ -12,13 +12,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
+import com.example.beachrendezvous.database.addDetailsDB;
 
-import java.sql.Time;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,7 +64,13 @@ public class SportsCreateDetails extends Fragment {
              dob_var = dateFormat.parse(date.getText().toString());
             String time1 = time.getText().toString();
             SportsEntity eventdetais=new SportsEntity(time1,dob_var,place.getSelectedItem().toString(),Integer.parseInt(people.getText().toString()),comments.getText().toString());
-            Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "join clicked: time" + time1);
+            addDetailsDB addDb=new addDetailsDB();
+            addDb.start(eventdetais);
+
+
+
         }
         catch (java.text.ParseException e)
         {

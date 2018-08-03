@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/MobileAppDev.iml" filepath="$PROJECT_DIR$/MobileAppDev.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/beach-rendezvous.iml" filepath="$PROJECT_DIR$/beach-rendezvous.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysql-connector-java/mysql-connector-java.iml" filepath="$PROJECT_DIR$/mysql-connector-java/mysql-connector-java.iml" />
     </modules>
   </component>
 </project>
