@@ -1,11 +1,12 @@
+<!DOCTYPE resources [
+    <!ENTITY clientId "57b97596-0bf3-4fe7-8250-31e0f9ea90c7">
+    ]>
 <resources>
     <string name="app_name">Beach Rendezvous</string>
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_create">Create</string>
-    <string name="title_activity_login">Sign in</string>
-
-    <!-- Strings related to login -->
+    <string name="title_activity_login">Beach Rendezvous</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign In</string>
@@ -34,4 +35,9 @@
     <string name="action_return">&lt; RETURN</string>
     <string name="info_header_faq">FAQ</string>
     <string name="info_header_credits">CREDITS</string>
+    <string name="general_connection_error">Connection Error</string>
+    <string name="user_cancelled">Cancelled by User</string>
+
+    <string name="client_Id">&clientId;</string>
+    <string name="msalPrefix">msal&clientId;</string>
 </resources>

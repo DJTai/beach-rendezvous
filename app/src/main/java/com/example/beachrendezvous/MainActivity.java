@@ -12,13 +12,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.beachrendezvous.auth.AuthenticationManager;
 import com.example.beachrendezvous.fragments.Info;
 import com.example.beachrendezvous.fragments.MainMenu;
 import com.example.beachrendezvous.fragments.Profile;
 import com.example.beachrendezvous.fragments.Settings;
 import com.example.beachrendezvous.fragments.SubMenu;
 import com.example.beachrendezvous.viewModel.MainViewModel;
+import com.microsoft.identity.client.MsalClientException;
+import com.microsoft.identity.client.User;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +42,8 @@ public class MainActivity
 
     /* Parameter used to pass arguments within Bundle objects */
     private static final String ARG_PARAM = "param";
+    public static final String ARG_GIVEN_NAME = "givenName";
+    public static final String ARG_DISPLAY_ID = "displayableId";
 
     // References
     @BindView(R.id.navigation)
@@ -70,8 +78,8 @@ public class MainActivity
             return initFragment(fragment, "info");
 
         } else if (id == R.id.action_signOut) {
-            Intent intent = new Intent(this, SplashActivity.class);
-            Log.i(TAG, "onOptionsItemSelected: Signing Out");
+            signUserOut();
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
 
@@ -80,6 +88,7 @@ public class MainActivity
 
         return super.onOptionsItemSelected(item);
     }
+
     //endregion
 
     /**
@@ -88,7 +97,7 @@ public class MainActivity
      * @param fragment - Fragment to be initialized
      * @return true
      */
-    public boolean initFragment (Fragment fragment, String value) {
+    public boolean initFragment(Fragment fragment, String value) {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM, value);
         fragment.setArguments(args);
@@ -140,7 +149,7 @@ public class MainActivity
 
         // Don't delete this!!
         ButterKnife.bind(this);
-        
+
         if (savedInstanceState == null) {
             Fragment fragment = new MainMenu();
             initFragment(fragment, "home");
@@ -154,5 +163,39 @@ public class MainActivity
         super.onBackPressed();
 
         // TODO: Link backpress with FragmentManager to update BottomNav selection
+    }
+
+    /**
+     * Signs the user out of the application and removes them from the list of
+     * authenticated users.
+     */
+    private void signUserOut() {
+        List<User> users = null;
+        AuthenticationManager mgr = AuthenticationManager.getInstance();
+        String TAG = MainActivity.class.getSimpleName();
+
+        try {
+            users = mgr.getPublicClient().getUsers();
+
+            if (users == null) {
+
+            } else if (users.size() == 1) {
+                mgr.getPublicClient().remove(users.get(0));
+                finish();
+            } else {
+                for (int i = 0; i < users.size(); i++) {
+                    mgr.getPublicClient().remove(users.get(i));
+                }
+            }
+
+            Toast.makeText(getBaseContext(), "Signed Out!", Toast.LENGTH_SHORT)
+                 .show();
+
+        } catch (MsalClientException e) {
+            Log.d(TAG, "MSAL Exception Generated while getting users: " + e.toString());
+
+        } catch (IndexOutOfBoundsException e) {
+            Log.d(TAG, "User at this position does not exist: " + e.toString());
+        }
     }
 }
