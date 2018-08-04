@@ -13,6 +13,10 @@ buildscript {
     ext.arch_version = '1.1.1'
     ext.room_version = '1.0.0'
     ext.firebase_version = '11.8.0'
+    ext.graph_version = '1.5.0'
+    ext.gson_version = '2.8.4'
+    ext.commons_version = '2.6'
+    ext.volley_version = '1.0.0'
     
     repositories {
         google()
@@ -24,7 +28,7 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.2.0'
+        classpath 'com.google.gms:google-services:4.0.0'
     }
 }
 
