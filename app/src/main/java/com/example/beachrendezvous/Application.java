@@ -27,15 +27,14 @@ import java.util.Map;
 public class Application extends MultiDexApplication {
 
     private static String TAG = Application.class.getSimpleName();
-    public static class User
-    {
+
+    public static class User {
         private static String displayName;
         private static Bitmap profilePicture;
         private static String accessToken;
         private static String emailAddress;
         private static String firstName;
         private static String lastName;
-
 
         public static String getDisplayName() {
             return displayName;
@@ -73,7 +72,7 @@ public class Application extends MultiDexApplication {
             return lastName;
         }
 
-        public static String getFirstName(){
+        public static String getFirstName() {
             return firstName;
         }
 
@@ -81,21 +80,25 @@ public class Application extends MultiDexApplication {
             return emailAddress;
         }
 
-        public static Bitmap downloadProfilePicture()
-        {
+        public static Bitmap downloadProfilePicture() {
             RequestQueue queue = Volley.newRequestQueue(Application.getContext());
             ImageRequest request = new ImageRequest(Constants.MSGRAPH_URL + "me/photo/$value",
                                                     new Response.Listener<Bitmap>() {
                                                         @Override
                                                         public void onResponse(Bitmap response) {
-                                                            Application.User.setProfilePicture(response);
+                                                            Application.User
+                                                                    .setProfilePicture(response);
                                                         }
-                                                    }, 360, 360, ImageView.ScaleType.CENTER_CROP, Bitmap.Config.ARGB_8888, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d(TAG, "Profile picture download error");
-                }
-            }) {
+                                                    }, 360, 360, ImageView.ScaleType.CENTER_CROP,
+                                                    Bitmap.Config.ARGB_8888,
+                                                    new Response.ErrorListener() {
+                                                        @Override
+                                                        public void onErrorResponse(
+                                                                VolleyError error) {
+                                                            Log.d(TAG,
+                                                                  "Profile picture download error");
+                                                        }
+                                                    }) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> headers = new HashMap<>();
@@ -115,38 +118,46 @@ public class Application extends MultiDexApplication {
         return instance;
     }
 
-    public static Context getContext(){
+    public static Context getContext() {
         return instance;
     }
 
     private Activity mApplicationActivity;
 
     private StringBuffer mLogs;
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
+
     @Override
-    public void onCreate(){
+    public void onCreate() {
+        Log.i(TAG, "onCreate");
         instance = this;
+        Log.i(TAG, "onCreate: instance = this");
         super.onCreate();
 
         mLogs = new StringBuffer();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        // Logging can be turned on four different levels: error, warning, info, and verbose. By default the sdk is turning on
-        // verbose level logging. Any apps can use Logger.getInstance().setLogLevel(Loglevel) to enable different level of logging.
+        // Logging can be turned on four different levels: error, warning, info, and verbose. By
+        // default the sdk is turning on
+        // verbose level logging. Any apps can use Logger.getInstance().setLogLevel(Loglevel) to
+        // enable different level of logging.
         Logger.getInstance().setExternalLogger(new ILoggerCallback() {
             @Override
-            public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII) {
+            public void log(String tag, Logger.LogLevel logLevel, String message,
+                            boolean containsPII) {
                 // contains PII indicates that if the log message contains PII information. If Pii logging is
                 // disabled, the sdk never returns back logs with Pii.
                 mLogs.append(message).append('\n');
             }
         });
     }
+
     String getLogs() {
         return mLogs.toString();
     }

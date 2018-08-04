@@ -36,6 +36,8 @@ public class MainActivity
 
     /* Parameter used to pass arguments within Bundle objects */
     private static final String ARG_PARAM = "param";
+    public static final String ARG_GIVEN_NAME = "givenName";
+    public static final String ARG_DISPLAY_ID = "displayableId";
 
     // References
     @BindView(R.id.navigation)
