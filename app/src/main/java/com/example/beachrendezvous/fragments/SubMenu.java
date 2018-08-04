@@ -1,6 +1,5 @@
 package com.example.beachrendezvous.fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -138,15 +137,16 @@ public class SubMenu extends Fragment {
 
         if (mParam != null) {
             if (mParam.equals("create")) {
-                Log.i(TAG, "onCreateView: type equals create");
+                Log.i(TAG, "onCreateView: param equals create");
                 view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
                 TextView header = view.findViewById(R.id.subMenu_header);
                 header.setText(R.string.submenu_header_create);
+
             } else {
-                Log.i(TAG, "onCreateView: type not equal to create");
+                Log.i(TAG, "onCreateView: param equals search");
                 view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
                 TextView header = view.findViewById(R.id.subMenu_header);
-                header.setText("Let's Find an Event!");
+                header.setText(R.string.submenu_header_search);
             }
         }
         mUnbinder = ButterKnife.bind(this, view);

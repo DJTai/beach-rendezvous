@@ -1,6 +1,4 @@
-<!DOCTYPE resources [
-    <!ENTITY clientId "57b97596-0bf3-4fe7-8250-31e0f9ea90c7">
-    ]>
+<!DOCTYPE resources [<!ENTITY clientId "57b97596-0bf3-4fe7-8250-31e0f9ea90c7">]>
 <resources>
     <string name="app_name">Beach Rendezvous</string>
     <string name="nav_home">Home</string>
@@ -19,7 +17,7 @@
         completions."
     </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="submenu_header_search">Search for an Event</string>
+    <string name="submenu_header_search">Let\'s Search for an Event</string>
     <string name="submenu_header_create">Let\'s Create an Event!</string>
     <string name="submenu_btn_food">Food</string>
     <string name="submenu_btn_movies">Movies</string>

@@ -49,7 +49,7 @@ public class MainActivity
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
 
-    private static String bottomSelection;
+    public static String bottomSelection;
 
     private MainViewModel mViewModel;
 
@@ -147,7 +147,6 @@ public class MainActivity
         ButterKnife.bind(this);
 
         if (savedInstanceState == null) {
-//            Fragment fragment = new MainMenu();
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction
