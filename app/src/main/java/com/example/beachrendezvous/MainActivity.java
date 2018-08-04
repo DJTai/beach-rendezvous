@@ -65,25 +65,19 @@ public class MainActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_profile) {
-            Fragment fragment = new Profile();
-            return initFragment(fragment, "profile");
-
-        } else if (id == R.id.action_settings) {
-            Fragment fragment = new Settings();
-            return initFragment(fragment, "settings");
-
-        } else if (id == R.id.action_info) {
-            Fragment fragment = new Info();
-            return initFragment(fragment, "info");
-
-        } else if (id == R.id.action_signOut) {
-            signUserOut();
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-
-            return true;
+        switch (id) {
+            case R.id.action_profile:
+                return initFragment(new Profile(), "profile");
+            case R.id.action_settings:
+                return initFragment(new Settings(), "settings");
+            case R.id.action_info:
+                return initFragment(new Info(), "info");
+            case R.id.action_signOut:
+                signUserOut();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -121,19 +115,21 @@ public class MainActivity
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
-            int choice = item.getItemId();
 
-            if (choice == R.id.nav_home) {
+            int choice = item.getItemId();
+            int current = navigation.getSelectedItemId();    // Prevent re-creating fragments
+
+            if (choice == R.id.nav_home && current != R.id.nav_home) {
                 fragment = new MainMenu();
                 bottomSelection = "home";
                 return initFragment(fragment, "home");
 
-            } else if (choice == R.id.nav_search) {
+            } else if (choice == R.id.nav_search && current != R.id.nav_search) {
                 fragment = new SubMenu();
                 bottomSelection = "search";
                 return initFragment(fragment, "search");
 
-            } else if (choice == R.id.nav_create) {
+            } else if (choice == R.id.nav_create && current != R.id.nav_create) {
                 fragment = new SubMenu();
                 bottomSelection = "create";
                 return initFragment(fragment, "create");
@@ -151,8 +147,12 @@ public class MainActivity
         ButterKnife.bind(this);
 
         if (savedInstanceState == null) {
-            Fragment fragment = new MainMenu();
-            initFragment(fragment, "home");
+//            Fragment fragment = new MainMenu();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction
+                    .replace(R.id.frame_fragment, new MainMenu())
+                    .commit();
         }
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -161,8 +161,8 @@ public class MainActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         // TODO: Link backpress with FragmentManager to update BottomNav selection
+        // TODO: e.g., check param.equals("home" || "search" || "create")
     }
 
     /**
@@ -178,7 +178,7 @@ public class MainActivity
             users = mgr.getPublicClient().getUsers();
 
             if (users == null) {
-
+                // TODO: Code?
             } else if (users.size() == 1) {
                 mgr.getPublicClient().remove(users.get(0));
                 finish();
