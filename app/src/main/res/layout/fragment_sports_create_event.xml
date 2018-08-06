@@ -56,13 +56,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/guideline_datePlace"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline_search_datePlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="100dp" />
-
             <EditText
                 android:id="@+id/createEvent_dateText"
                 android:layout_width="242dp"
@@ -189,14 +182,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="290dp" />
+                app:layout_constraintGuide_begin="313dp" />
 
             <TextView
                 android:id="@+id/createEvent_commentLabel"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="20dp"
-                android:layout_margin="8dp"
-                android:text="Comments:"
+                android:layout_margin="10dp"
+                android:text="Additional Info:"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/createEvent_commentText"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -216,7 +209,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:inputType="textPersonName"
                 android:padding="4dp"
-                android:text="Comments go here"
+                android:text="Any additional Information goes here"
                 android:textColor="@color/colorPrimaryGrey"
                 app:layout_constraintBottom_toTopOf="@+id/sportsCreate_btn"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -228,8 +221,8 @@
                 android:id="@+id/sportsCreate_btn"
                 android:layout_width="88dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginBottom="232dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
                 android:layout_marginEnd="28dp"
                 android:layout_marginRight="28dp"
                 android:background="@color/colorAccent"

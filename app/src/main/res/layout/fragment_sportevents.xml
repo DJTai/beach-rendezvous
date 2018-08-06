@@ -22,40 +22,47 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
-
 
             <TextView
                 android:id="@+id/created"
                 android:layout_width="75dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
                 android:gravity="center"
-                android:text="created by" />
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:text="By" />
 
             <TextView
                 android:id="@+id/type"
                 android:layout_width="75dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
                 android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
                 android:text="Type" />
 
             <TextView
                 android:id="@+id/date"
                 android:layout_width="75dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
                 android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
                 android:text="Date" />
 
             <TextView
                 android:id="@+id/place"
                 android:layout_width="75dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
                 android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
                 android:text="Place" />
         </LinearLayout>
 
@@ -63,7 +70,6 @@
             android:id="@+id/listview1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
 
     </LinearLayout>
 
