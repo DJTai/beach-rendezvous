@@ -30,7 +30,7 @@
     <string name="label_date">Date:</string>
     <string name="label_place">Place:</string>
     <string name="label_time">Time:</string>
-    <string name="label_num_people"># of People:</string>
+    <string name="label_num_people">No of People:</string>
     <string name="action_return">&lt; RETURN</string>
     <string name="info_header_faq">FAQ</string>
     <string name="info_header_credits">CREDITS</string>
