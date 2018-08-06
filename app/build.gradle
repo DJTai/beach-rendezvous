@@ -8,7 +8,6 @@ android {
     defaultConfig {
         applicationId "com.example.beachrendezvous"
         minSdkVersion 16
-        //noinspection OldTargetApi
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -25,20 +24,32 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
     implementation "com.android.support.constraint:constraint-layout:$support_constraint_version"
     implementation "com.android.support:support-vector-drawable:$support_version"
     implementation "com.android.support:support-v4:$support_version"
-    implementation "com.android.support:support-vector-drawable:$support_version"
-
-    //noinspection GradleDependency
-    implementation "com.google.firebase:firebase-database:$firebase_version"
+    implementation 'com.android.support:multidex:1.0.3'
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$support_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$firebase_version"
+    implementation "com.google.firebase:firebase-database:$firebase_version"
+
+    // Microsoft Login
+    implementation ('com.microsoft.identity.client:msal:0.1.+') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+    // Include the SDK as a dependency
+    implementation "com.microsoft.graph:msgraph-sdk-android:$graph_version"
+
+    // Include GSON as a dependency
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "commons-io:commons-io:$commons_version"
+    implementation "com.android.volley:volley:$volley_version"
 
     // Butter Knife
     implementation "com.jakewharton:butterknife:$butterknife_version"
@@ -48,7 +59,6 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$arch_version"
 
     // Room library
-    //noinspection GradleDependency
     implementation "android.arch.persistence.room:runtime:$room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 }

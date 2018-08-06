@@ -13,7 +13,7 @@ public class SplashActivity extends Activity {
     private static final String TAG = "splash_activity";
     private static final String DEBUG = "debug_splashActivity";
 
-    @OnClick(R.id.email_sign_in_button)
+    @OnClick(R.id.connectButton)
     void signInHandler () {
 
         Intent intent = new Intent(this, MainActivity.class);

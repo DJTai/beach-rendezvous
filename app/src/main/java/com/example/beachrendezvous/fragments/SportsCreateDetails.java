@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -43,6 +45,9 @@ public class SportsCreateDetails extends Fragment {
     Spinner spinner;
     View view = null;
 
+    DatabaseReference databaseSports;
+
+
     // TODO: MAKE BINDING CALLS TO EVERY THING ON THE XML LAYOUT
     @BindView(R.id.createEvent_commentLabel)
     TextView commentTextView;
@@ -66,7 +71,15 @@ public class SportsCreateDetails extends Fragment {
              dob_var = dateFormat.parse(date.getText().toString());
             String time1 = time.getText().toString();
             SportsEntity eventdetais=new SportsEntity(time1,dob_var,place.getSelectedItem().toString(),Integer.parseInt(people.getText().toString()),comments.getText().toString());
-            Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), eventdetais.toString(), Toast.LENGTH_SHORT).show();
+
+            String id = databaseSports.push().getKey();
+            databaseSports.child(id).setValue(eventdetais);
+
+
+
+
         }
         catch (java.text.ParseException e)
         {
@@ -75,10 +88,8 @@ public class SportsCreateDetails extends Fragment {
             Log.i("Exception", e.toString());
         }
 
-
-
-
     }
+
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -89,6 +100,7 @@ public class SportsCreateDetails extends Fragment {
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
 
+        databaseSports = FirebaseDatabase.getInstance().getReference("sports");
 
     }
 
