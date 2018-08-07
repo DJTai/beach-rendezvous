@@ -65,11 +65,11 @@ public class sportinfo extends Fragment {
                 TextView header = view.findViewById(R.id.sportsheader);
                 if(mParam1.trim().equals("search"))
                 {
-                    header.setText("You want to join a game? \n No Problem, which Sport?");
+                    header.setText("Join a game! What Sport?");
                 }
                 else
                 {
-                    header.setText("You want to create a game? \n No Problem, which Sport?");
+                    header.setText("Create a Game! What Sport?");
                 }
 
 
@@ -88,11 +88,11 @@ public class sportinfo extends Fragment {
                 mListView.setAdapter(myAdapter); mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                             if(mParam1.trim().equals("search"))
+                        if(mParam1.trim().equals("search"))
                         {
                             String msg="games[i]";
                             Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                            Fragment f=new sport_events();
+                            Fragment f = new sport_events();
                             Bundle args = new Bundle();
                             args.putString(ARG_PARAM1,gameNames[i]);
                             f.setArguments(args);
@@ -134,9 +134,7 @@ public class sportinfo extends Fragment {
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
 
-
         return view;
-
     }
 
 

@@ -42,10 +42,10 @@ public class sportsEventDetailsAdapter extends ArrayAdapter<String> {
             LayoutInflater mInflater = (LayoutInflater) mContext.
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView1 = mInflater.inflate(R.layout.sportsinfoview, parent, false);
-            mViewHolder.adminImage= (ImageView) convertView1.findViewById(R.id.admin);
+            mViewHolder.adminImage = (ImageView) convertView1.findViewById(R.id.admin);
             mViewHolder.gametext = (TextView) convertView1.findViewById(R.id.typeofgame);
-            mViewHolder.date=(TextView)convertView1.findViewById(R.id.dateofgame);
-            mViewHolder.place=(TextView)convertView1.findViewById(R.id.placeofgame);
+            mViewHolder.date =(TextView)convertView1.findViewById(R.id.dateofgame);
+            mViewHolder.place =(TextView)convertView1.findViewById(R.id.placeofgame);
             convertView1.setTag(mViewHolder);
         } else {
             mViewHolder = (ViewHolder) convertView1.getTag();
