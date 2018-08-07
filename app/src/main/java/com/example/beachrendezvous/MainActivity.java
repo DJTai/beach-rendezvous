@@ -58,7 +58,7 @@ public class MainActivity
     //endregion
 
     //region Options Menu
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_options, menu);
@@ -122,43 +122,45 @@ public class MainActivity
         ButterKnife.bind(this);
 
         mFragManager = getSupportFragmentManager();
+
+        if (savedInstanceState == null) {
+            FragmentTransaction fragmentTransaction = mFragManager.beginTransaction();
+            fragmentTransaction
+                    .replace(R.id.frame_fragment, new MainMenu())
+                    .commit();
+        }
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Listen for changes to the fragment back-stack
         mFragManager.addOnBackStackChangedListener(
                 new FragmentManager.OnBackStackChangedListener() {
                     @Override
                     public void onBackStackChanged() {
-                        String name = mFragManager
-                                .getBackStackEntryAt(mFragManager.getBackStackEntryCount() - 1)
-                                .getName();
+
                         MenuItem shown;
 
-                        if (name.equals(home)) {
+                        if (mFragManager.getBackStackEntryCount() > 0) {
+                            String name = mFragManager
+                                    .getBackStackEntryAt(mFragManager.getBackStackEntryCount() - 1)
+                                    .getName();
+
+                            if (name.equals(home)) {
+                                shown = navigation.getMenu().getItem(0);
+                                shown.setChecked(true);
+                            } else if (name.equals(search)) {
+                                shown = navigation.getMenu().getItem(1);
+                                shown.setChecked(true);
+                            } else if (name.equals(create)) {
+                                shown = navigation.getMenu().getItem(2);
+                                shown.setChecked(true);
+                            }
+                        } else {
                             shown = navigation.getMenu().getItem(0);
-                            shown.setChecked(true);
-                        } else if (name.equals(search)) {
-                            shown = navigation.getMenu().getItem(1);
-                            shown.setChecked(true);
-                        } else if (name.equals(create)) {
-                            shown = navigation.getMenu().getItem(2);
                             shown.setChecked(true);
                         }
                     }
                 });
-
-        if (savedInstanceState == null) {
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction
-//                    .replace(R.id.frame_fragment, new MainMenu())
-//                    .commit();
-            initFragment(new MainMenu(), home);
-        }
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     /**
@@ -172,8 +174,7 @@ public class MainActivity
         args.putString(ARG_PARAM, value);
         fragment.setArguments(args);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = mFragManager.beginTransaction();
         fragmentTransaction
                 .replace(R.id.frame_fragment, fragment)
                 .addToBackStack(value)
