@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 
 import butterknife.ButterKnife;
@@ -28,6 +29,7 @@ public class SubMenu extends Fragment {
     
     /* Parameter to determine the context of the SubMenu fragment, e.g., Creating or Searching */
     private String mParam;
+    String name;
 
 //    private OnFragmentInteractionListener mListener;
 
@@ -104,6 +106,7 @@ public class SubMenu extends Fragment {
                 Bundle args = new Bundle();
                 args.putString(ARG_PARAM1,"create");
                 args.putString(ARG_PARAM,"sports");
+                args.putString(MainActivity.ARG_GIVEN_NAME,name);
                 f.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -126,6 +129,7 @@ public class SubMenu extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam = getArguments().getString(ARG_PARAM);
+            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
     }
