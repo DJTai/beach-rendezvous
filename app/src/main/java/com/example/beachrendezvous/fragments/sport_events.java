@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.sportsEventDetailsAdapter;
 
@@ -26,6 +27,7 @@ public class sport_events extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String name;
     public sport_events() {
         // Required empty public constructor
     }
@@ -35,6 +37,8 @@ public class sport_events extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
+            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+
                   }
     }
 
@@ -65,6 +69,7 @@ public class sport_events extends Fragment {
                 Fragment f = new SportsSearchDetails();
                 Bundle args = new Bundle();
                 args.putString(ARG_PARAM1, mParam1);
+                args.putString(MainActivity.ARG_GIVEN_NAME, name);
                 f.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

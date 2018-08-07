@@ -32,6 +32,7 @@ public class sportinfo extends Fragment {
     private String mParam1;
     Unbinder mUnbinder;
     ListView mListView;
+    String name;
 
       public sportinfo() {
         // Required empty public constructor
@@ -49,6 +50,7 @@ public class sportinfo extends Fragment {
         if (getArguments() != null) {
             mParam = getArguments().getString("param");
             mParam1=getArguments().getString("param1");
+            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i("search", "onCreate: mParam = " + mParam);
         }
     }
@@ -95,6 +97,7 @@ public class sportinfo extends Fragment {
                             Fragment f = new sport_events();
                             Bundle args = new Bundle();
                             args.putString(ARG_PARAM1,gameNames[i]);
+                            args.putString(MainActivity.ARG_GIVEN_NAME,name);
                             f.setArguments(args);
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -110,6 +113,7 @@ public class sportinfo extends Fragment {
                                                  Fragment f=new SportsCreateDetails();
                                                  Bundle args = new Bundle();
                                                  args.putString(ARG_PARAM1,gameNames[i]);
+                                                 args.putString(MainActivity.ARG_GIVEN_NAME,name);
                                                  f.setArguments(args);
                                                  FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                                  FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
