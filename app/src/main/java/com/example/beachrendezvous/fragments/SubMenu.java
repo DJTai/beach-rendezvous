@@ -22,6 +22,7 @@ public class SubMenu extends Fragment {
 
     /* Logging Tags */
     private static final String TAG = "sub_menu_fragment";
+    private static final String DEBUG = "debug";
     private static final String ARG_PARAM = "param";
     private static final String ARG_PARAM1 = "param1";
 
@@ -132,6 +133,7 @@ public class SubMenu extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(DEBUG, "onCreateView: Sub Menu OCV");
 
         View view = null;
 

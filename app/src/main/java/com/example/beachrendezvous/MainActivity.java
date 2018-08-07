@@ -1,7 +1,6 @@
 package com.example.beachrendezvous;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -29,9 +28,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-// Butter Knife imports
-// see https://jakewharton.github.io/butterknife/ for more details
-
 
 public class MainActivity
         extends AppCompatActivity {
@@ -45,14 +41,19 @@ public class MainActivity
     public static final String ARG_GIVEN_NAME = "givenName";
     public static final String ARG_DISPLAY_ID = "displayableId";
 
-    // References
+    //region References
+
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
 
-    public static String bottomSelection;
+    FragmentManager mFragManager;
 
     private MainViewModel mViewModel;
+    private final String home = "home";
+    private final String search = "search";
+    private final String create = "create";
 
+    //endregion
 
     //region Options Menu
     @Override
@@ -79,32 +80,10 @@ public class MainActivity
                 finish();
                 return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     //endregion
-
-    /**
-     * Initialize, inflate, and add to the back stack, the supplied fragment
-     *
-     * @param fragment - Fragment to be initialized
-     * @return true
-     */
-    public boolean initFragment(Fragment fragment, String value) {
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM, value);
-        fragment.setArguments(args);
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction
-                .replace(R.id.frame_fragment, fragment)
-                .addToBackStack(value)
-                .commit();
-
-        return true;
-    }
 
     /**
      * Determines which fragment to open upon nav selection
@@ -114,25 +93,21 @@ public class MainActivity
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
 
             int choice = item.getItemId();
             int current = navigation.getSelectedItemId();    // Prevent re-creating fragments
 
             if (choice == R.id.nav_home && current != R.id.nav_home) {
-                fragment = new MainMenu();
-                bottomSelection = "home";
-                return initFragment(fragment, "home");
+                Log.d(DEBUG, "onNavigationItemSelected: Home to backstack");
+                return initFragment(new MainMenu(), home);
 
             } else if (choice == R.id.nav_search && current != R.id.nav_search) {
-                fragment = new SubMenu();
-                bottomSelection = "search";
-                return initFragment(fragment, "search");
+                Log.d(DEBUG, "onNavigationItemSelected: Search to backstack");
+                return initFragment(new SubMenu(), search);
 
             } else if (choice == R.id.nav_create && current != R.id.nav_create) {
-                fragment = new SubMenu();
-                bottomSelection = "create";
-                return initFragment(fragment, "create");
+                Log.d(DEBUG, "onNavigationItemSelected: Create to backstack");
+                return initFragment(new SubMenu(), create);
             }
             return false;
         }
@@ -146,13 +121,38 @@ public class MainActivity
         // Don't delete this!!
         ButterKnife.bind(this);
 
+        mFragManager = getSupportFragmentManager();
+        mFragManager.addOnBackStackChangedListener(
+                new FragmentManager.OnBackStackChangedListener() {
+                    @Override
+                    public void onBackStackChanged() {
+                        String name = mFragManager
+                                .getBackStackEntryAt(mFragManager.getBackStackEntryCount() - 1)
+                                .getName();
+                        MenuItem shown;
+
+                        if (name.equals(home)) {
+                            shown = navigation.getMenu().getItem(0);
+                            shown.setChecked(true);
+                        } else if (name.equals(search)) {
+                            shown = navigation.getMenu().getItem(1);
+                            shown.setChecked(true);
+                        } else if (name.equals(create)) {
+                            shown = navigation.getMenu().getItem(2);
+                            shown.setChecked(true);
+                        }
+                    }
+                });
+
         if (savedInstanceState == null) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction
-                    .replace(R.id.frame_fragment, new MainMenu())
-                    .commit();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction
+//                    .replace(R.id.frame_fragment, new MainMenu())
+//                    .commit();
+            initFragment(new MainMenu(), home);
         }
+        Log.d(DEBUG, "onCreate: backstack = " + getSupportFragmentManager().getBackStackEntryCount());
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -160,8 +160,32 @@ public class MainActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        // TODO: Link backpress with FragmentManager to update BottomNav selection
-        // TODO: e.g., check param.equals("home" || "search" || "create")
+        Log.d(DEBUG, "onBackPressed: ");
+    }
+
+    /**
+     * Initialize, inflate, and add to the back stack, the supplied fragment
+     *
+     * @param fragment - Fragment to be initialized
+     * @return true
+     */
+    public boolean initFragment(Fragment fragment, String value) {
+        Log.d(DEBUG, "initFragment: called for " + value);
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM, value);
+        fragment.setArguments(args);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction
+                .replace(R.id.frame_fragment, fragment)
+                .addToBackStack(value)
+                .commit();
+
+        int stack = getSupportFragmentManager().getBackStackEntryCount();
+        Log.d(DEBUG, "initFragment: " + value + " in stack at " + stack);
+
+        return true;
     }
 
     /**
@@ -170,20 +194,20 @@ public class MainActivity
      */
     private void signUserOut() {
         List<User> users = null;
-        AuthenticationManager mgr = AuthenticationManager.getInstance();
+        AuthenticationManager authManager = AuthenticationManager.getInstance();
         String TAG = MainActivity.class.getSimpleName();
 
         try {
-            users = mgr.getPublicClient().getUsers();
+            users = authManager.getPublicClient().getUsers();
 
             if (users == null) {
                 // TODO: Code?
             } else if (users.size() == 1) {
-                mgr.getPublicClient().remove(users.get(0));
+                authManager.getPublicClient().remove(users.get(0));
                 finish();
             } else {
                 for (int i = 0; i < users.size(); i++) {
-                    mgr.getPublicClient().remove(users.get(i));
+                    authManager.getPublicClient().remove(users.get(i));
                 }
             }
 
@@ -197,4 +221,5 @@ public class MainActivity
             Log.d(TAG, "User at this position does not exist: " + e.toString());
         }
     }
+
 }
