@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +44,7 @@ public class SportsCreateDetails extends Fragment {
 
     Unbinder mUnbinder;
     Spinner spinner;
+    String name;
     View view = null;
 
     DatabaseReference databaseSports;
@@ -66,22 +68,18 @@ public class SportsCreateDetails extends Fragment {
             EditText time = (EditText)view.findViewById(R.id.createEvent_timeText);
             EditText people = (EditText)view.findViewById(R.id.createEvent_numText);
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-            Date dob_var;
+            String dob_var;
             TextView comments = (TextView)view.findViewById(R.id.createEvent_commentText);
-             dob_var = dateFormat.parse(date.getText().toString());
+             dob_var = date.getText().toString();
             String time1 = time.getText().toString();
-            SportsEntity eventdetais=new SportsEntity(time1,dob_var,place.getSelectedItem().toString(),Integer.parseInt(people.getText().toString()),comments.getText().toString());
+            SportsEntity eventdetais=new SportsEntity(name, time1,dob_var,place.getSelectedItem().toString(),Integer.parseInt(people.getText().toString()),comments.getText().toString(), mParam);
            // Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
             Toast.makeText(getContext(), eventdetais.toString(), Toast.LENGTH_SHORT).show();
 
             String id = databaseSports.push().getKey();
             databaseSports.child(id).setValue(eventdetais);
-
-
-
-
         }
-        catch (java.text.ParseException e)
+        catch (Exception e)
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -97,6 +95,7 @@ public class SportsCreateDetails extends Fragment {
 
         if (getArguments() != null) {
             mParam = getArguments().getString(ARG_PARAM1);
+            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
 
