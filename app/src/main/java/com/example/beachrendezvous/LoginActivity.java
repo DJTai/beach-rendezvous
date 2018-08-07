@@ -210,6 +210,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
 
         try {
             // get the user info from the id token
+            name=authenticationResult.getUser().getName();
             Application.User.setDisplayName(authenticationResult.getUser().getName());
             Application.User.setAccessToken(authenticationResult.getAccessToken());
             Application.User.setEmailAddress(authenticationResult.getUser().getDisplayableId());
@@ -274,6 +275,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // Take the user's info along
         mainActivity.putExtra(MainActivity.ARG_GIVEN_NAME, name);
         mainActivity.putExtra(MainActivity.ARG_DISPLAY_ID, preferredUsername);
+        Log.i(TAG, "given name"+ name);
 
         // Start the activity
         startActivity(mainActivity);

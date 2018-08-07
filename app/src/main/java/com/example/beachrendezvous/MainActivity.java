@@ -44,6 +44,7 @@ public class MainActivity
     private static final String ARG_PARAM = "param";
     public static final String ARG_GIVEN_NAME = "givenName";
     public static final String ARG_DISPLAY_ID = "displayableId";
+    String name=" ";
 
     // References
     @BindView(R.id.navigation)
@@ -100,6 +101,7 @@ public class MainActivity
     public boolean initFragment(Fragment fragment, String value) {
         Bundle args = new Bundle();
         args.putString(ARG_PARAM, value);
+        args.putString(ARG_GIVEN_NAME, name);
         fragment.setArguments(args);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -149,6 +151,7 @@ public class MainActivity
 
         // Don't delete this!!
         ButterKnife.bind(this);
+        name=getIntent().getStringExtra(ARG_GIVEN_NAME);
 
         if (savedInstanceState == null) {
             Fragment fragment = new MainMenu();
