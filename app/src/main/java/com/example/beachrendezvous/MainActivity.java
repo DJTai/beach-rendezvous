@@ -49,6 +49,8 @@ public class MainActivity
     FragmentManager mFragManager;
 
     private MainViewModel mViewModel;
+
+    /* Bottom Nav Bar Icons */
     private final String home = "home";
     private final String search = "search";
     private final String create = "create";
@@ -56,6 +58,7 @@ public class MainActivity
     //endregion
 
     //region Options Menu
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_options, menu);
@@ -98,15 +101,12 @@ public class MainActivity
             int current = navigation.getSelectedItemId();    // Prevent re-creating fragments
 
             if (choice == R.id.nav_home && current != R.id.nav_home) {
-                Log.d(DEBUG, "onNavigationItemSelected: Home to backstack");
                 return initFragment(new MainMenu(), home);
 
             } else if (choice == R.id.nav_search && current != R.id.nav_search) {
-                Log.d(DEBUG, "onNavigationItemSelected: Search to backstack");
                 return initFragment(new SubMenu(), search);
 
             } else if (choice == R.id.nav_create && current != R.id.nav_create) {
-                Log.d(DEBUG, "onNavigationItemSelected: Create to backstack");
                 return initFragment(new SubMenu(), create);
             }
             return false;
@@ -152,7 +152,6 @@ public class MainActivity
 //                    .commit();
             initFragment(new MainMenu(), home);
         }
-        Log.d(DEBUG, "onCreate: backstack = " + getSupportFragmentManager().getBackStackEntryCount());
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -160,7 +159,6 @@ public class MainActivity
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.d(DEBUG, "onBackPressed: ");
     }
 
     /**
@@ -170,7 +168,6 @@ public class MainActivity
      * @return true
      */
     public boolean initFragment(Fragment fragment, String value) {
-        Log.d(DEBUG, "initFragment: called for " + value);
         Bundle args = new Bundle();
         args.putString(ARG_PARAM, value);
         fragment.setArguments(args);
@@ -181,9 +178,6 @@ public class MainActivity
                 .replace(R.id.frame_fragment, fragment)
                 .addToBackStack(value)
                 .commit();
-
-        int stack = getSupportFragmentManager().getBackStackEntryCount();
-        Log.d(DEBUG, "initFragment: " + value + " in stack at " + stack);
 
         return true;
     }
