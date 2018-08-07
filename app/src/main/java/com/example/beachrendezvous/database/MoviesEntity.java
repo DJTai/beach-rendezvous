@@ -3,50 +3,39 @@ package com.example.beachrendezvous.database;
 import java.sql.Time;
 import java.util.Date;
 
-public class SportsEntity {
+public class MoviesEntity {
 
-    private String time;
-    private String date;
+    private Time time;
+    private Date date;
     private String location;
-    private int num_max;
+    private int attending;
     private String comments;
-    private  String Created_by;
-    private  String type;
 
-    public SportsEntity(){
+    public MoviesEntity(){
 
     }
 
-    public SportsEntity(String Created_by,String time, String date, String location, int num_max, String comments, String type) {
+    public MoviesEntity(Time time, Date date, String location, int attending, String comments) {
         this.time = time;
         this.date = date;
         this.location = location;
-        this.num_max = num_max;
+        this.attending = attending;
         this.comments = comments;
-        this.Created_by=Created_by;
-        this.type=type;
     }
 
-
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
-    public String getType() {
-        return type;
-    }
-    public String getCreated_by() {
-        return Created_by;
-    }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -58,12 +47,12 @@ public class SportsEntity {
         this.location = location;
     }
 
-    public int getNum_max() {
-        return num_max;
+    public int getAttending() {
+        return attending;
     }
 
-    public void setNum_max(int num_max) {
-        this.num_max = num_max;
+    public void setAttending(int attending) {
+        this.attending = attending;
     }
 
     public String getComments() {
@@ -76,16 +65,12 @@ public class SportsEntity {
 
     @Override
     public String toString() {
-        return "SportsEntity{" +"Created_by=" + Created_by +"type=" + type +
+        return "MoviesEntity{" +
                 "time=" + time +
                 ", date=" + date +
                 ", location='" + location + '\'' +
-                ", num_max=" + num_max +
+                ", attending=" + attending +
                 ", comments='" + comments + '\'' +
                 '}';
     }
 }
-
-
-
-

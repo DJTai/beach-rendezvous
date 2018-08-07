@@ -40,6 +40,7 @@ public class MainActivity
     private static final String ARG_PARAM = "param";
     public static final String ARG_GIVEN_NAME = "givenName";
     public static final String ARG_DISPLAY_ID = "displayableId";
+    String name=" ";
 
     //region References
 
@@ -89,6 +90,28 @@ public class MainActivity
     //endregion
 
     /**
+     * Initialize, inflate, and add to the back stack, the supplied fragment
+     *
+     * @param fragment - Fragment to be initialized
+     * @return true
+     */
+    public boolean initFragment(Fragment fragment, String value) {
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM, value);
+        args.putString(ARG_GIVEN_NAME, name);
+        fragment.setArguments(args);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction
+                .replace(R.id.frame_fragment, fragment)
+                .addToBackStack(value)
+                .commit();
+
+        return true;
+    }
+
+    /**
      * Determines which fragment to open upon nav selection
      */
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -120,6 +143,7 @@ public class MainActivity
 
         // Don't delete this!!
         ButterKnife.bind(this);
+        name=getIntent().getStringExtra(ARG_GIVEN_NAME);
 
         mFragManager = getSupportFragmentManager();
 
@@ -161,26 +185,6 @@ public class MainActivity
                         }
                     }
                 });
-    }
-
-    /**
-     * Initialize, inflate, and add to the back stack, the supplied fragment
-     *
-     * @param fragment - Fragment to be initialized
-     * @return true
-     */
-    public boolean initFragment(Fragment fragment, String value) {
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM, value);
-        fragment.setArguments(args);
-
-        FragmentTransaction fragmentTransaction = mFragManager.beginTransaction();
-        fragmentTransaction
-                .replace(R.id.frame_fragment, fragment)
-                .addToBackStack(value)
-                .commit();
-
-        return true;
     }
 
     /**

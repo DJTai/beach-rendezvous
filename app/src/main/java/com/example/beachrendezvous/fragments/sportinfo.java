@@ -32,6 +32,7 @@ public class sportinfo extends Fragment {
     private String mParam1;
     Unbinder mUnbinder;
     ListView mListView;
+    String name;
 
       public sportinfo() {
         // Required empty public constructor
@@ -49,6 +50,7 @@ public class sportinfo extends Fragment {
         if (getArguments() != null) {
             mParam = getArguments().getString("param");
             mParam1=getArguments().getString("param1");
+            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i("search", "onCreate: mParam = " + mParam);
         }
     }
@@ -65,11 +67,11 @@ public class sportinfo extends Fragment {
                 TextView header = view.findViewById(R.id.sportsheader);
                 if(mParam1.trim().equals("search"))
                 {
-                    header.setText("You want to join a game? \n No Problem, which Sport?");
+                    header.setText("Join a game! What Sport?");
                 }
                 else
                 {
-                    header.setText("You want to create a game? \n No Problem, which Sport?");
+                    header.setText("Create a Game! What Sport?");
                 }
 
 
@@ -88,13 +90,14 @@ public class sportinfo extends Fragment {
                 mListView.setAdapter(myAdapter); mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                             if(mParam1.trim().equals("search"))
+                        if(mParam1.trim().equals("search"))
                         {
                             String msg="games[i]";
                             Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                            Fragment f=new sport_events();
+                            Fragment f = new sport_events();
                             Bundle args = new Bundle();
                             args.putString(ARG_PARAM1,gameNames[i]);
+                            args.putString(MainActivity.ARG_GIVEN_NAME,name);
                             f.setArguments(args);
                             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -110,6 +113,7 @@ public class sportinfo extends Fragment {
                                                  Fragment f=new SportsCreateDetails();
                                                  Bundle args = new Bundle();
                                                  args.putString(ARG_PARAM1,gameNames[i]);
+                                                 args.putString(MainActivity.ARG_GIVEN_NAME,name);
                                                  f.setArguments(args);
                                                  FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                                  FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -134,9 +138,7 @@ public class sportinfo extends Fragment {
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
 
-
         return view;
-
     }
 
 
