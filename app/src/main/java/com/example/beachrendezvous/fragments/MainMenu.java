@@ -2,11 +2,18 @@ package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.beachrendezvous.R;
+import com.example.beachrendezvous.database.SportsEntity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -28,6 +35,7 @@ public class MainMenu extends Fragment {
     private String mParam2;
 
     private Unbinder mUnbinder;
+    DatabaseReference databaseSports;
 
     public MainMenu() {
         // Required empty public constructor
@@ -36,12 +44,11 @@ public class MainMenu extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
 
-        // TODO: Get reference to DB
+        //reference to database
+        databaseSports = FirebaseDatabase.getInstance().getReference("sports");
+
+
 
     }
 
@@ -53,6 +60,24 @@ public class MainMenu extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
         // TODO: Show events
+
+        databaseSports
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            SportsEntity user = snapshot.getValue(SportsEntity.class);
+                            Log.i(TAG, "Listening created" + user.getType());
+                            // Log.d("item id ",snapshot.child("time").getValue().toString());
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+
+        //end show events
+
 
         // Bind View using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
