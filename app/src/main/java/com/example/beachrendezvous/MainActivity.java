@@ -66,11 +66,7 @@ public class MainActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_profile) {
-            Fragment fragment = new Profile();
-            return initFragment(fragment, "profile");
-
-        } else if (id == R.id.action_settings) {
+       if (id == R.id.action_settings) {
             Fragment fragment = new Settings();
             return initFragment(fragment, "settings");
 

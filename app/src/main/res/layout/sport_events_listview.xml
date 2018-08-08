@@ -6,15 +6,14 @@
     android:layout_height="match_parent">
 
 
-    <ImageView
+    <TextView
         android:id="@+id/admin"
-
         android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1.0"
         android:gravity="center"
-        app:srcCompat="@android:drawable/sym_def_app_icon"
-        tools:ignore="ContentDescription" />
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
         android:id="@+id/typeofgame"
