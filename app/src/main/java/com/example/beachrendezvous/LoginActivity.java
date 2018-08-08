@@ -71,6 +71,10 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
 
         Application.getInstance().setApplicationActivity(this);
 
+        // Attempt login upon opening the app
+        showConnectingInProgressUI();
+        connect();
+
         // add click listener
         mConnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -280,6 +284,9 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // Start the activity
         startActivity(mainActivity);
         mConnectButton.setVisibility(View.VISIBLE);
+
+        // TODO: If user clicked sign out, DON'T FINISH
+        finish();
     }
 
     public void getAnswer(boolean ans) {
