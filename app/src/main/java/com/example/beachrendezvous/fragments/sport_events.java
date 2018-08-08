@@ -28,6 +28,7 @@ public class sport_events extends Fragment {
     private String mParam1;
     private String mParam2;
     String name;
+
     public sport_events() {
         // Required empty public constructor
     }

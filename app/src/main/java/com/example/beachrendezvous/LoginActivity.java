@@ -42,7 +42,9 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity implements MSALAuthenticationCallback {
 
     private static final String TAG = "LoginActivity";
+    private static final String DEBUG = "debug";
 
+    //region References
     private Button mConnectButton;
     private TextView mDescriptionTextView;
     private ProgressBar mConnectProgressBar;
@@ -51,16 +53,20 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     private boolean mEnablePiiLogging = false;
     private User mUser;
     private Handler mHandler;
-
     FirebaseDatabase firebase;
     DatabaseReference database;
     boolean pat;
+
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            Log.d(DEBUG, "onCreate: extras is " + extras.getBoolean("logged_out"));
+        }
         setContentView(R.layout.activity_login);
         setTitle(R.string.title_activity_login);
 
@@ -71,14 +77,18 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
 
         Application.getInstance().setApplicationActivity(this);
 
-        // Attempt login upon opening the app
-        showConnectingInProgressUI();
-        connect();
+        // Automatically attempt login upon opening the app
+        if (extras == null) {
+            Log.d(DEBUG, "onCreate: extras is null");
+            showConnectingInProgressUI();
+            connect();
+        }
 
-        // add click listener
+        // Attempt login when "sign in" is clicked
         mConnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(DEBUG, "onClick: sign in clicked");
                 showConnectingInProgressUI();
                 connect();
             }
@@ -113,6 +123,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     }
 
     private void connect() {
+        Log.d(DEBUG, "connect: CONNECTING");
         /*
         The app is having the PII enable setting on the MainActivity. Ideally, the app should decide
         to enable  PII or not. If it's enabled, it should be the setting when the application is
@@ -213,8 +224,8 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         String preferredUsername = "";
 
         try {
-            // get the user info from the id token
-            name=authenticationResult.getUser().getName();
+            // Get the user info from the ID token
+            name = authenticationResult.getUser().getName();
             Application.User.setDisplayName(authenticationResult.getUser().getName());
             Application.User.setAccessToken(authenticationResult.getAccessToken());
             Application.User.setEmailAddress(authenticationResult.getUser().getDisplayableId());
@@ -262,7 +273,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Map<String, String> temp = (HashMap<String, String>) dataSnapshot.getValue();
 
-                if (temp.containsKey(Application.User.getDisplayName())) {
+                if (temp != null && temp.containsKey(Application.User.getDisplayName())) {
                     pat = true;
                 }
                 getAnswer(pat);
@@ -279,14 +290,24 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // Take the user's info along
         mainActivity.putExtra(MainActivity.ARG_GIVEN_NAME, name);
         mainActivity.putExtra(MainActivity.ARG_DISPLAY_ID, preferredUsername);
-        Log.i(TAG, "given name"+ name);
+        Log.i(TAG, "given name" + name);
 
         // Start the activity
         startActivity(mainActivity);
         mConnectButton.setVisibility(View.VISIBLE);
 
         // TODO: If user clicked sign out, DON'T FINISH
-        finish();
+        Bundle loginBundle = this.getIntent().getExtras();
+        if (loginBundle != null) {
+            Log.d(DEBUG, "onSuccess: loginBundle != null");
+            if (!loginBundle.getBoolean("logged_out")) {
+                Log.d(DEBUG, "onSuccess: logged in???");
+                finish();
+            }
+        } else {
+            Log.d(DEBUG, "onSuccess: loginBundle == null");
+            finish();
+        }
     }
 
     public void getAnswer(boolean ans) {
@@ -311,18 +332,22 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     public void onError(MsalException exception) {
         // Check the exception type.
         if (exception instanceof MsalClientException) {
-            // This means errors happened in the sdk itself, could be network, Json parse, etc. Check MsalError.java
+            // This means errors happened in the sdk itself, could be network, Json parse, etc.
+            // Check MsalError.java
             // for detailed list of the errors.
             showMessage(exception.getMessage());
             showConnectErrorUI(exception.getMessage());
         } else if (exception instanceof MsalServiceException) {
-            // This means something is wrong when the sdk is communication to the service, mostly likely it's the client
+            // This means something is wrong when the sdk is communication to the service, mostly
+            // likely it's the client
             // configuration.
             showMessage(exception.getMessage());
             showConnectErrorUI(exception.getMessage());
         } else if (exception instanceof MsalUiRequiredException) {
-            // This explicitly indicates that developer needs to prompt the user, it could be refresh token is expired, revoked
-            // or user changes the password; or it could be that no token was found in the token cache.
+            // This explicitly indicates that developer needs to prompt the user, it could be
+            // refresh token is expired, revoked
+            // or user changes the password; or it could be that no token was found in the token
+            // cache.
             AuthenticationManager mgr = AuthenticationManager.getInstance();
 
             mgr.callAcquireToken(LoginActivity.this, this);
