@@ -77,6 +77,7 @@ public class MainActivity
             case R.id.action_signOut:
                 signUserOut();
                 Intent intent = new Intent(this, LoginActivity.class);
+                intent.putExtra("signedOut", true);
                 startActivity(intent);
                 finish();
                 return true;
