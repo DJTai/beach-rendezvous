@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SportsSearchDetails">
 
     <ScrollView
@@ -60,10 +60,10 @@
                 android:id="@+id/searchEvent_dateText"
                 android:layout_width="242dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="date"
@@ -71,7 +71,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/guideline_search_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/sportsSearch_dateLabel"/>
+                app:layout_constraintStart_toEndOf="@+id/sportsSearch_dateLabel" />
 
             <TextView
                 android:id="@+id/searchEvent_placeLabel"
@@ -129,15 +129,15 @@
                 android:id="@+id/searchEvent_timeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="2dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="HH:MM"
                 android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
+                android:hint="HH:MM"
                 android:inputType="time"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_search_timeNum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.69"
@@ -156,11 +156,12 @@
                 android:id="@+id/searchEvent_numOfPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
-                android:text="@string/label_num_people"
                 android:fontFamily="sans-serif-medium"
+                android:text="@string/label_num_people"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
                 app:layout_constraintStart_toStartOf="parent"
@@ -204,7 +205,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <EditText
+            <TextView
                 android:id="@+id/searchEvent_commentText"
                 android:layout_width="360dp"
                 android:layout_height="120dp"
@@ -213,10 +214,9 @@
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
-                android:inputType="textPersonName"
+                android:hint="Additional Info Here"
                 android:padding="4dp"
-                android:text="Any additional Information goes here"
-                android:textColor="@color/colorPrimaryGrey"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/sportsSearch_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -227,12 +227,12 @@
                 android:id="@+id/sportsSearch_btn"
                 android:layout_width="88dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp"
                 android:layout_marginEnd="28dp"
                 android:layout_marginRight="28dp"
+                android:layout_marginTop="8dp"
                 android:background="@android:color/holo_orange_light"
-                android:text="Join"
+                android:text="@string/btn_join"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/searchEvent_commentText" />
         </android.support.constraint.ConstraintLayout>

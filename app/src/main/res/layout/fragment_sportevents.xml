@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/gameheader"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="95dp"
             android:gravity="center"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />

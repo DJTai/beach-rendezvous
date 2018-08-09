@@ -9,10 +9,10 @@
     <ScrollView
         android:id="@+id/createEvent_scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true">
 
         <android.support.constraint.ConstraintLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -39,66 +39,72 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="100dp" />
+                app:layout_constraintGuide_begin="103dp" />
 
             <TextView
                 android:id="@+id/sportsCreate_dateLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginStart="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:paddingBottom="8dp"
                 android:text="@string/label_date"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_datePlace"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
                 android:id="@+id/createEvent_dateText"
-                android:layout_width="242dp"
+                android:layout_width="150dp"
                 android:layout_height="45dp"
                 android:layout_margin="8dp"
-                android:layout_marginBottom="4dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
                 android:hint="MM/DD/YYYY"
                 android:inputType="date"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/sportsCreate_dateLabel" />
+                app:layout_constraintStart_toStartOf="@+id/guideline" />
 
             <TextView
                 android:id="@+id/createEvent_placeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/label_place"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_placeTime"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_datePlace" />
-
-            <Spinner
-                android:id="@+id/createEvent_placeText"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:fontFamily="sans-serif-medium"
+                android:text="@string/label_place"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_placeTime"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_datePlace" />
+
+            <Spinner
+                android:id="@+id/createEvent_placeText"
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-medium"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_placeTime"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.689"
-                app:layout_constraintStart_toEndOf="@+id/createEvent_placeLabel"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/createEvent_dateText"
                 app:layout_constraintVertical_bias="0.85" />
 
@@ -107,39 +113,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="150dp" />
+                app:layout_constraintGuide_begin="155dp" />
 
             <TextView
                 android:id="@+id/createEvent_timeLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/label_time"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_timeNum"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline_placeTime" />
 
             <EditText
                 android:id="@+id/createEvent_timeText"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
                 android:hint="@string/hint_time"
                 android:inputType="time"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_timeNum"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.769"
-                app:layout_constraintStart_toEndOf="@+id/createEvent_timeLabel"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/guideline_placeTime"
                 app:layout_constraintVertical_bias="1.0" />
 
@@ -148,32 +158,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="210dp" />
+                app:layout_constraintGuide_begin="220dp" />
 
             <TextView
                 android:id="@+id/createEvent_numOfPeople"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_numComments"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline_timeNum" />
 
             <EditText
                 android:id="@+id/createEvent_numText"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
                 android:inputType="number"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_numComments"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.566"
-                app:layout_constraintStart_toEndOf="@+id/createEvent_numOfPeople"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="@+id/guideline_timeNum"
                 app:layout_constraintVertical_bias="0.5" />
 
@@ -182,12 +198,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="313dp" />
+                app:layout_constraintGuide_begin="308dp" />
 
             <TextView
                 android:id="@+id/createEvent_commentLabel"
                 android:layout_width="0dp"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:layout_margin="10dp"
                 android:text="@string/label_additional_info"
                 android:textSize="18sp"
@@ -207,13 +223,12 @@
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
+                android:hint="@string/hint_additional_info"
                 android:inputType="textPersonName"
                 android:padding="4dp"
-                android:hint="@string/hint_additional_info"
-                android:textColor="@color/colorPrimaryGrey"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/sportsCreate_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline_numComments" />
 
@@ -226,9 +241,16 @@
                 android:layout_marginEnd="28dp"
                 android:layout_marginRight="28dp"
                 android:background="@color/colorAccent"
-                android:text="Create"
+                android:text="@string/btn_create"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/createEvent_commentText" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="183dp" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
