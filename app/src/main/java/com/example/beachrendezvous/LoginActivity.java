@@ -1,5 +1,7 @@
 package com.example.beachrendezvous;
 
+import android.accounts.AuthenticatorException;
+import android.accounts.OperationCanceledException;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -34,6 +36,7 @@ import com.microsoft.identity.client.MsalServiceException;
 import com.microsoft.identity.client.MsalUiRequiredException;
 import com.microsoft.identity.client.User;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +52,9 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     private TextView mDescriptionTextView;
     private ProgressBar mConnectProgressBar;
 
+    private boolean isSignedOut = true;
+    private String signedOut = "signedOut";
+
     // Enable logging of PII
     private boolean mEnablePiiLogging = false;
     private User mUser;
@@ -63,36 +69,44 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            Log.d(DEBUG, "onCreate: extras is " + extras.getBoolean("logged_out"));
-        }
-        setContentView(R.layout.activity_login);
-        setTitle(R.string.title_activity_login);
+        AuthenticationManager authenticationManager;
 
-        // set up our views
-        mConnectButton = findViewById(R.id.connectButton);
-        mConnectProgressBar = findViewById(R.id.connectProgressBar);
-        mDescriptionTextView = findViewById(R.id.descriptionTextView);
+        // Check the authentication manager to see if someone is signed in
+        authenticationManager = AuthenticationManager.getInstance();
+        List<User> user;
+        try {
+            // If someone is signed in, then the size of this list will be 1
+            // If no one is signed in, then the size of this list will be 0
+            user = authenticationManager.getPublicClient().getUsers();
 
-        Application.getInstance().setApplicationActivity(this);
+            setContentView(R.layout.activity_login);
+            setTitle(R.string.title_activity_login);
 
-        // Automatically attempt login upon opening the app
-        if (extras == null) {
-            Log.d(DEBUG, "onCreate: extras is null");
-            showConnectingInProgressUI();
-            connect();
-        }
+            // Set up our views
+            mConnectButton = findViewById(R.id.connectButton);
+            mConnectProgressBar = findViewById(R.id.connectProgressBar);
+            mDescriptionTextView = findViewById(R.id.descriptionTextView);
 
-        // Attempt login when "sign in" is clicked
-        mConnectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(DEBUG, "onClick: sign in clicked");
+            Application.getInstance().setApplicationActivity(this);
+
+            // Sign in button
+            mConnectButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d(DEBUG, "onClick: sign in clicked");
+                    showConnectingInProgressUI();
+                    connect();
+                }
+            });
+
+            // If someone is signed in, then automatically log them in when the app is opened
+            if (user.size() == 1) {
                 showConnectingInProgressUI();
                 connect();
             }
-        });
+        } catch (MsalClientException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

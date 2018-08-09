@@ -4,7 +4,7 @@
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_create">Create</string>
-    <string name="title_activity_login">Beach Rendezvous</string>
+    <string name="title_activity_login">Beach Rendez-vous</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign In</string>
@@ -38,4 +38,7 @@
 
     <string name="client_Id">&clientId;</string>
     <string name="msalPrefix">msal&clientId;</string>
+    <string name="hint_additional_info">Add additional info here</string>
+    <string name="label_additional_info">Additional Info:</string>
+    <string name="hint_time">HH:MM</string>
 </resources>
