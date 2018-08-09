@@ -1,76 +1,83 @@
 package com.example.beachrendezvous.database;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class FoodEntity {
 
-    private Time time;
-    private Date date;
+    // Variables shown
+    /** Date of the Food event */
+    private String date;
+
+    /** The location where the restaurant is at */
     private String location;
-    private int attending;
+
+    /** The time when the event happens */
+    private String time;
+
+    /** Max number of people who can attend the event */
+    private int num_max;
+
+    /** Comments regarding the event, submitted by the creator */
     private String comments;
 
-    public FoodEntity(){
+    // Variables stored, but not shown
+    /** Who created the event */
+    private String created_by;
 
+    /** Restaurant venue */
+    private String restaurant;
+
+    public FoodEntity() {
+        // required empty constructor
     }
 
-    public FoodEntity(Time time, Date date, String location, int attending, String comments) {
-        this.time = time;
+    public FoodEntity(String date, String location, String time, int num_max, String comments,
+                      String created_by, String restaurant) {
         this.date = date;
         this.location = location;
-        this.attending = attending;
-        this.comments = comments;
-    }
-
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
         this.time = time;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public int getAttending() {
-        return attending;
-    }
-
-    public void setAttending(int attending) {
-        this.attending = attending;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
+        this.num_max = num_max;
         this.comments = comments;
+        this.created_by = created_by;
+        this.restaurant = restaurant;
     }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date) { this.date = date; }
+
+    public String getLocation() { return location; }
+
+    public void setLocation(String location) { this.location = location; }
+
+    public String getTime() { return time; }
+
+    public void setTime(String time) { this.time = time; }
+
+    public int getNum_max() { return num_max; }
+
+    public void setNum_max(int num_max) { this.num_max = num_max; }
+
+    public String getComments() { return comments; }
+
+    public void setComments(String comments) { this.comments = comments; }
+
+    public String getCreated_by() { return created_by; }
+
+    public void setCreated_by(String created_by) { this.created_by = created_by; }
+
+    public String getRestaurant() { return restaurant; }
+
+    public void setRestaurant(String restaurant) { this.restaurant = restaurant; }
 
     @Override
     public String toString() {
         return "FoodEntity{" +
-                "time=" + time +
-                ", date=" + date +
+                "date='" + date + '\'' +
                 ", location='" + location + '\'' +
-                ", attending=" + attending +
+                ", time='" + time + '\'' +
+                ", num_max=" + num_max +
                 ", comments='" + comments + '\'' +
+                ", created_by='" + created_by + '\'' +
+                ", restaurant='" + restaurant + '\'' +
                 '}';
     }
 }
