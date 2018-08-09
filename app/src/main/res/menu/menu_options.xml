@@ -4,12 +4,6 @@
     tools:context="com.example.beachrendezvous.MainActivity">
 
     <item
-        android:id="@+id/action_profile"
-        android:orderInCategory="100"
-        android:title="@string/action_profile"
-        app:showAsAction="never"/>
-
-    <item
         android:id="@+id/action_settings"
         android:orderInCategory="200"
         android:title="@string/action_settings"
