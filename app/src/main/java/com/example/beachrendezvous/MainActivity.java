@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.example.beachrendezvous.auth.AuthenticationManager;
 import com.example.beachrendezvous.fragments.Info;
 import com.example.beachrendezvous.fragments.MainMenu;
-import com.example.beachrendezvous.fragments.Profile;
 import com.example.beachrendezvous.fragments.Settings;
 import com.example.beachrendezvous.fragments.SubMenu;
 import com.example.beachrendezvous.viewModel.MainViewModel;
@@ -71,8 +70,6 @@ public class MainActivity
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_profile:
-                return initFragment(new Profile(), "profile");
             case R.id.action_settings:
                 return initFragment(new Settings(), "settings");
             case R.id.action_info:
