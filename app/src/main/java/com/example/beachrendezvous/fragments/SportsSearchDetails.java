@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.beachrendezvous.R;
+import com.example.beachrendezvous.database.SportsEntity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -31,8 +32,9 @@ public class SportsSearchDetails extends Fragment {
 
     Unbinder mUnbinder;
     View view = null;
-    //
-    // TODO: Rename and change types of parameters
+    SportsEntity sportsEntity;
+
+     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -52,7 +54,7 @@ public class SportsSearchDetails extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             //mParam2 = getArguments().getString(ARG_PARAM2);
-
+         sportsEntity=(SportsEntity)getArguments().getSerializable("entityObject");
         }
     }
 
@@ -66,13 +68,15 @@ public class SportsSearchDetails extends Fragment {
             Log.i("Sports Search Details", "Running oncreateView");
             view = inflater.inflate(R.layout.fragment_sports_search_details, container, false);
             TextView date = view.findViewById(R.id.searchEvent_dateText);
-            date.setText("07/11/1993");
+            date.setText(sportsEntity.getDate());
             TextView place = view.findViewById(R.id.searchEvent_placeText);
-            place.setText("USU");
+            place.setText(sportsEntity.getLocation());
             TextView time = view.findViewById(R.id.searchEvent_timeText);
-            time.setText("20:20");
+            time.setText(sportsEntity.getTime());
+
+            Log.i("Sports Search Details", "Running oncreateView");
             TextView people = view.findViewById(R.id.searchEvent_numText);
-            people.setText("20");
+            people.setText(sportsEntity.getNum_max());
 
 
 

@@ -17,8 +17,12 @@ import android.widget.Toast;
 import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -72,12 +76,14 @@ public class SportsCreateDetails extends Fragment {
             TextView comments = (TextView)view.findViewById(R.id.createEvent_commentText);
              dob_var = date.getText().toString();
             String time1 = time.getText().toString();
-            SportsEntity eventdetais=new SportsEntity(name, time1,dob_var,place.getSelectedItem().toString(),Integer.parseInt(people.getText().toString()),comments.getText().toString(), mParam);
+            SportsEntity eventdetais=new SportsEntity(name, time1,dob_var,place.getSelectedItem().toString(),people.getText().toString(),comments.getText().toString(), mParam);
            // Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(getContext(), eventdetais.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), eventdetais.toString(), Toast.LENGTH_SHORT).show();
 
             String id = databaseSports.push().getKey();
             databaseSports.child(id).setValue(eventdetais);
+
+
         }
         catch (Exception e)
         {
@@ -99,7 +105,7 @@ public class SportsCreateDetails extends Fragment {
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
 
-        databaseSports = FirebaseDatabase.getInstance().getReference("sports");
+        databaseSports = FirebaseDatabase.getInstance().getReference(mParam);
 
     }
 

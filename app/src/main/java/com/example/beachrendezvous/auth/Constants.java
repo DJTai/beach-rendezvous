@@ -9,5 +9,6 @@ public class Constants {
     // Update this constant with the scope (permission) values for your application:
     public static final String[] SCOPES = {"openid","User.ReadBasic.All"};
     public static final String MSGRAPH_URL = "https://graph.microsoft.com/v1.0/";
+
 }
 
