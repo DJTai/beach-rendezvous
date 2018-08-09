@@ -103,9 +103,9 @@ public class SubMenu extends Fragment {
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
                 Fragment f = new sportinfo();
                 Bundle args = new Bundle();
-                args.putString(ARG_PARAM1,"create");
-                args.putString(ARG_PARAM,"sports");
-                args.putString(MainActivity.ARG_GIVEN_NAME,name);
+                args.putString(ARG_PARAM1, "create");
+                args.putString(ARG_PARAM, "sports");
+                args.putString(MainActivity.ARG_GIVEN_NAME, name);
                 f.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -128,7 +128,7 @@ public class SubMenu extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam = getArguments().getString(ARG_PARAM);
-            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
     }
