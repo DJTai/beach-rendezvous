@@ -34,10 +34,10 @@ public class sportinfo extends Fragment {
     ListView mListView;
     String name;
 
-      public sportinfo() {
+    public sportinfo() {
         // Required empty public constructor
     }
-     //ListView mlistView=(ListView) getActivity().getvi
+    //ListView mlistView=(ListView) getActivity().getvi
 
 
     public ListView getmListView() {
@@ -46,11 +46,12 @@ public class sportinfo extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam = getArguments().getString("param");
-            mParam1=getArguments().getString("param1");
-            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            mParam1 = getArguments().getString("param1");
+            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i("search", "onCreate: mParam = " + mParam);
         }
     }
@@ -65,17 +66,17 @@ public class sportinfo extends Fragment {
                 Log.i("serach", "onCreateView: type equals create");
                 view = inflater.inflate(R.layout.fragment_sportinfo, container, false);
                 TextView header = view.findViewById(R.id.sportsheader);
-                if(mParam1.trim().equals("search"))
-                {
+                sportsListAdapter myAdapter;
+
+                if (mParam1.trim().equals("search")) {
                     header.setText("Join a game! What Sport?");
-                }
-                else
-                {
+                } else {
                     header.setText("Create a Game! What Sport?");
                 }
 
+                final String[] gameNames = {"SOCCER", "TENNNIS", "BASEBALL", "FOOTBALL",
+                        "VOLLEYBALL", "SOFTBALL"};
 
-                final String[] gameNames = {"SOCCER", "TENNNIS", "BASEBALL", "FOOTBALL", "VOLLEYBALL", "SOFTBALL"};
                 int[] gameImages = {
                         R.drawable.soccer,
                         R.drawable.tennis,
@@ -85,65 +86,68 @@ public class sportinfo extends Fragment {
                         R.drawable.softball
                 };
                 Log.d("adapter", "onCreateView: before sports adapter");
-                sportsListAdapter myAdapter = new sportsListAdapter(getContext().getApplicationContext(), gameNames, gameImages);
+                myAdapter = new sportsListAdapter(getContext().getApplicationContext(), gameNames,
+                                                  gameImages);
+
                 mListView = (ListView) view.findViewById(R.id.listview);
-                mListView.setAdapter(myAdapter); mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                mListView.setAdapter(myAdapter);
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        if(mParam1.trim().equals("search"))
-                        {
-                            String msg="games[i]";
+                        if (mParam1.trim().equals("search")) {
+                            String msg = "games[i]";
                             Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
                             Fragment f = new sport_events();
                             Bundle args = new Bundle();
-                            args.putString(ARG_PARAM1,gameNames[i]);
-                            args.putString(MainActivity.ARG_GIVEN_NAME,name);
+                            args.putString(ARG_PARAM1, gameNames[i]);
+                            args.putString(MainActivity.ARG_GIVEN_NAME, name);
                             f.setArguments(args);
-                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                            FragmentManager fragmentManager = getActivity()
+                                    .getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager
+                                    .beginTransaction();
                             fragmentTransaction
                                     .replace(R.id.frame_fragment, f)
                                     .addToBackStack("search")
                                     .commit();
 
+                        } else if (mParam1.equals("create")) {
+
+                            Fragment f = new SportsCreateDetails();
+                            Bundle args = new Bundle();
+                            args.putString(ARG_PARAM1, gameNames[i]);
+                            args.putString(MainActivity.ARG_GIVEN_NAME, name);
+                            f.setArguments(args);
+
+                            FragmentManager fragmentManager = getActivity()
+                                    .getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager
+                                    .beginTransaction();
+                            fragmentTransaction
+                                    .replace(R.id.frame_fragment, f)
+                                    .addToBackStack("create")
+                                    .commit();
                         }
-                        else if(mParam1.equals("create"))
-                                             {
-
-                                                 Fragment f=new SportsCreateDetails();
-                                                 Bundle args = new Bundle();
-                                                 args.putString(ARG_PARAM1,gameNames[i]);
-                                                 args.putString(MainActivity.ARG_GIVEN_NAME,name);
-                                                 f.setArguments(args);
-                                                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                                                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                                 fragmentTransaction
-                                                         .replace(R.id.frame_fragment, f)
-                                                         .addToBackStack("create")
-                                                         .commit();
-
-                                             }
 
 
                     }
                 });
             } else {
-                Log.i("search", "onCreateView: type not equal to create, mparam="+mParam);
+                Log.i("search", "onCreateView: type not equal to create, mparam=" + mParam);
                 view = inflater.inflate(R.layout.fragment_sportinfo, container, false);
                 TextView header = view.findViewById(R.id.sportsheader);
                 header.setText(R.string.action_info);
             }
         }
-        Log.i("search", "on search view:  mparam="+mParam);
+        Log.i("search", "on search view:  mparam=" + mParam);
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
 
         return view;
     }
 
-
-
-     /**
+    /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
