@@ -70,8 +70,6 @@ public class MainActivity
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_profile:
-                return initFragment(new Profile(), "profile");
             case R.id.action_settings:
                 return initFragment(new Settings(), "settings");
             case R.id.action_info:
@@ -79,6 +77,7 @@ public class MainActivity
             case R.id.action_signOut:
                 signUserOut();
                 Intent intent = new Intent(this, LoginActivity.class);
+                intent.putExtra("signedOut", true);
                 startActivity(intent);
                 finish();
                 return true;
