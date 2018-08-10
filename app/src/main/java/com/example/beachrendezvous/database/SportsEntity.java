@@ -11,16 +11,16 @@ public class SportsEntity implements Serializable {
     private String comments;
     private String created_by;
     private String type;
+    private String duration;
 
-    //region Constructors
 
     public SportsEntity() {
-
     }
 
-    public SportsEntity(String created_by, String time, String date, String location,
-                        String num_max, String comments, String type) {
+    public SportsEntity(String created_by, String time, String duration, String date,
+                        String location, String num_max, String comments, String type) {
         this.time = time;
+        this.duration = duration;
         this.date = date;
         this.location = location;
         this.num_max = num_max;
@@ -65,6 +65,15 @@ public class SportsEntity implements Serializable {
         this.date = date;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+
     public String getLocation() {
         return location;
     }
@@ -94,7 +103,7 @@ public class SportsEntity implements Serializable {
     @Override
     public String toString() {
         return "SportsEntity{" + "created_by=" + created_by + "type=" + type +
-                "time=" + time +
+                "time=" + time + ", duration=" + duration +
                 ", date=" + date +
                 ", location='" + location + '\'' +
                 ", num_max=" + num_max +

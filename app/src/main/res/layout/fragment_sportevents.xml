@@ -29,11 +29,11 @@
                 android:id="@+id/created"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
                 android:layout_weight="0.25"
                 android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_centerInParent="true"
-                android:text="By" />
+                android:text="Admin" />
 
             <TextView
                 android:id="@+id/type"
@@ -69,7 +69,8 @@
         <ListView
             android:id="@+id/listview1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+         />
 
     </LinearLayout>
 

@@ -163,7 +163,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numDuration"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum" />
 
@@ -177,19 +177,56 @@
                 android:fontFamily="sans-serif-medium"
                 android:inputType="number"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numDuration"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.566"
                 app:layout_constraintStart_toEndOf="@+id/searchEvent_numOfPeople"
                 app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum"
                 app:layout_constraintVertical_bias="0.5" />
-
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_search_numComments"
+                android:id="@+id/guideline_search_numDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="290dp" />
+                app:layout_constraintGuide_begin="280dp" />
+            <TextView
+                android:id="@+id/searchEvent_Duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Duration"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_DurationComments"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_numDuration" />
+
+            <EditText
+                android:id="@+id/searchEvent_DurationText"
+                android:layout_width="wrap_content"
+                android:layout_height="49dp"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="84dp"
+                android:layout_marginRight="84dp"
+                android:layout_marginTop="316dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:hint="HH:MM"
+                android:inputType="time"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_DurationComments"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.566"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_Duration"
+                app:layout_constraintTop_toTopOf="@+id/guideline_numDuration"
+                app:layout_constraintVertical_bias="0.5" />
+
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_DurationComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="350dp" />
 
             <TextView
                 android:id="@+id/searchEvent_commentLabel"
@@ -202,13 +239,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_DurationComments"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/searchEvent_commentText"
                 android:layout_width="360dp"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_edittext"
@@ -221,7 +258,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_DurationComments" />
 
             <Button
                 android:id="@+id/sportsSearch_btn"
