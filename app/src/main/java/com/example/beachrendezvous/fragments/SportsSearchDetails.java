@@ -77,6 +77,13 @@ public class SportsSearchDetails extends Fragment {
             Log.i("Sports Search Details", "Running oncreateView");
             TextView people = view.findViewById(R.id.searchEvent_numText);
             people.setText(sportsEntity.getNum_max());
+            Log.i("comments ", sportsEntity.getComments());
+            TextView additionalInfo = view.findViewById(R.id.searchEvent_commentText);
+            additionalInfo.setText(sportsEntity.getComments());
+            Log.i("Duration",sportsEntity.getDuration());
+            TextView duration = view.findViewById(R.id.searchEvent_DurationText);
+            duration.setText(sportsEntity.getDuration());
+
 
 
 

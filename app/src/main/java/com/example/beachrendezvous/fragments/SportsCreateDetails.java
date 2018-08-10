@@ -70,13 +70,13 @@ public class SportsCreateDetails extends Fragment {
             TextView date =(TextView) view.findViewById(R.id.createEvent_dateText);
             Spinner place = (Spinner)view.findViewById(R.id.createEvent_placeText);
             EditText time = (EditText)view.findViewById(R.id.createEvent_timeText);
+            EditText duration = (EditText)view.findViewById(R.id.createEvent_DurationText);
             EditText people = (EditText)view.findViewById(R.id.createEvent_numText);
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             String dob_var;
             TextView comments = (TextView)view.findViewById(R.id.createEvent_commentText);
              dob_var = date.getText().toString();
             String time1 = time.getText().toString();
-            SportsEntity eventdetais=new SportsEntity(name, time1,dob_var,place.getSelectedItem().toString(),people.getText().toString(),comments.getText().toString(), mParam);
+            SportsEntity eventdetais=new SportsEntity(name, time1,duration.getText().toString(),dob_var,place.getSelectedItem().toString(),people.getText().toString(),comments.getText().toString(), mParam);
            // Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
             //Toast.makeText(getContext(), eventdetais.toString(), Toast.LENGTH_SHORT).show();
 

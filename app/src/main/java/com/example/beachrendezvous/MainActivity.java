@@ -1,7 +1,6 @@
 package com.example.beachrendezvous;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import com.example.beachrendezvous.auth.AuthenticationManager;
 import com.example.beachrendezvous.fragments.Info;
 import com.example.beachrendezvous.fragments.MainMenu;
-import com.example.beachrendezvous.fragments.Profile;
 import com.example.beachrendezvous.fragments.Settings;
 import com.example.beachrendezvous.fragments.SubMenu;
 import com.example.beachrendezvous.viewModel.MainViewModel;
