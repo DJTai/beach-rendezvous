@@ -1,6 +1,5 @@
 package com.example.beachrendezvous.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,7 +18,6 @@ import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.sportsListAdapter;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class sportinfo extends Fragment {
@@ -37,8 +35,6 @@ public class sportinfo extends Fragment {
     public sportinfo() {
         // Required empty public constructor
     }
-    //ListView mlistView=(ListView) getActivity().getvi
-
 
     public ListView getmListView() {
         return mListView;
@@ -49,8 +45,8 @@ public class sportinfo extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam = getArguments().getString("param");
-            mParam1 = getArguments().getString("param1");
+            mParam = getArguments().getString("param");     // param = sports
+            mParam1 = getArguments().getString("param1");   // param1 = search or create
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i("search", "onCreate: mParam = " + mParam);
         }
@@ -63,15 +59,18 @@ public class sportinfo extends Fragment {
 
         if (mParam != null) {
             if (mParam.trim().equals("sports")) {
-                Log.i("serach", "onCreateView: type equals create");
+                Log.i("search", "onCreateView: type equals create");
                 view = inflater.inflate(R.layout.fragment_sportinfo, container, false);
                 TextView header = view.findViewById(R.id.sportsheader);
                 sportsListAdapter myAdapter;
 
                 if (mParam1.trim().equals("search")) {
-                    header.setText("Join a game! What Sport?");
+                    // user is searching for a sport event
+                    header.setText(R.string.sport_info_search);
+
                 } else {
-                    header.setText("Create a Game! What Sport?");
+                    // user is creating a sport event
+                    header.setText(R.string.sport_info_create);
                 }
 
                 final String[] gameNames = {"SOCCER", "TENNNIS", "BASEBALL", "FOOTBALL",
@@ -129,8 +128,6 @@ public class sportinfo extends Fragment {
                                     .addToBackStack("create")
                                     .commit();
                         }
-
-
                     }
                 });
             } else {

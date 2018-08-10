@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class sport_events extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
@@ -105,7 +105,10 @@ public class sport_events extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+
+            // Get the type of sport
             mParam1 = getArguments().getString(ARG_PARAM1);
+
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mDatabaseReference = mFirebaseDatabase.getReference().child(mParam1);
