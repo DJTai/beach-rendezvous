@@ -27,9 +27,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-// Butter Knife imports
-// see https://jakewharton.github.io/butterknife/ for more details
-
 
 public class MainActivity
         extends AppCompatActivity {
@@ -42,18 +39,26 @@ public class MainActivity
     private static final String ARG_PARAM = "param";
     public static final String ARG_GIVEN_NAME = "givenName";
     public static final String ARG_DISPLAY_ID = "displayableId";
-    String name=" ";
+    String name = " ";
 
-    // References
+    //region References
+
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
 
-    private static String bottomSelection;
+    FragmentManager mFragManager;
 
     private MainViewModel mViewModel;
 
+    /* Bottom Nav Bar Icons */
+    private final String home = "home";
+    private final String search = "search";
+    private final String create = "create";
+
+    //endregion
 
     //region Options Menu
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_options, menu);
@@ -64,27 +69,99 @@ public class MainActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-       if (id == R.id.action_settings) {
-            Fragment fragment = new Settings();
-            return initFragment(fragment, "settings");
-
-        } else if (id == R.id.action_info) {
-            Fragment fragment = new Info();
-            return initFragment(fragment, "info");
-
-        } else if (id == R.id.action_signOut) {
-            signUserOut();
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-
-            return true;
+        switch (id) {
+            case R.id.action_profile:
+                return initFragment(new Profile(), "profile");
+            case R.id.action_settings:
+                return initFragment(new Settings(), "settings");
+            case R.id.action_info:
+                return initFragment(new Info(), "info");
+            case R.id.action_signOut:
+                signUserOut();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     //endregion
+
+    /**
+     * Determines which fragment to open upon nav selection
+     */
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int choice = item.getItemId();
+            int current = navigation.getSelectedItemId();    // Prevent re-creating fragments
+
+            if (choice == R.id.nav_home && current != R.id.nav_home) {
+                return initFragment(new MainMenu(), home);
+
+            } else if (choice == R.id.nav_search && current != R.id.nav_search) {
+                return initFragment(new SubMenu(), search);
+
+            } else if (choice == R.id.nav_create && current != R.id.nav_create) {
+                return initFragment(new SubMenu(), create);
+            }
+            return false;
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Don't delete this!!
+        ButterKnife.bind(this);
+        name = getIntent().getStringExtra(ARG_GIVEN_NAME);
+
+        mFragManager = getSupportFragmentManager();
+
+        if (savedInstanceState == null) {
+            // Don't add initial fragment to back-stack
+            FragmentTransaction fragmentTransaction = mFragManager.beginTransaction();
+            fragmentTransaction
+                    .replace(R.id.frame_fragment, new MainMenu())
+                    .commit();
+        }
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Listen for changes to the fragment back-stack
+        mFragManager.addOnBackStackChangedListener(
+                new FragmentManager.OnBackStackChangedListener() {
+                    @Override
+                    public void onBackStackChanged() {
+                        MenuItem shown;
+                        if (mFragManager.getBackStackEntryCount() > 0) {
+                            String name = mFragManager
+                                    .getBackStackEntryAt(mFragManager.getBackStackEntryCount() - 1)
+                                    .getName();
+
+                            if (name.equals(home)) {
+                                shown = navigation.getMenu().getItem(0);
+                                shown.setChecked(true);
+                            } else if (name.equals(search)) {
+                                shown = navigation.getMenu().getItem(1);
+                                shown.setChecked(true);
+                            } else if (name.equals(create)) {
+                                shown = navigation.getMenu().getItem(2);
+                                shown.setChecked(true);
+                            }
+                        } else {
+                            shown = navigation.getMenu().getItem(0);
+                            shown.setChecked(true);
+                        }
+                    }
+                });
+    }
 
     /**
      * Initialize, inflate, and add to the back stack, the supplied fragment
@@ -109,79 +186,25 @@ public class MainActivity
     }
 
     /**
-     * Determines which fragment to open upon nav selection
-     */
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
-            int choice = item.getItemId();
-
-            if (choice == R.id.nav_home) {
-                fragment = new MainMenu();
-                bottomSelection = "home";
-                return initFragment(fragment, "home");
-
-            } else if (choice == R.id.nav_search) {
-                fragment = new SubMenu();
-                bottomSelection = "search";
-                return initFragment(fragment, "search");
-
-            } else if (choice == R.id.nav_create) {
-                fragment = new SubMenu();
-                bottomSelection = "create";
-                return initFragment(fragment, "create");
-            }
-            return false;
-        }
-    };
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // Don't delete this!!
-        ButterKnife.bind(this);
-        name=getIntent().getStringExtra(ARG_GIVEN_NAME);
-
-        if (savedInstanceState == null) {
-            Fragment fragment = new MainMenu();
-            initFragment(fragment, "home");
-        }
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        // TODO: Link backpress with FragmentManager to update BottomNav selection
-    }
-
-    /**
      * Signs the user out of the application and removes them from the list of
      * authenticated users.
      */
     private void signUserOut() {
         List<User> users = null;
-        AuthenticationManager mgr = AuthenticationManager.getInstance();
+        AuthenticationManager authManager = AuthenticationManager.getInstance();
         String TAG = MainActivity.class.getSimpleName();
 
         try {
-            users = mgr.getPublicClient().getUsers();
+            users = authManager.getPublicClient().getUsers();
 
             if (users == null) {
-
+                // TODO: Code?
             } else if (users.size() == 1) {
-                mgr.getPublicClient().remove(users.get(0));
+                authManager.getPublicClient().remove(users.get(0));
                 finish();
             } else {
                 for (int i = 0; i < users.size(); i++) {
-                    mgr.getPublicClient().remove(users.get(i));
+                    authManager.getPublicClient().remove(users.get(i));
                 }
             }
 
@@ -195,4 +218,5 @@ public class MainActivity
             Log.d(TAG, "User at this position does not exist: " + e.toString());
         }
     }
+
 }

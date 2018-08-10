@@ -1,6 +1,5 @@
 package com.example.beachrendezvous.fragments;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,9 +23,10 @@ public class SubMenu extends Fragment {
 
     /* Logging Tags */
     private static final String TAG = "sub_menu_fragment";
+    private static final String DEBUG = "debug";
     private static final String ARG_PARAM = "param";
     private static final String ARG_PARAM1 = "param1";
-    
+
     /* Parameter to determine the context of the SubMenu fragment, e.g., Creating or Searching */
     private String mParam;
     String name;
@@ -37,7 +37,7 @@ public class SubMenu extends Fragment {
 
     //region Handle button clicks
     @OnClick(R.id.subMenu_btn_food)
-    void foodClicked () {
+    void foodClicked() {
         if (mParam != null) {
             String msg = "";
             if (mParam.equals("search")) {
@@ -57,7 +57,7 @@ public class SubMenu extends Fragment {
     }
 
     @OnClick(R.id.subMenu_btn_movies)
-    void moviesClicked () {
+    void moviesClicked() {
         if (mParam != null) {
             String msg = "";
             if (mParam.equals("search")) {
@@ -74,8 +74,9 @@ public class SubMenu extends Fragment {
             }
         }
     }
+
     @OnClick(R.id.subMenu_btn_sports)
-    void sportsClicked () {
+    void sportsClicked() {
         if (mParam != null) {
             String msg = "";
             if (mParam.equals("search")) {
@@ -83,10 +84,10 @@ public class SubMenu extends Fragment {
                 // TODO: Open SportsSearchDetails fragment
                 msg = "search sports opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                Fragment f=new sportinfo();
+                Fragment f = new sportinfo();
                 Bundle args = new Bundle();
-                args.putString(ARG_PARAM1,"search");
-                args.putString(ARG_PARAM,"sports");
+                args.putString(ARG_PARAM1, "search");
+                args.putString(ARG_PARAM, "sports");
                 f.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -95,18 +96,16 @@ public class SubMenu extends Fragment {
                         .addToBackStack("search")
                         .commit();
 
-
-
             } else {
 
                 // TODO: Open SportsCreateDetails fragment
                 msg = "create sports opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                Fragment f=new sportinfo();
+                Fragment f = new sportinfo();
                 Bundle args = new Bundle();
-                args.putString(ARG_PARAM1,"create");
-                args.putString(ARG_PARAM,"sports");
-                args.putString(MainActivity.ARG_GIVEN_NAME,name);
+                args.putString(ARG_PARAM1, "create");
+                args.putString(ARG_PARAM, "sports");
+                args.putString(MainActivity.ARG_GIVEN_NAME, name);
                 f.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -120,38 +119,40 @@ public class SubMenu extends Fragment {
     //endregion
 
 
-    public SubMenu () {
+    public SubMenu() {
         // Required empty public constructor
     }
 
     @Override
-    public void onCreate (Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam = getArguments().getString(ARG_PARAM);
-            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
     }
 
     @Override
-    public View onCreateView (LayoutInflater inflater,
-                              ViewGroup container,
-                              Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
+                             Bundle savedInstanceState) {
+        Log.d(DEBUG, "onCreateView: Sub Menu OCV");
 
         View view = null;
 
         if (mParam != null) {
             if (mParam.equals("create")) {
-                Log.i(TAG, "onCreateView: type equals create");
+                Log.i(TAG, "onCreateView: param equals create");
                 view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
                 TextView header = view.findViewById(R.id.subMenu_header);
                 header.setText(R.string.submenu_header_create);
+
             } else {
-                Log.i(TAG, "onCreateView: type not equal to create");
+                Log.i(TAG, "onCreateView: param equals search");
                 view = inflater.inflate(R.layout.fragment_sub_menu, container, false);
                 TextView header = view.findViewById(R.id.subMenu_header);
-                header.setText("Let's Find an Event!");
+                header.setText(R.string.submenu_header_search);
             }
         }
         mUnbinder = ButterKnife.bind(this, view);
@@ -160,7 +161,7 @@ public class SubMenu extends Fragment {
     }
 
     @Override
-    public void onDestroyView () {
+    public void onDestroyView() {
         super.onDestroyView();
 
         // Unbind view to free some memory
