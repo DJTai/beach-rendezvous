@@ -44,4 +44,8 @@
     <string name="btn_join">Join</string>
     <string name="tv_fillerText">TextView</string>
     <string name="btn_create">Create</string>
+    <string name="sport_info_search">Join a game! What Sport?</string>
+    <string name="sport_info_create">Create an event! Which Sport?</string>
+    <string name="filler_textViews">TextView</string>
+    <string name="img_arrow">Arrow</string>
 </resources>
