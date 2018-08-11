@@ -48,4 +48,7 @@
     <string name="sport_info_create">Create an event! Which Sport?</string>
     <string name="filler_textViews">TextView</string>
     <string name="img_arrow">Arrow</string>
+    <string name="label_duration">Duration:</string>
+    <string name="tv_event_type">Type of Event</string>
+    <string name="hint_dateFormat">MM/DD/YYYY</string>
 </resources>
