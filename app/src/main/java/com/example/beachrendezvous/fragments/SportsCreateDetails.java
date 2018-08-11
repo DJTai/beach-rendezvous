@@ -1,5 +1,7 @@
 package com.example.beachrendezvous.fragments;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,26 +11,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.TimePicker;
 
 import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -37,6 +33,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 import static android.R.layout.simple_spinner_item;
+import static java.lang.String.format;
 
 
 public class SportsCreateDetails extends Fragment {
@@ -46,25 +43,21 @@ public class SportsCreateDetails extends Fragment {
     // KEY for getArguments()
     private static final String ARG_PARAM1 = "param1";
 
+    //region References
     Unbinder mUnbinder;
     Spinner spinner;
     String name;
     View view = null;
 
     DatabaseReference databaseSports;
+    //endregion
 
-
-    // TODO: MAKE BINDING CALLS TO EVERY THING ON THE XML LAYOUT
+    //region ButterKnife Binds
     @BindView(R.id.createEvent_commentLabel)
     TextView commentTextView;
 
-    public SportsCreateDetails() {
-        // Required empty public constructor
-    }
-
     @OnClick(R.id.sportsCreate_btn)
     void joinClicked() {
-
         try {
             TextView date = (TextView) view.findViewById(R.id.createEvent_dateText);
             Spinner place = (Spinner) view.findViewById(R.id.createEvent_placeText);
@@ -88,6 +81,55 @@ public class SportsCreateDetails extends Fragment {
             e.printStackTrace();
             Log.i("Exception", e.toString());
         }
+    }
+
+    @OnClick(R.id.createEvent_dateText)
+    void selectDate() {
+        // Get current date
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        final EditText date = view.findViewById(R.id.createEvent_dateText);
+
+        DatePickerDialog datePickerDialog =
+                new DatePickerDialog(this.getContext(),
+                                     new DatePickerDialog.OnDateSetListener() {
+                                         @Override
+                                         public void onDateSet(DatePicker view, int year,
+                                                               int monthOfYear, int dayOfMonth) {
+                                             date.setText(format("%d/%d/%d", monthOfYear + 1,
+                                                                 dayOfMonth, year));
+                                         }
+                                     }, mYear, mMonth, mDay);
+        datePickerDialog.show();
+    }
+
+    @OnClick(R.id.createEvent_timeText)
+    void selectTime() {
+        // Get Current Time
+        final Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+        final EditText time = view.findViewById(R.id.createEvent_timeText);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog =
+                new TimePickerDialog(this.getContext(),
+                                     new TimePickerDialog.OnTimeSetListener() {
+                                         @Override
+                                         public void onTimeSet(TimePicker view, int hourOfDay,
+                                                               int minute) {
+                                             time.setText(format("%d:%d", hourOfDay, minute));
+                                         }
+                                     }, mHour, mMinute, true);
+        timePickerDialog.show();
+    }
+
+    //endregion
+
+    public SportsCreateDetails() {
+        // Required empty public constructor
     }
 
 
