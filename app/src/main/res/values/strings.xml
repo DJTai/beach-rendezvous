@@ -1,12 +1,10 @@
-<!DOCTYPE resources [
-    <!ENTITY clientId "57b97596-0bf3-4fe7-8250-31e0f9ea90c7">
-    ]>
+<!DOCTYPE resources [<!ENTITY clientId "57b97596-0bf3-4fe7-8250-31e0f9ea90c7">]>
 <resources>
     <string name="app_name">Beach Rendezvous</string>
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_create">Create</string>
-    <string name="title_activity_login">Beach Rendezvous</string>
+    <string name="title_activity_login">Beach Rendez-vous</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign In</string>
@@ -19,7 +17,7 @@
         completions."
     </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="submenu_header_search">Search for an Event</string>
+    <string name="submenu_header_search">Let\'s Search for an Event</string>
     <string name="submenu_header_create">Let\'s Create an Event!</string>
     <string name="submenu_btn_food">Food</string>
     <string name="submenu_btn_movies">Movies</string>
@@ -31,7 +29,7 @@
     <string name="label_date">Date:</string>
     <string name="label_place">Place:</string>
     <string name="label_time">Time:</string>
-    <string name="label_num_people">No of People:</string>
+    <string name="label_num_people">No. of People:</string>
     <string name="action_return">&lt; RETURN</string>
     <string name="info_header_faq">FAQ</string>
     <string name="info_header_credits">CREDITS</string>
@@ -40,4 +38,17 @@
 
     <string name="client_Id">&clientId;</string>
     <string name="msalPrefix">msal&clientId;</string>
+    <string name="hint_additional_info">Add additional info here</string>
+    <string name="label_additional_info">Additional Info:</string>
+    <string name="hint_time">HH:MM</string>
+    <string name="btn_join">Join</string>
+    <string name="tv_fillerText">TextView</string>
+    <string name="btn_create">Create</string>
+    <string name="sport_info_search">Join a game! What Sport?</string>
+    <string name="sport_info_create">Create an event! Which Sport?</string>
+    <string name="filler_textViews">TextView</string>
+    <string name="img_arrow">Arrow</string>
+    <string name="label_duration">Duration:</string>
+    <string name="tv_event_type">Type of Event</string>
+    <string name="hint_dateFormat">MM/DD/YYYY</string>
 </resources>

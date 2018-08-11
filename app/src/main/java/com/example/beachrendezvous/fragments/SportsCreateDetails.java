@@ -17,8 +17,12 @@ import android.widget.Toast;
 import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -54,33 +58,33 @@ public class SportsCreateDetails extends Fragment {
     @BindView(R.id.createEvent_commentLabel)
     TextView commentTextView;
 
-    public SportsCreateDetails () {
+    public SportsCreateDetails() {
         // Required empty public constructor
     }
 
     @OnClick(R.id.sportsCreate_btn)
-    void joinClicked () {
+    void joinClicked() {
 
         try {
            // Toast.makeText(getContext(), "create button clicked", Toast.LENGTH_SHORT).show();
             TextView date =(TextView) view.findViewById(R.id.createEvent_dateText);
             Spinner place = (Spinner)view.findViewById(R.id.createEvent_placeText);
             EditText time = (EditText)view.findViewById(R.id.createEvent_timeText);
+            EditText duration = (EditText)view.findViewById(R.id.createEvent_DurationText);
             EditText people = (EditText)view.findViewById(R.id.createEvent_numText);
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
             String dob_var;
-            TextView comments = (TextView)view.findViewById(R.id.createEvent_commentText);
-             dob_var = date.getText().toString();
+            TextView comments = (TextView) view.findViewById(R.id.createEvent_commentText);
+            dob_var = date.getText().toString();
             String time1 = time.getText().toString();
-            SportsEntity eventdetais=new SportsEntity(name, time1,dob_var,place.getSelectedItem().toString(),Integer.parseInt(people.getText().toString()),comments.getText().toString(), mParam);
+            SportsEntity eventdetais=new SportsEntity(name, time1,duration.getText().toString(),dob_var,place.getSelectedItem().toString(),people.getText().toString(),comments.getText().toString(), mParam);
            // Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(getContext(), eventdetais.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), eventdetais.toString(), Toast.LENGTH_SHORT).show();
 
             String id = databaseSports.push().getKey();
             databaseSports.child(id).setValue(eventdetais);
-        }
-        catch (Exception e)
-        {
+
+
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             Log.i("Exception", e.toString());
@@ -90,16 +94,16 @@ public class SportsCreateDetails extends Fragment {
 
 
     @Override
-    public void onCreate (Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
             mParam = getArguments().getString(ARG_PARAM1);
-            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
 
-        databaseSports = FirebaseDatabase.getInstance().getReference("sports");
+        databaseSports = FirebaseDatabase.getInstance().getReference(mParam);
 
     }
 
@@ -110,7 +114,8 @@ public class SportsCreateDetails extends Fragment {
         list.add("USU");
         list.add("Student Recreation Center");
         list.add("Near Brotman Hall");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(
+                getActivity().getApplicationContext(),
                 simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
@@ -118,15 +123,14 @@ public class SportsCreateDetails extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView (@NonNull LayoutInflater inflater,
-                              @Nullable ViewGroup container,
-                              @Nullable Bundle savedInstanceState) {
-
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
 
         if (mParam != null) {
-                Log.i(TAG, "sports create details");
-                view = inflater.inflate(R.layout.fragment_sports_create_event, container, false);
+            Log.i(TAG, "sports create details");
+            view = inflater.inflate(R.layout.fragment_sports_create_event, container, false);
             addItemsOnSpinner(view);
 
 
