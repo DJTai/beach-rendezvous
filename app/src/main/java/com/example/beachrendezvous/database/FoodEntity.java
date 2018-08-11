@@ -25,6 +25,7 @@ public class FoodEntity {
     /** Restaurant venue */
     private String restaurant;
 
+    //region Constructors
     public FoodEntity() {
         // required empty constructor
     }
@@ -39,6 +40,9 @@ public class FoodEntity {
         this.created_by = created_by;
         this.restaurant = restaurant;
     }
+    //endregion
+
+    //region Getters & Setters
 
     public String getDate() { return date; }
 
@@ -67,6 +71,8 @@ public class FoodEntity {
     public String getRestaurant() { return restaurant; }
 
     public void setRestaurant(String restaurant) { this.restaurant = restaurant; }
+
+    //endregion
 
     @Override
     public String toString() {

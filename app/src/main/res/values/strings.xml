@@ -29,7 +29,7 @@
     <string name="label_date">Date:</string>
     <string name="label_place">Place:</string>
     <string name="label_time">Time:</string>
-    <string name="label_num_people">No of People:</string>
+    <string name="label_num_people">No. of People:</string>
     <string name="action_return">&lt; RETURN</string>
     <string name="info_header_faq">FAQ</string>
     <string name="info_header_credits">CREDITS</string>
@@ -41,4 +41,14 @@
     <string name="hint_additional_info">Add additional info here</string>
     <string name="label_additional_info">Additional Info:</string>
     <string name="hint_time">HH:MM</string>
+    <string name="btn_join">Join</string>
+    <string name="tv_fillerText">TextView</string>
+    <string name="btn_create">Create</string>
+    <string name="sport_info_search">Join a game! What Sport?</string>
+    <string name="sport_info_create">Create an event! Which Sport?</string>
+    <string name="filler_textViews">TextView</string>
+    <string name="img_arrow">Arrow</string>
+    <string name="label_duration">Duration:</string>
+    <string name="tv_event_type">Type of Event</string>
+    <string name="hint_dateFormat">MM/DD/YYYY</string>
 </resources>

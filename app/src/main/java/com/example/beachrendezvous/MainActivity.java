@@ -18,7 +18,6 @@ import com.example.beachrendezvous.fragments.Info;
 import com.example.beachrendezvous.fragments.MainMenu;
 import com.example.beachrendezvous.fragments.Settings;
 import com.example.beachrendezvous.fragments.SubMenu;
-import com.example.beachrendezvous.viewModel.MainViewModel;
 import com.microsoft.identity.client.MsalClientException;
 import com.microsoft.identity.client.User;
 
@@ -47,8 +46,6 @@ public class MainActivity
     BottomNavigationView navigation;
 
     FragmentManager mFragManager;
-
-    private MainViewModel mViewModel;
 
     /* Bottom Nav Bar Icons */
     private final String home = "home";
