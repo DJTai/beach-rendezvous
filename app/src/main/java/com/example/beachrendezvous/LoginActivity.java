@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
             user = authenticationManager.getPublicClient().getUsers();
 
             setContentView(R.layout.activity_login);
-            setTitle(R.string.title_activity_login);
+            setTitle(R.string.app_name);
 
             // Set up our views
             mConnectButton = findViewById(R.id.connectButton);
