@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,7 @@ public class MainMenu extends Fragment {
 
     /* Logging Tags */
     public static final String TAG = "mainMenu_fragment";
-    private static final String DEBUG = "debug_mainMenu";
+    private static final String DEBUG = "debug";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +57,7 @@ public class MainMenu extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(DEBUG, "onCreateView: Main Menu OCV");
 
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
 

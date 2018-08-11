@@ -1,41 +1,41 @@
 package com.example.beachrendezvous.database;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class MoviesEntity {
 
-    private Time time;
-    private Date date;
+    private String date;
     private String location;
-    private int attending;
+    private String time;
+    private int num_max;
     private String comments;
+    private String created_by;
+    private String movie;
 
-    public MoviesEntity(){
+    //region Constructors
 
+    public MoviesEntity() {
+        // required empty constructor
     }
 
-    public MoviesEntity(Time time, Date date, String location, int attending, String comments) {
-        this.time = time;
+    public MoviesEntity(String date, String location, String time, int num_max,
+                        String comments, String created_by, String movie) {
         this.date = date;
         this.location = location;
-        this.attending = attending;
-        this.comments = comments;
-    }
-
-    public Time getTime() {
-        return time;
-    }
-
-    public void setTime(Time time) {
         this.time = time;
+        this.num_max = num_max;
+        this.comments = comments;
+        this.created_by = created_by;
+        this.movie = movie;
     }
 
-    public Date getDate() {
+    //endregion
+
+    //region Getters and Setters
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -47,12 +47,20 @@ public class MoviesEntity {
         this.location = location;
     }
 
-    public int getAttending() {
-        return attending;
+    public String getTime() {
+        return time;
     }
 
-    public void setAttending(int attending) {
-        this.attending = attending;
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public int getNum_max() {
+        return num_max;
+    }
+
+    public void setNum_max(int num_max) {
+        this.num_max = num_max;
     }
 
     public String getComments() {
@@ -63,14 +71,34 @@ public class MoviesEntity {
         this.comments = comments;
     }
 
+    public String getCreated_by() {
+        return created_by;
+    }
+
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
+    }
+
+    public String getMovie() {
+        return movie;
+    }
+
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
+
+    //endregion
+
     @Override
     public String toString() {
         return "MoviesEntity{" +
-                "time=" + time +
-                ", date=" + date +
+                "date='" + date + '\'' +
                 ", location='" + location + '\'' +
-                ", attending=" + attending +
+                ", time='" + time + '\'' +
+                ", num_max=" + num_max +
                 ", comments='" + comments + '\'' +
+                ", created_by='" + created_by + '\'' +
+                ", movie='" + movie + '\'' +
                 '}';
     }
 }
