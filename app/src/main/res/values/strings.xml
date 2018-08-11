@@ -1,10 +1,9 @@
 <!DOCTYPE resources [<!ENTITY clientId "57b97596-0bf3-4fe7-8250-31e0f9ea90c7">]>
 <resources>
-    <string name="app_name">Beach Rendezvous</string>
+    <string name="app_name">Beach Rendez-vous</string>
     <string name="nav_home">Home</string>
     <string name="nav_search">Search</string>
     <string name="nav_create">Create</string>
-    <string name="title_activity_login">Beach Rendez-vous</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign In</string>
@@ -51,4 +50,8 @@
     <string name="label_duration">Duration:</string>
     <string name="tv_event_type">Type of Event</string>
     <string name="hint_dateFormat">MM/DD/YYYY</string>
+    <string name="question_01">Q: Is this app the official meet-up app of CSULB?</string>
+    <string name="answer_01">A: Not yet! It is our hope that, eventually, it will be.</string>
+    <string name="question_02">Q: How much of my personal information is collected by this app?</string>
+    <string name="answer_02">A: Your school-associated e-mail and your full name (as supplied to the school) is all that we gather.</string>
 </resources>
