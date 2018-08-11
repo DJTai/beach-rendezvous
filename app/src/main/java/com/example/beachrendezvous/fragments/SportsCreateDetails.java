@@ -58,12 +58,12 @@ public class SportsCreateDetails extends Fragment {
     @BindView(R.id.createEvent_commentLabel)
     TextView commentTextView;
 
-    public SportsCreateDetails () {
+    public SportsCreateDetails() {
         // Required empty public constructor
     }
 
     @OnClick(R.id.sportsCreate_btn)
-    void joinClicked () {
+    void joinClicked() {
 
         try {
            // Toast.makeText(getContext(), "create button clicked", Toast.LENGTH_SHORT).show();
@@ -73,8 +73,8 @@ public class SportsCreateDetails extends Fragment {
             EditText duration = (EditText)view.findViewById(R.id.createEvent_DurationText);
             EditText people = (EditText)view.findViewById(R.id.createEvent_numText);
             String dob_var;
-            TextView comments = (TextView)view.findViewById(R.id.createEvent_commentText);
-             dob_var = date.getText().toString();
+            TextView comments = (TextView) view.findViewById(R.id.createEvent_commentText);
+            dob_var = date.getText().toString();
             String time1 = time.getText().toString();
             SportsEntity eventdetais=new SportsEntity(name, time1,duration.getText().toString(),dob_var,place.getSelectedItem().toString(),people.getText().toString(),comments.getText().toString(), mParam);
            // Toast.makeText(getContext(), eventdetais.getDate().toString(), Toast.LENGTH_SHORT).show();
@@ -84,9 +84,7 @@ public class SportsCreateDetails extends Fragment {
             databaseSports.child(id).setValue(eventdetais);
 
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             Log.i("Exception", e.toString());
@@ -96,12 +94,12 @@ public class SportsCreateDetails extends Fragment {
 
 
     @Override
-    public void onCreate (Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
             mParam = getArguments().getString(ARG_PARAM1);
-            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i(TAG, "onCreate: mParam = " + mParam);
         }
 
@@ -116,7 +114,8 @@ public class SportsCreateDetails extends Fragment {
         list.add("USU");
         list.add("Student Recreation Center");
         list.add("Near Brotman Hall");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(
+                getActivity().getApplicationContext(),
                 simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
@@ -124,15 +123,14 @@ public class SportsCreateDetails extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView (@NonNull LayoutInflater inflater,
-                              @Nullable ViewGroup container,
-                              @Nullable Bundle savedInstanceState) {
-
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
 
         if (mParam != null) {
-                Log.i(TAG, "sports create details");
-                view = inflater.inflate(R.layout.fragment_sports_create_event, container, false);
+            Log.i(TAG, "sports create details");
+            view = inflater.inflate(R.layout.fragment_sports_create_event, container, false);
             addItemsOnSpinner(view);
 
 

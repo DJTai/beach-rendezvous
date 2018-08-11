@@ -1,8 +1,5 @@
 package com.example.beachrendezvous.database;
 
-import java.sql.Time;
-import java.util.Date;
-
 public class MoviesEntity {
 
     private String date;
