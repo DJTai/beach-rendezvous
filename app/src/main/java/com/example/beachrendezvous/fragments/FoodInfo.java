@@ -156,7 +156,8 @@ public class FoodInfo extends Fragment {
                 "OPA! Greek",
                 "Hibachi San",
                 "Panda Express",
-                "Squeeze Me"
+                "Squeeze Me",
+                ""
         };
 
         return restaurants;
