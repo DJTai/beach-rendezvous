@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/gameheader"
+            android:id="@+id/mainMenuHeader"
             android:layout_width="match_parent"
             android:layout_height="95dp"
             android:gravity="center"
