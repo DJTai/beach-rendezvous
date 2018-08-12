@@ -75,6 +75,9 @@ public class SportsCreateDetails extends Fragment {
 
             String id = databaseSports.push().getKey();
             databaseSports.child(id).setValue(eventdetais);
+            DatabaseReference mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child(name).child("Event_Id");
+            mDatabaseReference.child(id).setValue(mParam);
+
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -141,6 +144,7 @@ public class SportsCreateDetails extends Fragment {
             mParam = getArguments().getString(ARG_PARAM1);
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i(TAG, "onCreate: mParam = " + mParam);
+
         }
 
         databaseSports = FirebaseDatabase.getInstance().getReference(mParam);
