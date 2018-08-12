@@ -26,12 +26,11 @@ public class SubMenu extends Fragment {
     private static final String DEBUG = "debug";
     private static final String ARG_PARAM = "param";
     private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
     /* Parameter to determine the context of the SubMenu fragment, e.g., Creating or Searching */
     private String mParam;
     String name;
-
-//    private OnFragmentInteractionListener mListener;
 
     Unbinder mUnbinder;
 
@@ -41,17 +40,29 @@ public class SubMenu extends Fragment {
         if (mParam != null) {
             String msg = "";
             if (mParam.equals("search")) {
-
                 // TODO: Handle searching for food
                 msg = "search food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
 
 
             } else {
-
                 // TODO: Handle creating an event for food
                 msg = "create food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+
+                Fragment fragment = new FoodInfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1, "create");
+                args.putString(ARG_PARAM2, "food");
+                args.putString(MainActivity.ARG_GIVEN_NAME, name);
+                fragment.setArguments(args);
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, fragment)
+                        .addToBackStack(ARG_PARAM1)
+                        .commit();
             }
         }
     }
@@ -61,13 +72,11 @@ public class SubMenu extends Fragment {
         if (mParam != null) {
             String msg = "";
             if (mParam.equals("search")) {
-
                 // TODO: Handle searching for a movie
                 msg = "search movies opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
 
             } else {
-
                 // TODO: Handle creating an event for a movie
                 msg = "create movies opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
@@ -80,8 +89,6 @@ public class SubMenu extends Fragment {
         if (mParam != null) {
             String msg = "";
             if (mParam.equals("search")) {
-
-                // TODO: Open SportsSearchDetails fragment
                 msg = "search sports opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
                 Fragment f = new sportinfo();
@@ -93,12 +100,10 @@ public class SubMenu extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction
                         .replace(R.id.frame_fragment, f)
-                        .addToBackStack("search")
+                        .addToBackStack(ARG_PARAM1)
                         .commit();
 
             } else {
-
-                // TODO: Open SportsCreateDetails fragment
                 msg = "create sports opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
                 Fragment f = new sportinfo();
@@ -111,7 +116,7 @@ public class SubMenu extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction
                         .replace(R.id.frame_fragment, f)
-                        .addToBackStack("create")
+                        .addToBackStack(ARG_PARAM1)
                         .commit();
             }
         }
@@ -167,28 +172,4 @@ public class SubMenu extends Fragment {
         // Unbind view to free some memory
         mUnbinder.unbind();
     }
-
-//    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed (Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-
-//    @Override
-//    public void onAttach (Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                                               + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach () {
-//        super.onDetach();
-//        mListener = null;
-//    }
 }
