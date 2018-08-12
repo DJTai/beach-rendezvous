@@ -41,6 +41,7 @@ public class MainMenu extends Fragment {
     ArrayList<String> type1 = new ArrayList<>();
     ArrayList<String> date1 = new ArrayList<>();
     ArrayList<String> place1 = new ArrayList<>();
+    ArrayList<String> admin = new ArrayList<>();
     ArrayList<SportsEntity> entityObjects = new ArrayList<>();
     FragmentManager mFragManager;
     FirebaseDatabase mFirebaseDatabase;
@@ -70,12 +71,20 @@ public class MainMenu extends Fragment {
                             SportsEntity sportsevent = dataSnapshot.getValue(
                               SportsEntity.class);
                             Log.i("in menu created", sportsevent.getCreated_by());
+
                             type1.add(sportsevent.getType());
                             date1.add(sportsevent.getDate());
                             place1.add(sportsevent.getLocation());
+                            if(sportsevent.getCreated_by().equals(name))
+                            {
+                                admin.add("My Event");
+                            }
+                            else {
+                                admin.add(sportsevent.getCreated_by());
+                            }
                             sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
                                     getContext().getApplicationContext(), type1, date1, place1,
-                                    sportsevent.getCreated_by());
+                                    admin);
                             //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
                             // .getApplicationContext(), )
                             entityObjects.add(sportsevent);

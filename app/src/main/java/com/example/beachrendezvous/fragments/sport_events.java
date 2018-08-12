@@ -30,7 +30,7 @@ public class sport_events extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
-    private static final String ARG_PARAM2 = "param2";
+    private static final String EVENT_ID="event_id";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -40,7 +40,9 @@ public class sport_events extends Fragment {
     ArrayList<String> type1 = new ArrayList<>();
     ArrayList<String> date1 = new ArrayList<>();
     ArrayList<String> place1 = new ArrayList<>();
+    ArrayList<String> admin = new ArrayList<>();
     ArrayList<SportsEntity> entityObjects = new ArrayList<>();
+    ArrayList<String> event_id = new ArrayList<>();
     FragmentManager mFragManager;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
@@ -62,14 +64,14 @@ public class sport_events extends Fragment {
                     // - DataSnapshot will contain the message that just got added to the DB
                     SportsEntity sportsevent = dataSnapshot.getValue(
                             SportsEntity.class);    // Deserialize msg from DB -> POJO
-                    Log.i("in sports event", dataSnapshot.getKey());
-
+                    event_id.add(dataSnapshot.getKey());
                     type1.add(sportsevent.getType());
                     date1.add(sportsevent.getDate());
                     place1.add(sportsevent.getLocation());
+                    admin.add(sportsevent.getCreated_by());
                     sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
                             getContext().getApplicationContext(), type1, date1, place1,
-                            sportsevent.getCreated_by());
+                            admin);
                     //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
                     // .getApplicationContext(), )
                     entityObjects.add(sportsevent);
@@ -109,7 +111,7 @@ public class sport_events extends Fragment {
 
             // Get the type of sport
             mParam1 = getArguments().getString(ARG_PARAM1);
-
+            Log.i("in sportevnts argu size",Integer.toString(getArguments().size()));
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mDatabaseReference = mFirebaseDatabase.getReference().child(mParam1);
@@ -145,6 +147,8 @@ public class sport_events extends Fragment {
                         Bundle args = new Bundle();
                         args.putString(ARG_PARAM1, mParam1);
                         args.putString(MainActivity.ARG_GIVEN_NAME, name);
+                        Log.i("name in sportevent",name);
+                        args.putString(EVENT_ID,event_id.get(i));
                         f.setArguments(args);
                         args.putSerializable("entityObject", entityObjects.get(i));
 
