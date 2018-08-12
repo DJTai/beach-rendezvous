@@ -51,6 +51,7 @@ public class MainActivity
     private final String home = "home";
     private final String search = "search";
     private final String create = "create";
+    public static int bottomNavHeight;
 
     //endregion
 
@@ -157,6 +158,8 @@ public class MainActivity
                         }
                     }
                 });
+
+        bottomNavHeight = navigation.getMeasuredHeight();
     }
 
     /**
