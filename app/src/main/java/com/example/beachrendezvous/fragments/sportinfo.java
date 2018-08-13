@@ -100,6 +100,7 @@ public class sportinfo extends Fragment {
                             Fragment f = new sport_events();
                             Bundle args = new Bundle();
                             args.putString(ARG_PARAM1, gameNames[i]);
+                            Log.i("name in info", name);
                             args.putString(MainActivity.ARG_GIVEN_NAME, name);
                             f.setArguments(args);
 

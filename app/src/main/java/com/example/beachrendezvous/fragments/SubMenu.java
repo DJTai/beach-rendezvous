@@ -95,6 +95,7 @@ public class SubMenu extends Fragment {
                 Bundle args = new Bundle();
                 args.putString(ARG_PARAM1, "search");
                 args.putString(ARG_PARAM, "sports");
+                args.putString(MainActivity.ARG_GIVEN_NAME, name);
                 f.setArguments(args);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

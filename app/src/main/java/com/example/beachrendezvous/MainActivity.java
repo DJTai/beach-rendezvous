@@ -123,9 +123,13 @@ public class MainActivity
 
         if (savedInstanceState == null) {
             // Don't add initial fragment to back-stack
+            MainMenu mainMenu=new MainMenu();
+            Bundle args = new Bundle();
+            args.putString(ARG_GIVEN_NAME, name);
+            mainMenu.setArguments(args);
             FragmentTransaction fragmentTransaction = mFragManager.beginTransaction();
             fragmentTransaction
-                    .replace(R.id.frame_fragment, new MainMenu())
+                    .replace(R.id.frame_fragment, mainMenu)
                     .commit();
         }
 

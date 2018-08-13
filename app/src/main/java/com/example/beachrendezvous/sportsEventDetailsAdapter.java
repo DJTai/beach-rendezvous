@@ -2,6 +2,7 @@ package com.example.beachrendezvous;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,17 +25,17 @@ public class sportsEventDetailsAdapter extends ArrayAdapter<String> {
     ArrayList<String> type1;
     ArrayList<String> date1;
     ArrayList<String> place1;
-    String name;
+    ArrayList<String> admin;
 
     public sportsEventDetailsAdapter(@NonNull Context context, ArrayList<String> type1,
                                      ArrayList<String> date1, ArrayList<String> place1,
-                                     String name) {
+                                     ArrayList<String> admin) {
         super(context, 0);
         this.mContext = context;
         this.type1 = type1;
         this.date1 = date1;
         this.place1 = place1;
-        this.name = name;
+        this.admin = admin;
     }
 
     @Override
@@ -61,8 +62,8 @@ public class sportsEventDetailsAdapter extends ArrayAdapter<String> {
         } else {
             mViewHolder = (ViewHolder) convertView1.getTag();
         }
-
-        mViewHolder.admin.setText(name);
+        Log.i("in adapter name", admin.get(position));
+        mViewHolder.admin.setText(admin.get(position));
         mViewHolder.gametext.setText(type1.get(position));
         mViewHolder.date.setText(date1.get(position));
         mViewHolder.place.setText(place1.get(position));
