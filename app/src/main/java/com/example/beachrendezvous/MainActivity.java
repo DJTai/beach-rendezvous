@@ -147,6 +147,9 @@ public class MainActivity
                                     .getName();
 
                             if (name.equals(home)) {
+                                // FIXME
+                                mFragManager.findFragmentById(R.id.frame_fragment).onResume();
+
                                 shown = navigation.getMenu().getItem(0);
                                 shown.setChecked(true);
                             } else if (name.equals(search)) {
@@ -160,6 +163,8 @@ public class MainActivity
                             shown = navigation.getMenu().getItem(0);
                             shown.setChecked(true);
                         }
+
+
                     }
                 });
 

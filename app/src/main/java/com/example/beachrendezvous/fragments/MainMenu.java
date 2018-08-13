@@ -1,6 +1,8 @@
 package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -28,6 +30,9 @@ import java.util.ArrayList;
 
 
 public class MainMenu extends Fragment {
+
+    private static final String DEBUG = "debug";
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
@@ -47,6 +52,7 @@ public class MainMenu extends Fragment {
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
     ChildEventListener mChildEventListener;
+    private sportsEventDetailsAdapter myAdapter;
 
     public MainMenu() {
         // Required empty public constructor
@@ -82,7 +88,8 @@ public class MainMenu extends Fragment {
                             else {
                                 admin.add(sportsevent.getCreated_by());
                             }
-                            sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
+
+                            myAdapter = new sportsEventDetailsAdapter(
                                     getContext().getApplicationContext(), type1, date1, place1,
                                     admin);
                             //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
@@ -132,7 +139,6 @@ public class MainMenu extends Fragment {
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mDatabaseReference =  mFirebaseDatabase.getReference().child("Users").child(name).child("Event_Id");
             attachDatabaseReadListener();
-
         }
     }
 
@@ -151,9 +157,16 @@ public class MainMenu extends Fragment {
         mListView = (ListView) view.findViewById(R.id.mainMenu_listview);
         attachDatabaseReadListener();
 
-
-
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (myAdapter != null) {
+            // Refresh the list view with the data from Firebase
+            mListView.setAdapter(myAdapter);
+            myAdapter.notifyDataSetChanged();
+        }
+    }
 }
