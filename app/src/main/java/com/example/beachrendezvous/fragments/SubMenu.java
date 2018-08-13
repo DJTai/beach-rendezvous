@@ -44,6 +44,19 @@ public class SubMenu extends Fragment {
                 msg = "search food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
 
+                Fragment fragment = new FoodInfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1, "search");
+                args.putString(ARG_PARAM2, "food");
+                args.putString(MainActivity.ARG_GIVEN_NAME, name);
+                fragment.setArguments(args);
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, fragment)
+                        .addToBackStack(ARG_PARAM1)
+                        .commit();
 
             } else {
                 // TODO: Handle creating an event for food
