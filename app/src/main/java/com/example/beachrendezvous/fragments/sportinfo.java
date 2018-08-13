@@ -62,7 +62,7 @@ public class sportinfo extends Fragment {
 
         if (mParam != null) {
             if (mParam.trim().equals("sports")) {
-                Log.i("serach", "onCreateView: type equals create");
+                Log.i("search", "onCreateView: type equals create");
                 view = inflater.inflate(R.layout.fragment_sportinfo, container, false);
                 TextView header = view.findViewById(R.id.sportsheader);
                 if(mParam1.trim().equals("search"))

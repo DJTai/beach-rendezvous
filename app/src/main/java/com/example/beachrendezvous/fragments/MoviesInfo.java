@@ -1,5 +1,6 @@
 package com.example.beachrendezvous.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,9 +16,11 @@ import android.widget.Toast;
 
 import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
-import com.example.beachrendezvous.sportsListAdapter;
+import com.example.beachrendezvous.moviesListAdapter;
+
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class MoviesInfo extends Fragment {
@@ -35,6 +38,8 @@ public class MoviesInfo extends Fragment {
     public MoviesInfo() {
         // Required empty public constructor
     }
+    //ListView mlistView=(ListView) getActivity().getvi
+
 
     public ListView getmListView() {
         return mListView;
@@ -42,12 +47,11 @@ public class MoviesInfo extends Fragment {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam = getArguments().getString("param");     // param = sports
-            mParam1 = getArguments().getString("param1");   // param1 = search or create
-            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            mParam = getArguments().getString("param");
+            mParam1=getArguments().getString("param1");
+            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             Log.i("search", "onCreate: mParam = " + mParam);
         }
     }
@@ -59,24 +63,22 @@ public class MoviesInfo extends Fragment {
 
         if (mParam != null) {
             if (mParam.trim().equals("sports")) {
-                Log.i("search", "onCreateView: type equals create");
-                view = inflater.inflate(R.layout.fragment_movies_info, container, false);
-                TextView header = view.findViewById(R.id.moviesheader);
-                sportsListAdapter myAdapter;
-
-                if (mParam1.trim().equals("search")) {
-                    // user is searching for a movie event
-                    header.setText(R.string.sport_info_search);
-
-                } else {
-                    // user is creating a sport event
-                    header.setText(R.string.sport_info_create);
+                Log.i("serach", "onCreateView: type equals create");
+                view = inflater.inflate(R.layout.fragment_sportinfo, container, false);
+                TextView header = view.findViewById(R.id.sportsheader);
+                if(mParam1.trim().equals("search"))
+                {
+                    header.setText("You want to watch a movie? \n No Problem, which Movie?");
+                }
+                else
+                {
+                    header.setText("You want to create a movie event? \n No Problem, which movie?");
                 }
 
-                final String[] movieNames = {"MOVIE1", "MOVIE2", "MOVIE3", "MOVIE4",
-                        "MOVIE5", "MOVIE6"};
 
+                final String[] gameNames = {"MOVIE", "MOVIE", "MOVIE", "MOVIE", "MOVIE", "MOVIE"};
                 int[] gameImages = {
+                        //movie images go here
                         R.drawable.soccer,
                         R.drawable.tennis,
                         R.drawable.baseball,
@@ -85,64 +87,65 @@ public class MoviesInfo extends Fragment {
                         R.drawable.softball
                 };
                 Log.d("adapter", "onCreateView: before sports adapter");
-                myAdapter = new sportsListAdapter(getContext().getApplicationContext(), movieNames,
-                        gameImages);
-
+                moviesListAdapter myAdapter = new moviesListAdapter(getContext().getApplicationContext(), gameNames, gameImages);
                 mListView = (ListView) view.findViewById(R.id.listview);
-                mListView.setAdapter(myAdapter);
-                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                mListView.setAdapter(myAdapter); mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        if (mParam1.trim().equals("search")) {
-                            String msg = "games[i]";
+                        if(mParam1.trim().equals("search"))
+                        {
+                            String msg="games[i]";
                             Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                            Fragment f = new sport_events();
+                            Fragment f=new movie_events();
                             Bundle args = new Bundle();
-                            args.putString(ARG_PARAM1, movieNames[i]);
-                            args.putString(MainActivity.ARG_GIVEN_NAME, name);
+                            args.putString(ARG_PARAM1,gameNames[i]);
+                            args.putString(MainActivity.ARG_GIVEN_NAME,name);
                             f.setArguments(args);
-
-                            FragmentManager fragmentManager = getActivity()
-                                    .getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager
-                                    .beginTransaction();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction
                                     .replace(R.id.frame_fragment, f)
                                     .addToBackStack("search")
                                     .commit();
 
-                        } else if (mParam1.equals("create")) {
+                        }
+                        else if(mParam1.equals("create"))
+                        {
 
-                            Fragment f = new SportsCreateDetails();
+                            Fragment f=new MoviesCreateDetails();
                             Bundle args = new Bundle();
-                            args.putString(ARG_PARAM1, movieNames[i]);
-                            args.putString(MainActivity.ARG_GIVEN_NAME, name);
+                            args.putString(ARG_PARAM1,gameNames[i]);
+                            args.putString(MainActivity.ARG_GIVEN_NAME,name);
                             f.setArguments(args);
-
-                            FragmentManager fragmentManager = getActivity()
-                                    .getSupportFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager
-                                    .beginTransaction();
+                            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                             fragmentTransaction
                                     .replace(R.id.frame_fragment, f)
                                     .addToBackStack("create")
                                     .commit();
+
                         }
+
+
                     }
                 });
             } else {
-                Log.i("search", "onCreateView: type not equal to create, mparam=" + mParam);
-                view = inflater.inflate(R.layout.fragment_movies_info, container, false);
-                TextView header = view.findViewById(R.id.moviesheader);
+                Log.i("search", "onCreateView: type not equal to create, mparam="+mParam);
+                view = inflater.inflate(R.layout.fragment_sportinfo, container, false);
+                TextView header = view.findViewById(R.id.sportsheader);
                 header.setText(R.string.action_info);
             }
         }
-        Log.i("search", "on search view:  mparam=" + mParam);
+        Log.i("search", "on search view:  mparam="+mParam);
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
 
+
         return view;
+
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this
