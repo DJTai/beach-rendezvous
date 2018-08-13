@@ -123,7 +123,7 @@ public class MainActivity
 
         if (savedInstanceState == null) {
             // Don't add initial fragment to back-stack
-            MainMenu mainMenu=new MainMenu();
+            MainMenu mainMenu = new MainMenu();
             Bundle args = new Bundle();
             args.putString(ARG_GIVEN_NAME, name);
             mainMenu.setArguments(args);

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,18 +19,30 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class FoodInfo extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";    // Refers to search OR create
     private static final String ARG_PARAM2 = "param2";    // Refers to food
 
-    // TODO: Rename and change types of parameters
+    //region References
+
+    /** Value retrieved from ARG_PARAM1 key */
     private String mParam1;
+
+    /** Value retrieved from ARG_PARAM2 key */
     private String mParam2;
+
+    /** ButterKnife Unbinder */
     private Unbinder mUnbinder;
+
+    /** ListView for displaying the food events */
     private ListView mListView;
+
+    /** Food event creator's name */
     String name;
 
+    //endregion
+
+    //region Constructors
     public FoodInfo() {
         // Required empty public constructor
     }
@@ -53,6 +64,7 @@ public class FoodInfo extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    //endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
