@@ -62,6 +62,7 @@ public class sport_events extends Fragment {
                     // - DataSnapshot will contain the message that just got added to the DB
                     SportsEntity sportsevent = dataSnapshot.getValue(
                             SportsEntity.class);    // Deserialize msg from DB -> POJO
+                    Log.i("in sports event", dataSnapshot.getKey());
 
                     type1.add(sportsevent.getType());
                     date1.add(sportsevent.getDate());
