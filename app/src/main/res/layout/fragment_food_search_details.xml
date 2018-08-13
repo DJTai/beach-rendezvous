@@ -6,17 +6,15 @@
     android:layout_height="wrap_content"
     tools:context=".fragments.FoodSearchDetails">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ScrollView
         android:id="@+id/searchEvent_scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/foodSearch_constLay"
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/foodSearch_eventType"
@@ -28,7 +26,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/tv_event_type"
+                android:text="TYPE OF EVENT"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -36,220 +34,208 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_datePlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="100dp" />
+
             <TextView
                 android:id="@+id/foodSearch_dateLabel"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:fontFamily="sans-serif-medium"
+                android:paddingBottom="8dp"
                 android:text="@string/label_date"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_datePlace"
-                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_datePlace"
                 app:layout_constraintStart_toStartOf="parent" />
-
 
             <TextView
                 android:id="@+id/searchEvent_dateText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_width="242dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
+                android:inputType="date"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_datePlace"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guide_foodSearch_datePlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="103dp" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/foodSearch_dateLabel"/>
 
             <TextView
                 android:id="@+id/searchEvent_placeLabel"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/label_place"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_placeTime"
-                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_placeTime"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_datePlace" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_datePlace" />
 
             <TextView
                 android:id="@+id/searchEvent_placeText"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_placeTime"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
-                app:layout_constraintTop_toBottomOf="@+id/searchEvent_dateText" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guide_foodSearch_placeTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="155dp" />
-
-            <TextView
-                android:id="@+id/searchEvent_timeLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/label_time"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_timeNum"
-                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_placeTime" />
-
-            <TextView
-                android:id="@+id/searchEvent_timeText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_timeNum"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_placeTime" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guide_foodSearch_timeNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="220dp" />
-
-            <TextView
-                android:id="@+id/searchEvent_numOfPeople"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/label_num_people"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_placeTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.689"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_placeLabel"
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_dateText"
+                app:layout_constraintVertical_bias="0.85" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_placeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="150dp" />
+
+            <TextView
+                android:id="@+id/searchEvent_timeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/label_time"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numDuration"
-                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_timeNum"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_timeNum" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_placeTime" />
+
+            <TextView
+                android:id="@+id/searchEvent_timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="2dp"
+                android:ems="10"
+                android:hint="HH:MM"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                android:inputType="time"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_timeNum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.69"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_timeLabel"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_placeTime"
+                app:layout_constraintVertical_bias="0.6" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_timeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="210dp" />
+
+            <TextView
+                android:id="@+id/searchEvent_numOfPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/label_num_people"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum" />
 
             <TextView
                 android:id="@+id/searchEvent_numText"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginTop="2dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
+                android:inputType="number"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numDuration"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numComments"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_timeNum" />
+                app:layout_constraintHorizontal_bias="0.566"
+                app:layout_constraintStart_toEndOf="@+id/searchEvent_numOfPeople"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_timeNum"
+                app:layout_constraintVertical_bias="0.5" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_search_numDuration"
+                android:id="@+id/guideline_search_numComments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="313dp" />
-
-            <TextView
-                android:id="@+id/searchEvent_Duration"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/label_duration"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_DurationComments"
-                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_numDuration" />
-
-            <TextView
-                android:id="@+id/searchEvent_DurationText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_DurationComments"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_numDuration" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guideline_search_DurationComments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="370dp" />
+                app:layout_constraintGuide_begin="290dp" />
 
             <TextView
                 android:id="@+id/searchEvent_commentLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/label_additional_info"
+                android:layout_width="130dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:text="Additional Info:"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/searchEvent_commentText"
-                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_DurationComments" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments"
+                app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
+            <EditText
                 android:id="@+id/searchEvent_commentText"
                 android:layout_width="360dp"
-                android:layout_height="100dp"
-                android:layout_margin="8dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
-                android:gravity="start"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimary"
+                android:inputType="textPersonName"
+                android:padding="4dp"
+                android:text="Any additional Information goes here"
+                android:textColor="@color/colorPrimaryGrey"
                 app:layout_constraintBottom_toTopOf="@+id/foodSearch_btn"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_DurationComments" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_numComments" />
 
             <Button
                 android:id="@+id/foodSearch_btn"
-                android:layout_width="0dp"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="75dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
                 android:layout_marginEnd="28dp"
                 android:layout_marginRight="28dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorAccent"
-                android:text="@string/btn_join"
-                app:layout_constraintBottom_toBottomOf="@id/foodSearch_constLay"
+                android:background="@android:color/holo_orange_light"
+                android:text="Join"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/searchEvent_commentText" />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guide_foodSearch_vert"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="190dp" />
-
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
+
 </FrameLayout>

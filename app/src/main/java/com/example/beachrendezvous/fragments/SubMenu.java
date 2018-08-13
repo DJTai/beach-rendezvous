@@ -46,12 +46,38 @@ public class SubMenu extends Fragment {
                 msg = "search food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
 
+                Fragment f=new FoodInfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1,"search");
+                args.putString(ARG_PARAM,"food");
+                f.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, f)
+                        .addToBackStack("search")
+                        .commit();
+
+
 
             } else {
 
                 // TODO: Handle creating an event for food
                 msg = "create food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+
+                Fragment f=new FoodInfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1,"create");
+                args.putString(ARG_PARAM,"food");
+                args.putString(MainActivity.ARG_GIVEN_NAME,name);
+                f.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, f)
+                        .addToBackStack("create")
+                        .commit();
             }
         }
     }
@@ -66,11 +92,36 @@ public class SubMenu extends Fragment {
                 msg = "search movies opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
 
+                Fragment f=new MoviesInfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1,"search");
+                args.putString(ARG_PARAM,"movies");
+                f.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, f)
+                        .addToBackStack("search")
+                        .commit();
+
             } else {
 
                 // TODO: Handle creating an event for a movie
                 msg = "create movies opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+
+                Fragment f=new MoviesInfo();
+                Bundle args = new Bundle();
+                args.putString(ARG_PARAM1,"create");
+                args.putString(ARG_PARAM,"movies");
+                args.putString(MainActivity.ARG_GIVEN_NAME,name);
+                f.setArguments(args);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction
+                        .replace(R.id.frame_fragment, f)
+                        .addToBackStack("create")
+                        .commit();
             }
         }
     }
