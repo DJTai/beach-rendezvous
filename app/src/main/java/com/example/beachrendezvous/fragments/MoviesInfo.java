@@ -97,7 +97,7 @@ public class MoviesInfo extends Fragment {
                 moviesAdapter = new sportsListAdapter(getContext().getApplicationContext(),
                         getMovies(),
                         getMoviesImages());
-                mListView = view.findViewById(R.id.listView_food);
+                mListView = view.findViewById(R.id.listView_movies);
                 mListView.setAdapter(moviesAdapter);
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -107,7 +107,7 @@ public class MoviesInfo extends Fragment {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
                         if (mParam1.trim().equals("search")) {
-                            fragment = new FoodEvents();
+                            fragment = new MoviesEvents();
                             args = new Bundle();
                             args.putString(ARG_PARAM1, getMovies()[i]);
                             args.putString(MainActivity.ARG_GIVEN_NAME, name);
@@ -122,7 +122,7 @@ public class MoviesInfo extends Fragment {
                                     .commit();
 
                         } else if (mParam1.equals("create")) {
-                            fragment = new FoodCreateDetails();
+                            fragment = new MoviesCreateDetails();
                             args = new Bundle();
                             args.putString(ARG_PARAM1, getMovies()[i]);
                             args.putString(MainActivity.ARG_GIVEN_NAME, name);
