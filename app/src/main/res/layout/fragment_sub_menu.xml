@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/subMenu_header"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -23,9 +23,17 @@
             android:text="@string/submenu_header_create"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/subMenu_btn_food"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guide_headerBtns"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="200dp" />
 
         <Button
             android:id="@+id/subMenu_btn_food"
@@ -40,8 +48,8 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/subMenu_btn_movies"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guide_headerBtns" />
 
         <Button
             android:id="@+id/subMenu_btn_movies"
@@ -57,7 +65,8 @@
             app:layout_constraintBottom_toTopOf="@+id/subMenu_btn_sports"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subMenu_btn_food" />
 
         <Button
             android:id="@+id/subMenu_btn_sports"
@@ -72,7 +81,8 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subMenu_btn_movies" />
 
     </android.support.constraint.ConstraintLayout>
 

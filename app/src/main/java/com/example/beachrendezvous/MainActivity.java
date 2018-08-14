@@ -51,6 +51,7 @@ public class MainActivity
     private final String home = "home";
     private final String search = "search";
     private final String create = "create";
+    public static int bottomNavHeight;
 
     //endregion
 
@@ -122,7 +123,7 @@ public class MainActivity
 
         if (savedInstanceState == null) {
             // Don't add initial fragment to back-stack
-            MainMenu mainMenu=new MainMenu();
+            MainMenu mainMenu = new MainMenu();
             Bundle args = new Bundle();
             args.putString(ARG_GIVEN_NAME, name);
             mainMenu.setArguments(args);
@@ -166,6 +167,8 @@ public class MainActivity
 
                     }
                 });
+
+        bottomNavHeight = navigation.getMeasuredHeight();
     }
 
     /**

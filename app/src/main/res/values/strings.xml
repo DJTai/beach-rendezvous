@@ -54,4 +54,9 @@
     <string name="answer_01">A: Not yet! It is our hope that, eventually, it will be.</string>
     <string name="question_02">Q: How much of my personal information is collected by this app?</string>
     <string name="answer_02">A: Your school-associated e-mail and your full name (as supplied to the school) is all that we gather.</string>
+    <string name="food_info_search">What sounds good to eat??</string>
+    <string name="food_info_create">Where should we go eat at?</string>
+    <string name="movies_info_search">Which movie should we watch??</string>
+    <string name="movies_info_create">Where movie event should we create?</string>
+
 </resources>
