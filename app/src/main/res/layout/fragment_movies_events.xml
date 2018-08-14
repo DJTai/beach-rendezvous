@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/movieeader"
+            android:id="@+id/moviesheader"
             android:layout_width="match_parent"
             android:layout_height="95dp"
             android:gravity="center"
