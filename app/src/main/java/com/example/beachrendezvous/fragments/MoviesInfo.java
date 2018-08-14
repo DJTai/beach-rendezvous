@@ -183,7 +183,4 @@ public class MoviesInfo extends Fragment {
         return moviesImages;
     }
 
-
-
-
 }
