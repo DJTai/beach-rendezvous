@@ -137,7 +137,7 @@ public class MoviesEvents extends Fragment {
         view = inflater.inflate(R.layout.fragment_movies_events, container, false);
 
         Log.d("MoviesEvents", "Setting header");
-        header = (TextView) view.findViewById(R.id.gameheader);
+        header = (TextView) view.findViewById(R.id.moviesheader);
         header.setText("Lets find the place to watch " + mParam1 + "!");
 
         mListView = (ListView) view.findViewById(R.id.listview1);
