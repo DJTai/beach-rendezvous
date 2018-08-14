@@ -39,8 +39,8 @@
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_date"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_datePlace"
-                app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_datePlace"
+                app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
@@ -52,12 +52,12 @@
                 android:focusable="false"
                 android:fontFamily="sans-serif-medium"
                 android:hint="@string/hint_dateFormat"
-                app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_datePlace"
+                app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_sportsCreate_vert" />
+                app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_sportsCreate_datePlace"
+                android:id="@+id/guide_moviesCreate_datePlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -71,11 +71,11 @@
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_place"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_placeTime"
-                app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_placeTime"
+                app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintHorizontal_bias="0.53"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_datePlace"
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_datePlace"
                 app:layout_constraintVertical_bias="0.8" />
 
             <Spinner
@@ -84,13 +84,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:fontFamily="sans-serif-medium"
-                app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_placeTime"
+                app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_placeTime"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintTop_toBottomOf="@+id/createEvent_dateText" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_sportsCreate_placeTime"
+                android:id="@+id/guide_moviesCreate_placeTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -104,10 +104,10 @@
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_time"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_timeNum"
-                app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_timeNum"
+                app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_placeTime" />
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_placeTime" />
 
             <EditText
                 android:id="@+id/createEvent_timeText"
@@ -118,13 +118,13 @@
                 android:focusable="false"
                 android:fontFamily="sans-serif-medium"
                 android:hint="@string/hint_time"
-                app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_timeNum"
+                app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_timeNum"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_sportsCreate_vert"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_placeTime" />
+                app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_placeTime" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_sportsCreate_timeNum"
+                android:id="@+id/guide_moviesCreate_timeNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -140,9 +140,9 @@
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_numDuration"
-                app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_timeNum" />
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_timeNum" />
 
             <EditText
                 android:id="@+id/createEvent_numText"
@@ -154,8 +154,8 @@
                 android:inputType="number"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_numDuration"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_sportsCreate_vert"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_timeNum" />
+                app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_timeNum" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline_numDuration"
@@ -173,7 +173,7 @@
                 android:text="@string/label_duration"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_DurationComment"
-                app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline_numDuration" />
 
@@ -188,7 +188,7 @@
                 android:inputType="time"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_DurationComment"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintTop_toTopOf="@+id/guideline_numDuration" />
 
             <android.support.constraint.Guideline
@@ -206,7 +206,7 @@
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_additional_info"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline_DurationComment" />
 
@@ -222,13 +222,13 @@
                 android:inputType="textMultiLine"
                 android:padding="8dp"
                 android:textColor="@color/colorPrimary"
-                app:layout_constraintBottom_toTopOf="@+id/sportsCreate_btn"
+                app:layout_constraintBottom_toTopOf="@+id/moviesCreate_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/createEvent_commentLabel" />
 
             <Button
-                android:id="@+id/sportsCreate_btn"
+                android:id="@+id/moviesCreate_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="75dp"
@@ -237,12 +237,12 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/colorAccent"
                 android:text="@string/btn_create"
-                app:layout_constraintBottom_toBottomOf="@id/sportsCreate_constLay"
+                app:layout_constraintBottom_toBottomOf="@id/moviesCreate_constLay"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/createEvent_commentText" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_sportsCreate_vert"
+                android:id="@+id/guide_moviesCreate_vert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
