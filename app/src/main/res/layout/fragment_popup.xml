@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.popup">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/relLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:text="You successfully Joined the Event"
+            android:id="@+id/confirmtext"
+            android:paddingTop="30px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+
+        <Button
+            android:id="@+id/Okbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/confirmtext"
+            android:gravity="center"
+            android:text="Ok" />
+
+    </RelativeLayout>
+
+</FrameLayout>

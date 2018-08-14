@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +51,7 @@ public class SportsCreateDetails extends Fragment {
     Spinner spinner;
     String name;
     View view = null;
+    private static final String CREATE_SEARCH = "createOrSearch";
 
     DatabaseReference databaseSports;
     //endregion
@@ -72,12 +75,25 @@ public class SportsCreateDetails extends Fragment {
             SportsEntity eventdetais = new SportsEntity(name, time1, duration.getText().toString(),
                                                         dob_var, place.getSelectedItem().toString(),
                                                         people.getText().toString(),
-                                                        comments.getText().toString(), mParam);
+                                                        comments.getText().toString(), mParam,people.getText().toString());
 
             String id = databaseSports.push().getKey();
             databaseSports.child(id).setValue(eventdetais);
             DatabaseReference mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child(name).child("Event_Id");
             mDatabaseReference.child(id).setValue(mParam);
+            Fragment f = new popup();
+            Bundle args = new Bundle();
+            args.putString(MainActivity.ARG_GIVEN_NAME, name);
+            args.putString(CREATE_SEARCH,"create");
+            f.setArguments(args);
+            FragmentManager fragmentManager = getActivity()
+                    .getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager
+                    .beginTransaction();
+            fragmentTransaction
+                    .replace(R.id.frame_fragment, f)
+                    .addToBackStack("create")
+                    .commit();
 
 
         } catch (Exception e) {

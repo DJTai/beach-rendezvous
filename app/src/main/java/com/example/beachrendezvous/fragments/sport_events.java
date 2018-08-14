@@ -64,21 +64,25 @@ public class sport_events extends Fragment {
                     // Called whenever a new msg is inserted in the msg's list
                     // Triggered for every child msg in the list when the listener is first attached
                     // - DataSnapshot will contain the message that just got added to the DB
+
                     SportsEntity sportsevent = dataSnapshot.getValue(
                             SportsEntity.class);    // Deserialize msg from DB -> POJO
-                    event_id.add(dataSnapshot.getKey());
-                    type1.add(sportsevent.getType());
-                    date1.add(sportsevent.getDate());
-                    place1.add(sportsevent.getLocation());
-                    admin.add(sportsevent.getCreated_by());
 
-                    myAdapter = new sportsEventDetailsAdapter(
-                            getContext().getApplicationContext(), type1, date1, place1,
-                            admin);
-                    //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
-                    // .getApplicationContext(), )
-                    entityObjects.add(sportsevent);
-                    mListView.setAdapter(myAdapter);
+                        if(!name.equals(sportsevent.getCreated_by()))
+                        {
+                            event_id.add(dataSnapshot.getKey());
+                            type1.add(sportsevent.getType());
+                            date1.add(sportsevent.getDate());
+                            place1.add(sportsevent.getLocation());
+                            admin.add(sportsevent.getCreated_by());
+                            sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
+                                    getContext().getApplicationContext(), type1, date1, place1,
+                                    admin);
+                            //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
+                            // .getApplicationContext(), )
+                            entityObjects.add(sportsevent);
+                            mListView.setAdapter(myAdapter);
+                        }
                 }
 
                 @Override
