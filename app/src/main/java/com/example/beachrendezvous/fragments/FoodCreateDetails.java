@@ -2,22 +2,56 @@ package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.beachrendezvous.R;
+import com.google.firebase.database.DatabaseReference;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class FoodCreateDetails extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    //region Bundle parameters
+    private static final String ARG_PARAM1 = "param1";    // Refers to ???
+    private static final String ARG_PARAM2 = "param2";    // Refers to ???
+    private static final String EXCEPTION = "Exception";
     private String mParam1;
     private String mParam2;
+    //endregion
 
+    //region References
+    private Unbinder mUnbinder;
+    private String name;
+    View view = null;
+    private DatabaseReference databaseFood;
+    //endregion
+
+    //region ButterKnife Binds
+    @BindView(R.id.btn_foodCreate)
+    Button mBtnCreate;
+
+    @BindView(R.id.foodCreate_dateText)
+    TextView date;
+
+    @OnClick(R.id.btn_foodCreate)
+    void createClicked() {
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();;
+            Log.i(EXCEPTION, "createClicked: exception = " + e.toString());
+        }
+    }
+    //endregion
+
+    //region Constructors
     public FoodCreateDetails() {
         // Required empty public constructor
     }
@@ -39,6 +73,7 @@ public class FoodCreateDetails extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    //endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

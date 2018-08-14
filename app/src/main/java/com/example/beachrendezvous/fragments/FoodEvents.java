@@ -9,15 +9,19 @@ import android.view.ViewGroup;
 import com.example.beachrendezvous.R;
 
 public class FoodEvents extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    //region Bundle parameters
+    private static final String ARG_PARAM1 = "param1";    // Gives Restaurant
+    private static final String ARG_PARAM2 = "param2";    //
     private String mParam1;
     private String mParam2;
+    //endregion
 
+    //region References
+    
+    //endregion
+
+    //region Constructors
     public FoodEvents() {
         // Required empty public constructor
     }
@@ -39,6 +43,7 @@ public class FoodEvents extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    //endregion
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
