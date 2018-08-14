@@ -141,7 +141,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numDuration"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numLimit"
                 app:layout_constraintEnd_toStartOf="@+id/guide_sportsSearch_vert"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guide_sportsSearch_timeNum" />
@@ -154,17 +154,51 @@
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numDuration"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_numLimit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guide_sportsSearch_vert"
                 app:layout_constraintTop_toTopOf="@+id/guide_sportsSearch_timeNum" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_search_numDuration"
+                android:id="@+id/guideline_search_numLimit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="313dp" />
+                app:layout_constraintGuide_begin="285dp" />
+
+            <TextView
+                android:id="@+id/searchEvent_limit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Limit:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_limitDuration"
+                app:layout_constraintEnd_toStartOf="@+id/guide_sportsSearch_vert"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/searchEvent_limitText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_limitDuration"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_sportsSearch_vert"
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_numLimit" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_limitDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="350dp" />
 
             <TextView
                 android:id="@+id/searchEvent_Duration"
@@ -177,7 +211,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/guideline_search_DurationComments"
                 app:layout_constraintEnd_toStartOf="@+id/guide_sportsSearch_vert"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_numDuration" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_limitDuration" />
 
             <TextView
                 android:id="@+id/searchEvent_DurationText"
@@ -189,14 +223,14 @@
                 app:layout_constraintBottom_toTopOf="@+id/guideline_search_DurationComments"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guide_sportsSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_numDuration" />
+                app:layout_constraintTop_toTopOf="@+id/guideline_search_limitDuration" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline_search_DurationComments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="370dp" />
+                app:layout_constraintGuide_begin="415dp" />
 
             <TextView
                 android:id="@+id/searchEvent_commentLabel"
