@@ -118,7 +118,7 @@ public class MoviesSearchDetails extends Fragment {
 
 
         if (mParam1 != null) {
-            Log.i("Sports Search Details", "Running oncreateView");
+            Log.i("Movies Search Details", "Running oncreateView");
             view = inflater.inflate(R.layout.fragment_movies_search_details, container, false);
             TextView type = view.findViewById(R.id.moviesSearch_eventType);
             TextView date = view.findViewById(R.id.searchEvent_dateText);
