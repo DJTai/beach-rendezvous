@@ -81,7 +81,7 @@ public class FoodInfo extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_food_info, container, false);
-        TextView header = view.findViewById(R.id.header_foodInfo);
+        TextView header = view.findViewById(R.id.header_foodInfo); // fragment_food_info.xml
 
         if (mParam1 != null) {
             if (mParam2.trim().equals("food")) {

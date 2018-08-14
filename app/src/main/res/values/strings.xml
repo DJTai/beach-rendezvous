@@ -56,4 +56,7 @@
     <string name="answer_02">A: Your school-associated e-mail and your full name (as supplied to the school) is all that we gather.</string>
     <string name="food_info_search">What sounds good to eat??</string>
     <string name="food_info_create">Where should we go eat at?</string>
+    <string name="movies_info_search">What sounds good to watch??</string>
+    <string name="movies_info_create">Where movise should we create?</string>
+
 </resources>
