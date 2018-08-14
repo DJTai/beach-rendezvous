@@ -15,6 +15,9 @@ public class FoodEntity {
     /** Max number of people who can attend the event */
     private int num_max;
 
+    /** How long the event is going to last */
+    private int duration;
+
     /** Comments regarding the event, submitted by the creator */
     private String comments;
 
@@ -30,16 +33,18 @@ public class FoodEntity {
         // required empty constructor
     }
 
-    public FoodEntity(String date, String location, String time, int num_max, String comments,
-                      String created_by, String restaurant) {
+    public FoodEntity(String date, String location, String time, int num_max, int duration,
+                      String comments, String created_by, String restaurant) {
         this.date = date;
         this.location = location;
         this.time = time;
         this.num_max = num_max;
+        this.duration = duration;
         this.comments = comments;
         this.created_by = created_by;
         this.restaurant = restaurant;
     }
+
     //endregion
 
     //region Getters & Setters
@@ -60,6 +65,10 @@ public class FoodEntity {
 
     public void setNum_max(int num_max) { this.num_max = num_max; }
 
+    public int getDuration() { return duration; }
+
+    public void setDuration(int duration) { this.duration = duration; }
+
     public String getComments() { return comments; }
 
     public void setComments(String comments) { this.comments = comments; }
@@ -74,6 +83,7 @@ public class FoodEntity {
 
     //endregion
 
+
     @Override
     public String toString() {
         return "FoodEntity{" +
@@ -81,6 +91,7 @@ public class FoodEntity {
                 ", location='" + location + '\'' +
                 ", time='" + time + '\'' +
                 ", num_max=" + num_max +
+                ", duration=" + duration +
                 ", comments='" + comments + '\'' +
                 ", created_by='" + created_by + '\'' +
                 ", restaurant='" + restaurant + '\'' +
