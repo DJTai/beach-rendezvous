@@ -7,7 +7,7 @@
     tools:context=".fragments.MoviesSearchDetails">
 
     <ScrollView
-        android:id="@+id/createEvent_scrollView"
+        android:id="@+id/searchEvent_scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -44,7 +44,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/createEvent_dateText"
+                android:id="@+id/searchEvent_dateText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -64,7 +64,7 @@
                 app:layout_constraintGuide_begin="103dp" />
 
             <TextView
-                android:id="@+id/createEvent_placeLabel"
+                android:id="@+id/searchEvent_placeLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -79,7 +79,7 @@
                 app:layout_constraintVertical_bias="0.8" />
 
             <Spinner
-                android:id="@+id/createEvent_placeText"
+                android:id="@+id/searchEvent_placeText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -87,7 +87,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_placeTime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintTop_toBottomOf="@+id/createEvent_dateText" />
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_dateText" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guide_moviesSearch_placeTime"
@@ -97,7 +97,7 @@
                 app:layout_constraintGuide_begin="155dp" />
 
             <TextView
-                android:id="@+id/createEvent_timeLabel"
+                android:id="@+id/searchEvent_timeLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -107,10 +107,10 @@
                 app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_timeNum"
                 app:layout_constraintEnd_toStartOf="@+id/guide_moviesSearch_vert"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_placeTime" />
+                app:layout_constraintTop_toTopOf="@+id/guide_sportsSearch_placeTime" />
 
             <EditText
-                android:id="@+id/createEvent_timeText"
+                android:id="@+id/searchEvent_timeText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -121,7 +121,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_timeNum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_placeTime" />
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesSearch_placeTime" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guide_moviesSearch_timeNum"
@@ -131,7 +131,7 @@
                 app:layout_constraintGuide_begin="220dp" />
 
             <TextView
-                android:id="@+id/createEvent_numOfPeople"
+                android:id="@+id/searchEvent_numOfPeople"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -145,7 +145,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guide_moviesSearch_timeNum" />
 
             <EditText
-                android:id="@+id/createEvent_numText"
+                android:id="@+id/searchEvent_numText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -165,7 +165,7 @@
                 app:layout_constraintGuide_begin="276dp" />
 
             <TextView
-                android:id="@+id/createEvent_Duration"
+                android:id="@+id/searchEvent_Duration"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -178,7 +178,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline_numDuration" />
 
             <EditText
-                android:id="@+id/createEvent_DurationText"
+                android:id="@+id/searchEvent_DurationText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -199,7 +199,7 @@
                 app:layout_constraintGuide_begin="331dp" />
 
             <TextView
-                android:id="@+id/createEvent_commentLabel"
+                android:id="@+id/searchEvent_commentLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -211,7 +211,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline_DurationComment" />
 
             <EditText
-                android:id="@+id/createEvent_commentText"
+                android:id="@+id/searchEvent_commentText"
                 android:layout_width="360dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
@@ -225,7 +225,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/moviesSearch_btn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/createEvent_commentLabel" />
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_commentLabel" />
 
             <Button
                 android:id="@+id/moviesSearch_btn"
@@ -236,10 +236,10 @@
                 android:layout_marginRight="28dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorAccent"
-                android:text="@string/btn_create"
+                android:text="@string/btn_join"
                 app:layout_constraintBottom_toBottomOf="@id/moviesSearch_constLay"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/createEvent_commentText" />
+                app:layout_constraintTop_toBottomOf="@+id/searchEvent_commentText" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guide_moviesSearch_vert"
