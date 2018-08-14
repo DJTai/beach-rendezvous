@@ -31,6 +31,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_foodCreate_labelDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="65dp" />
+
             <TextView
                 android:id="@+id/foodCreate_dateLabel"
                 android:layout_width="0dp"
@@ -41,7 +48,8 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_foodCreate_datePlace"
                 app:layout_constraintEnd_toStartOf="@+id/guide_foodCreate_vert"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodCreate_labelDate" />
 
             <EditText
                 android:id="@+id/foodCreate_dateText"
@@ -54,14 +62,15 @@
                 android:hint="@string/hint_dateFormat"
                 app:layout_constraintBottom_toTopOf="@+id/guide_foodCreate_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_foodCreate_vert" />
+                app:layout_constraintStart_toStartOf="@+id/guide_foodCreate_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodCreate_labelDate" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guide_foodCreate_datePlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="103dp" />
+                app:layout_constraintGuide_begin="130dp" />
 
             <TextView
                 android:id="@+id/foodCreate_placeLabel"
@@ -73,10 +82,8 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_foodCreate_placeTime"
                 app:layout_constraintEnd_toStartOf="@+id/guide_foodCreate_vert"
-                app:layout_constraintHorizontal_bias="0.53"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_foodCreate_datePlace"
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintTop_toTopOf="@+id/guide_foodCreate_datePlace" />
 
             <TextView
                 android:id="@+id/foodCreate_placeText"
@@ -94,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="155dp" />
+                app:layout_constraintGuide_begin="195dp" />
 
             <TextView
                 android:id="@+id/foodCreate_timeLabel"
@@ -128,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="220dp" />
+                app:layout_constraintGuide_begin="260dp" />
 
             <TextView
                 android:id="@+id/foodCreate_numOfPeople"
@@ -162,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="276dp" />
+                app:layout_constraintGuide_begin="325dp" />
 
             <TextView
                 android:id="@+id/foodCreate_Duration"
@@ -178,7 +185,7 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline_numDuration" />
 
             <EditText
-                android:id="@+id/foodCreate_DurationText"
+                android:id="@+id/foodCreate_durationText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -196,7 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="331dp" />
+                app:layout_constraintGuide_begin="390dp" />
 
             <TextView
                 android:id="@+id/foodCreate_commentLabel"
@@ -218,6 +225,7 @@
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
+                android:gravity="left"
                 android:hint="@string/hint_additional_info"
                 android:inputType="textMultiLine"
                 android:padding="8dp"
