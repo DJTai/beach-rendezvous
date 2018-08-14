@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/acme</item>
+        <item>@font/atomic_age</item>
+        <item>@font/gentium_book_basic_bold</item>
         <item>@font/josefin_sans_italic</item>
+        <item>@font/martel_sans_bold</item>
     </array>
 </resources>
