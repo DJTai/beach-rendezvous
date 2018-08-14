@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.eventDetails">
+
+    <ScrollView
+        android:id="@+id/searchEvent_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/sportsSearch_constLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="168dp">
+
+            <TextView
+                android:id="@+id/eventDetails_eventType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/tv_event_type"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/eventDetails_dateLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_date"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_eventDetails_datePlace"
+                app:layout_constraintEnd_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/eventDetails_dateText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="sans-serif-medium"
+                app:layout_constraintBottom_toTopOf="@+id/guide_eventDetails_datePlace"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_eventDetails_vert" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_eventDetails_datePlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="103dp" />
+
+            <TextView
+                android:id="@+id/eventDetails_placeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_place"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_eventDetails_placeTime"
+                app:layout_constraintEnd_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintHorizontal_bias="0.53"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_eventDetails_datePlace"
+
+                app:layout_constraintVertical_bias="0.8" />
+
+            <TextView
+                android:id="@+id/eventDetails_placeText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_eventDetails_placeTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintTop_toBottomOf="@+id/eventDetails_dateText" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_eventDetails_placeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="155dp" />
+
+            <TextView
+                android:id="@+id/eventDetails_timeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_time"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_eventDetails_timeNum"
+                app:layout_constraintEnd_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_eventDetails_placeTime" />
+
+            <TextView
+                android:id="@+id/eventDetails_timeText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_eventDetails_timeNum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_eventDetails_placeTime" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_eventDetails_timeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="220dp" />
+
+            <TextView
+                android:id="@+id/eventDetails_numOfPeople"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_num_people"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_eventDetails_numLimit"
+                app:layout_constraintEnd_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_eventDetails_timeNum" />
+
+            <TextView
+                android:id="@+id/eventDetails_numText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_eventDetails_numLimit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_eventDetails_timeNum" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_eventDetails_numLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="285dp" />
+
+            <TextView
+                android:id="@+id/eventDetails_limit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Limit:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_eventDetails_limitDuration"
+                app:layout_constraintEnd_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/eventDetails_limitText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_eventDetails_limitDuration"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintTop_toTopOf="@+id/guideline_eventDetails_numLimit" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_eventDetails_limitDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="350dp" />
+
+            <TextView
+                android:id="@+id/eventDetails_Duration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_duration"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_eventDetails_DurationComments"
+                app:layout_constraintEnd_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_eventDetails_limitDuration" />
+
+            <TextView
+                android:id="@+id/eventDetails_DurationText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_eventDetails_DurationComments"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintTop_toTopOf="@+id/guideline_eventDetails_limitDuration" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_eventDetails_DurationComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="415dp" />
+
+            <TextView
+                android:id="@+id/eventDetails_commentLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_additional_info"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/eventDetails_commentText"
+                app:layout_constraintEnd_toStartOf="@+id/guide_eventDetails_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_eventDetails_DurationComments" />
+
+            <TextView
+                android:id="@+id/eventDetails_commentText"
+                android:layout_width="360dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/martel_sans_bold"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_eventDetails_DurationComments" />
+
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_eventDetails_vert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="190dp" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</FrameLayout>
