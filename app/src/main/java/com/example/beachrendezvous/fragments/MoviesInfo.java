@@ -160,10 +160,9 @@ public class MoviesInfo extends Fragment {
         String[] movies = {
                 "Titanic",
                 "Creed",
-                "Thor Ragnaorok",
+                "Thor Ragnarok",
                 "Justice League",
-                "Coco",
-                ""
+                "Coco"
         };
 
         return movies;
