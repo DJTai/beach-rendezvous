@@ -57,6 +57,9 @@
         <meta-data
             android:name="com.microsoft.identity.client.ClientId"
             android:value="@string/client_Id" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

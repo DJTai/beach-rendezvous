@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 
 public class sport_events extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
@@ -47,6 +48,7 @@ public class sport_events extends Fragment {
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
     ChildEventListener mChildEventListener;
+    private sportsEventDetailsAdapter myAdapter;
 
     public sport_events() {
         // Required empty public constructor
@@ -65,6 +67,7 @@ public class sport_events extends Fragment {
 
                     SportsEntity sportsevent = dataSnapshot.getValue(
                             SportsEntity.class);    // Deserialize msg from DB -> POJO
+
                         if(!name.equals(sportsevent.getCreated_by()))
                         {
                             event_id.add(dataSnapshot.getKey());
@@ -80,7 +83,6 @@ public class sport_events extends Fragment {
                             entityObjects.add(sportsevent);
                             mListView.setAdapter(myAdapter);
                         }
-
                 }
 
                 @Override
@@ -172,4 +174,13 @@ public class sport_events extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (myAdapter != null) {
+            // Refresh the list view with the data from Firebase
+            mListView.setAdapter(myAdapter);
+            myAdapter.notifyDataSetChanged();
+        }
+    }
 }

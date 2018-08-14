@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.support.v4.app.DialogFragment;
 
 import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
@@ -197,5 +198,10 @@ public class SportsCreateDetails extends Fragment {
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    public void showDatePicker(View v) {
+        DialogFragment newFragment = new BRDatePicker();
+        //newFragment.show(getSupportFragmentManager(), "date picker");
     }
 }
