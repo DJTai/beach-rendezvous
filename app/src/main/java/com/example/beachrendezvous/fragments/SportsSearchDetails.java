@@ -2,6 +2,8 @@ package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +14,11 @@ import android.widget.Toast;
 import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
 import com.example.beachrendezvous.database.SportsEntity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -32,6 +37,7 @@ public class SportsSearchDetails extends Fragment {
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
     private static final String ARG_PARAM2 = "param2";
+    private static final String CREATE_SEARCH = "createOrSearch";
     String event_id;
     String name;
     Unbinder mUnbinder;
@@ -45,12 +51,44 @@ public class SportsSearchDetails extends Fragment {
 
     @OnClick(R.id.sportsSearch_btn)
     void joinClicked() {
-        Toast.makeText(getContext(), "join clicked", Toast.LENGTH_SHORT).show();
-        Log.d("name",name);
-        Log.d("event id",event_id);
-        Log.d("mparam1",mParam1);
-        DatabaseReference mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(name).child("Event_Id");
-        mDatabaseReference.child(event_id).setValue(mParam1);
+
+        final DatabaseReference mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users")
+                .child(name).child("Event_Id");//.child(event_id);
+       // mDatabaseReference.setValue(mParam1);
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.hasChild(event_id)) {
+                    // run some code
+                }
+                else
+                {
+                    mDatabaseReference.child(event_id).setValue(mParam1);
+                    int limit=Integer.parseInt(sportsEntity.getLimit())-1;
+                    DatabaseReference mDatabaseReference1= FirebaseDatabase.getInstance().getReference().child(mParam1).child(event_id);
+                    mDatabaseReference1.child("limit").setValue(Integer.toString(limit));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        Fragment f = new popup();
+        Bundle args = new Bundle();
+        args.putString(MainActivity.ARG_GIVEN_NAME, name);
+        args.putString(CREATE_SEARCH,"search");
+        f.setArguments(args);
+              FragmentManager fragmentManager = getActivity()
+                .getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager
+                .beginTransaction();
+        fragmentTransaction
+                .replace(R.id.frame_fragment, f)
+                .addToBackStack("create")
+                .commit();
 
 
 
@@ -90,19 +128,18 @@ public class SportsSearchDetails extends Fragment {
             TextView time = view.findViewById(R.id.searchEvent_timeText);
             time.setText(sportsEntity.getTime());
 
-            Log.i("Sports Search Details", "Running oncreateView");
             TextView people = view.findViewById(R.id.searchEvent_numText);
             people.setText(sportsEntity.getNum_max());
-            Log.i("comments ", sportsEntity.getComments());
+
             TextView additionalInfo = view.findViewById(R.id.searchEvent_commentText);
             additionalInfo.setText(sportsEntity.getComments());
-            Log.i("Duration",sportsEntity.getDuration());
-            TextView duration = view.findViewById(R.id.searchEvent_DurationText);
+
+            TextView duration = view.findViewById(R.id.confirmtext);
             duration.setText(sportsEntity.getDuration());
+            TextView limit = view.findViewById(R.id.searchEvent_limitText);
+            limit.setText(sportsEntity.getLimit());
 
-
-
-        }
+                  }
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
         return view;

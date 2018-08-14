@@ -37,7 +37,7 @@
 
     <string name="client_Id">&clientId;</string>
     <string name="msalPrefix">msal&clientId;</string>
-    <string name="hint_additional_info">Add additional info here</string>
+    <string name="hint_additional_info">Info ...</string>
     <string name="label_additional_info">Additional Info:</string>
     <string name="hint_time">HH:MM</string>
     <string name="btn_join">Join</string>

@@ -14,14 +14,15 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/sportsCreate_constLay"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:minHeight="168dp">
 
             <TextView
                 android:id="@+id/sportsCreate_eventType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/tv_event_type"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
@@ -35,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_date"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_datePlace"
@@ -67,13 +68,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_place"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_placeTime"
                 app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
+                app:layout_constraintHorizontal_bias="0.53"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_datePlace" />
+                app:layout_constraintTop_toTopOf="@+id/guide_sportsCreate_datePlace"
+                app:layout_constraintVertical_bias="0.8" />
 
             <Spinner
                 android:id="@+id/createEvent_placeText"
@@ -98,7 +101,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_time"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_sportsCreate_timeNum"
@@ -132,7 +135,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_numDuration"
@@ -158,14 +162,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="313dp" />
+                app:layout_constraintGuide_begin="276dp" />
 
             <TextView
                 android:id="@+id/createEvent_Duration"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_duration"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_DurationComment"
@@ -192,14 +196,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="370dp" />
+                app:layout_constraintGuide_begin="331dp" />
 
             <TextView
                 android:id="@+id/createEvent_commentLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_additional_info"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/guide_sportsCreate_vert"
@@ -247,6 +251,5 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </FrameLayout>
-
 
 
