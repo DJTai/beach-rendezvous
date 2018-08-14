@@ -134,7 +134,7 @@ public class SportsSearchDetails extends Fragment {
             TextView additionalInfo = view.findViewById(R.id.searchEvent_commentText);
             additionalInfo.setText(sportsEntity.getComments());
 
-            TextView duration = view.findViewById(R.id.confirmtext);
+            TextView duration = view.findViewById(R.id.searchEvent_DurationText);
             duration.setText(sportsEntity.getDuration());
             TextView limit = view.findViewById(R.id.searchEvent_limitText);
             limit.setText(sportsEntity.getLimit());

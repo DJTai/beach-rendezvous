@@ -39,14 +39,16 @@ public class MainMenu extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+   // private String mParam1;
     private String mParam2;
     ListView mListView;
     String name;
+    private static final String EVENT_ID="event_id";
     ArrayList<String> type1 = new ArrayList<>();
     ArrayList<String> date1 = new ArrayList<>();
     ArrayList<String> place1 = new ArrayList<>();
     ArrayList<String> admin = new ArrayList<>();
+    ArrayList<String> event_id = new ArrayList<>();
     ArrayList<SportsEntity> entityObjects = new ArrayList<>();
     FragmentManager mFragManager;
     FirebaseDatabase mFirebaseDatabase;
@@ -77,6 +79,7 @@ public class MainMenu extends Fragment {
                             SportsEntity sportsevent = dataSnapshot.getValue(
                               SportsEntity.class);
                             Log.i("in menu created", sportsevent.getCreated_by());
+                            event_id.add(dataSnapshot.getKey());
 
                             type1.add(sportsevent.getType());
                             date1.add(sportsevent.getDate());
@@ -156,6 +159,32 @@ public class MainMenu extends Fragment {
 
         mListView = (ListView) view.findViewById(R.id.mainMenu_listview);
         attachDatabaseReadListener();
+        mListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        //Toast.makeText(getContext(), mParam1, Toast.LENGTH_SHORT).show();
+                        FragmentManager fragmentManager;
+                        FragmentTransaction fragmentTransaction;
+                        Fragment f = new eventDetails();
+
+                        Bundle args = new Bundle();
+                        //args.putString(ARG_PARAM1, mParam1);
+                        args.putString(MainActivity.ARG_GIVEN_NAME, name);
+                        Log.i("name in sportevent",name);
+                        args.putString(EVENT_ID,event_id.get(i));
+                        f.setArguments(args);
+                        args.putSerializable("entityObject", entityObjects.get(i));
+                        fragmentManager = getActivity().getSupportFragmentManager();
+                        fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction
+                                .replace(R.id.frame_fragment, f)
+                                .addToBackStack("search")
+                                .commit();
+                    }
+                }
+        );
+
 
         return view;
     }
