@@ -1,35 +1,73 @@
 package com.example.beachrendezvous.database;
 
-public class MoviesEntity {
+import java.io.Serializable;
 
+public class MoviesEntity implements Serializable {
+
+    private String time;
     private String date;
     private String location;
-    private String time;
-    private int num_max;
+    private String num_max;
     private String comments;
     private String created_by;
-    private String movie;
+    private String type;
+    private String duration;
+    private String limit;
 
-    //region Constructors
 
     public MoviesEntity() {
-        // required empty constructor
     }
 
-    public MoviesEntity(String date, String location, String time, int num_max,
-                        String comments, String created_by, String movie) {
+    public MoviesEntity(String created_by, String time, String duration, String date,
+                        String location, String num_max, String comments, String type, String limit) {
+        this.time = time;
+        this.duration = duration;
         this.date = date;
         this.location = location;
-        this.time = time;
         this.num_max = num_max;
         this.comments = comments;
         this.created_by = created_by;
-        this.movie = movie;
+        this.type = type;
+        this.limit=limit;
     }
 
     //endregion
 
-    //region Getters and Setters
+    //region Getters & Setters
+
+    public  String  getLimit()
+    {
+        return  limit;
+
+    }
+    public void setLimit(String limit)
+    {
+        this.limit=limit;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getCreated_by() {
+        return created_by;
+    }
+
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getDate() {
         return date;
@@ -39,6 +77,15 @@ public class MoviesEntity {
         this.date = date;
     }
 
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+
     public String getLocation() {
         return location;
     }
@@ -47,19 +94,11 @@ public class MoviesEntity {
         this.location = location;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public int getNum_max() {
+    public String getNum_max() {
         return num_max;
     }
 
-    public void setNum_max(int num_max) {
+    public void setNum_max(String num_max) {
         this.num_max = num_max;
     }
 
@@ -71,34 +110,20 @@ public class MoviesEntity {
         this.comments = comments;
     }
 
-    public String getCreated_by() {
-        return created_by;
-    }
-
-    public void setCreated_by(String created_by) {
-        this.created_by = created_by;
-    }
-
-    public String getMovie() {
-        return movie;
-    }
-
-    public void setMovie(String movie) {
-        this.movie = movie;
-    }
-
     //endregion
 
     @Override
     public String toString() {
-        return "MoviesEntity{" +
-                "date='" + date + '\'' +
+        return "MoviesEntity{" + "created_by=" + created_by + "type=" + type +
+                "time=" + time + ", duration=" + duration +", limit=" + limit +
+                ", date=" + date +
                 ", location='" + location + '\'' +
-                ", time='" + time + '\'' +
                 ", num_max=" + num_max +
                 ", comments='" + comments + '\'' +
-                ", created_by='" + created_by + '\'' +
-                ", movie='" + movie + '\'' +
                 '}';
     }
 }
+
+
+
+
