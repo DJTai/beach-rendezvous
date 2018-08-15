@@ -1,6 +1,7 @@
 package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -43,7 +44,7 @@ public class SportsSearchDetails extends Fragment {
     Unbinder mUnbinder;
     View view = null;
     SportsEntity sportsEntity;
-    private static final String EVENT_ID="event_id";
+    private static final String EVENT_ID = "event_id";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -52,20 +53,24 @@ public class SportsSearchDetails extends Fragment {
     @OnClick(R.id.sportsSearch_btn)
     void joinClicked() {
 
-        final DatabaseReference mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users")
-                .child(name).child("Event_Id");//.child(event_id);
-       // mDatabaseReference.setValue(mParam1);
+        final DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference()
+                                                                     .child("Users")
+                                                                     .child(name)
+                                                                     .child("Event_Id");//.child
+        // (event_id);
+        // mDatabaseReference.setValue(mParam1);
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.hasChild(event_id)) {
                     // run some code
-                }
-                else
-                {
+                } else {
                     mDatabaseReference.child(event_id).setValue(mParam1);
-                    int limit=Integer.parseInt(sportsEntity.getLimit())-1;
-                    DatabaseReference mDatabaseReference1= FirebaseDatabase.getInstance().getReference().child(mParam1).child(event_id);
+                    int limit = Integer.parseInt(sportsEntity.getLimit()) - 1;
+                    DatabaseReference mDatabaseReference1 = FirebaseDatabase.getInstance()
+                                                                            .getReference()
+                                                                            .child(mParam1)
+                                                                            .child(event_id);
                     mDatabaseReference1.child("limit").setValue(Integer.toString(limit));
                 }
             }
@@ -79,9 +84,9 @@ public class SportsSearchDetails extends Fragment {
         Fragment f = new popup();
         Bundle args = new Bundle();
         args.putString(MainActivity.ARG_GIVEN_NAME, name);
-        args.putString(CREATE_SEARCH,"search");
+        args.putString(CREATE_SEARCH, "search");
         f.setArguments(args);
-              FragmentManager fragmentManager = getActivity()
+        FragmentManager fragmentManager = getActivity()
                 .getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager
                 .beginTransaction();
@@ -89,7 +94,6 @@ public class SportsSearchDetails extends Fragment {
                 .replace(R.id.frame_fragment, f)
                 .addToBackStack("create")
                 .commit();
-
 
 
     }
@@ -103,8 +107,8 @@ public class SportsSearchDetails extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             //mParam2 = getArguments().getString(ARG_PARAM2);
-            event_id=getArguments().getString(EVENT_ID);
-            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            event_id = getArguments().getString(EVENT_ID);
+            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
 
 
             sportsEntity = (SportsEntity) getArguments().getSerializable("entityObject");
@@ -112,7 +116,7 @@ public class SportsSearchDetails extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -138,8 +142,8 @@ public class SportsSearchDetails extends Fragment {
             duration.setText(sportsEntity.getDuration());
             TextView limit = view.findViewById(R.id.searchEvent_limitText);
             limit.setText(sportsEntity.getLimit());
+        }
 
-                  }
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
         return view;

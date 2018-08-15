@@ -257,7 +257,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="194dp" />
+                app:layout_constraintGuide_end="195dp" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
