@@ -135,6 +135,14 @@ public class FoodEvents extends Fragment {
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
+    }
+
     /**
      * Pull data from Firebase
      */
@@ -193,4 +201,5 @@ public class FoodEvents extends Fragment {
             mDatabaseReference.addChildEventListener(mChildEventListener);
         }
     }
+
 }

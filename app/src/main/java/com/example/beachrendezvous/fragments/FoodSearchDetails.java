@@ -8,15 +8,19 @@ import android.view.ViewGroup;
 
 import com.example.beachrendezvous.R;
 
+import butterknife.Unbinder;
+
 public class FoodSearchDetails extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //region References
+    private Unbinder mUnbinder;
+    //endregion
 
     public FoodSearchDetails() {
         // Required empty public constructor
@@ -54,5 +58,13 @@ public class FoodSearchDetails extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_food_search_details, container, false);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
     }
 }

@@ -251,6 +251,14 @@ public class FoodCreateDetails extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
+    }
+
     /**
      * Validate the date that the user has selected
      *

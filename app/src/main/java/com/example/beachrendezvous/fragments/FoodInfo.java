@@ -144,6 +144,14 @@ public class FoodInfo extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
+    }
+
     /**
      * Retrieves a list of all of the restaurants on campus
      *
