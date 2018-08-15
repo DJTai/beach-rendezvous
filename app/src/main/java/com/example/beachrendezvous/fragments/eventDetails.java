@@ -81,13 +81,10 @@ public class eventDetails extends Fragment {
             place.setText(sportsEntity.getLocation());
             TextView time = view.findViewById(R.id.eventDetails_timeText);
             time.setText(sportsEntity.getTime());
-
             TextView people = view.findViewById(R.id.eventDetails_numText);
             people.setText(sportsEntity.getNum_max());
-
             TextView additionalInfo = view.findViewById(R.id.eventDetails_commentText);
             additionalInfo.setText(sportsEntity.getComments());
-
             TextView duration = view.findViewById(R.id.eventDetails_DurationText);
             duration.setText(sportsEntity.getDuration());
             TextView limit = view.findViewById(R.id.eventDetails_limitText);

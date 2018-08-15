@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +45,9 @@ public class SportsSearchDetails extends Fragment {
     Unbinder mUnbinder;
     View view = null;
     SportsEntity sportsEntity;
-    private static final String EVENT_ID = "event_id";
+    int limit;
+    private static final String EVENT_ID="event_id";
+    String ALREADY_JOINED="alreadyJoined";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -84,7 +87,15 @@ public class SportsSearchDetails extends Fragment {
         Fragment f = new popup();
         Bundle args = new Bundle();
         args.putString(MainActivity.ARG_GIVEN_NAME, name);
-        args.putString(CREATE_SEARCH, "search");
+        args.putString(CREATE_SEARCH,"search");
+        if(limit==Integer.parseInt(sportsEntity.getLimit()))
+        {
+            args.putString(ALREADY_JOINED,"joined");
+        }
+        else
+        {
+            args.putString(ALREADY_JOINED,"new");
+        }
         f.setArguments(args);
         FragmentManager fragmentManager = getActivity()
                 .getSupportFragmentManager();
@@ -140,8 +151,25 @@ public class SportsSearchDetails extends Fragment {
             additionalInfo.setText(sportsEntity.getComments());
             duration.setText(sportsEntity.getDuration());
             limit.setText(sportsEntity.getLimit());
-        }
+            final DatabaseReference mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users")
+                    .child(name).child("Event_Id");//.child(event_id);
+            // mDatabaseReference.setValue(mParam1);
+            mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.hasChild(event_id)) {
+                        Button b=view.findViewById(R.id.sportsSearch_btn);
+                        b.setVisibility(View.GONE);
+                    }
+                                }
 
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+                  }
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
         return view;
