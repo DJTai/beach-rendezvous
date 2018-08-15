@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +72,35 @@ public class SportsCreateDetails extends Fragment {
             String dob_var;
             TextView comments = (TextView) view.findViewById(R.id.createEvent_commentText);
             dob_var = date.getText().toString();
+
+            if(TextUtils.isEmpty(dob_var)) {
+                date.setError("Mandatory Field");
+                return;
+            }
+            if(TextUtils.isEmpty(place.getSelectedItem().toString()))
+            {
+
+                ((TextView)place.getSelectedView()).setError("None Selected");
+                return;
+            }
+
             String time1 = time.getText().toString();
+            if(TextUtils.isEmpty(time1)) {
+                time.setError("Mandatory Field");
+                return;
+            }
+
+            if(TextUtils.isEmpty(people.getText().toString())) {
+                people.setError("Mandatory Field");
+                return;
+            }
+
+            if(TextUtils.isEmpty(duration.getText().toString())) {
+                duration.setError("Mandatory Field");
+                return;
+            }
+
+
             SportsEntity eventdetais = new SportsEntity(name, time1, duration.getText().toString(),
                                                         dob_var, place.getSelectedItem().toString(),
                                                         people.getText().toString(),
@@ -171,7 +200,6 @@ public class SportsCreateDetails extends Fragment {
 
         spinner = (Spinner) v1.findViewById(R.id.createEvent_placeText);
         List<String> list = new ArrayList<String>();
-        list.add("-");
         list.add("USU");
         list.add("Student Recreation Center");
         list.add("Near Brotman Hall");
