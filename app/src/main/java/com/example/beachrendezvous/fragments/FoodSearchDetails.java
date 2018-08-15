@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.beachrendezvous.MainActivity;
@@ -32,6 +33,7 @@ public class FoodSearchDetails extends Fragment {
     private static final String EVENT_ID = "event_id";
     private static final String ENTITY_OBJECT = "entityObject";
     private static final String CREATE_SEARCH = "createOrSearch";
+    private static final String ALREADY_JOINED = "alreadyJoined";
     private String mParam1;
     private String mParam2;
     //endregion
@@ -41,6 +43,8 @@ public class FoodSearchDetails extends Fragment {
     private String event_id;
     private String name;
     private FoodEntity foodEntity;
+    private int limit;
+    private View view = null;
     //endregion
 
     //region ButterKnife binds
@@ -83,7 +87,15 @@ public class FoodSearchDetails extends Fragment {
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                if (!dataSnapshot.hasChild(event_id)) {
+                    mDatabaseReference.child(event_id).setValue(mParam1);
+                    int limit = Integer.parseInt(foodEntity.getLimit()) - 1;
+                    DatabaseReference dbRef = FirebaseDatabase.getInstance()
+                                                              .getReference()
+                                                              .child(mParam1)
+                                                              .child(event_id);
+                    dbRef.child("limit").setValue(Integer.toString(limit));
+                }
             }
 
             @Override
@@ -96,6 +108,8 @@ public class FoodSearchDetails extends Fragment {
         Bundle args = new Bundle();
         args.putString(MainActivity.ARG_GIVEN_NAME, name);
         args.putString(CREATE_SEARCH, "search");
+        args.putString(ALREADY_JOINED,
+                       limit == Integer.parseInt(foodEntity.getLimit()) ? "joined" : "new");
         popUp.setArguments(args);
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -128,7 +142,6 @@ public class FoodSearchDetails extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view;
 
         view = inflater.inflate(R.layout.fragment_food_search_details, container, false);
         mUnbinder = ButterKnife.bind(this, view);
@@ -142,9 +155,25 @@ public class FoodSearchDetails extends Fragment {
             mCommentText.setText(foodEntity.getComments());
             mDurationText.setText(foodEntity.getDuration());
             mLimitText.setText(foodEntity.getLimit());
-        }
 
-        mUnbinder = ButterKnife.bind(this, view);
+            final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference()
+                                                            .child("Users").child(name)
+                                                            .child("Event_Id");
+            dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChild(event_id)) {
+                        Button btn = view.findViewById(R.id.btn_foodSearch);
+                        btn.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
         return view;
     }

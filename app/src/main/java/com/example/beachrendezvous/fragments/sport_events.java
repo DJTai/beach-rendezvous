@@ -74,7 +74,7 @@ public class sport_events extends Fragment {
                         date1.add(sportsevent.getDate());
                         place1.add(sportsevent.getLocation());
                         admin.add(sportsevent.getCreated_by());
-                        sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
+                        myAdapter = new sportsEventDetailsAdapter(
                                 getContext().getApplicationContext(), type1, date1, place1,
                                 admin);
                         //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
