@@ -65,5 +65,6 @@
     <string name="header_event_type">Type</string>
     <string name="header_date">Date</string>
     <string name="header_place">Place</string>
+    <string name="header_food_events">Which date and time look best?</string>
 
 </resources>

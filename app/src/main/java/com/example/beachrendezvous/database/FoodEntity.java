@@ -1,6 +1,8 @@
 package com.example.beachrendezvous.database;
 
-public class FoodEntity {
+import java.io.Serializable;
+
+public class FoodEntity implements Serializable {
 
     // Variables shown
     private String date;
