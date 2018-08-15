@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.beachrendezvous.MainActivity;
 import com.example.beachrendezvous.R;
@@ -54,6 +55,7 @@ public class FoodCreateDetails extends Fragment {
     private String name;
     View view = null;
     private DatabaseReference databaseFood;
+    private final Calendar c = Calendar.getInstance();
     //endregion
 
     //region ButterKnife Binds
@@ -87,11 +89,9 @@ public class FoodCreateDetails extends Fragment {
     @OnClick(R.id.foodCreate_dateText)
     void selectDate() {
         // Get current date
-        final Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
-        final EditText date = view.findViewById(R.id.foodCreate_dateText);
 
         DatePickerDialog datePickerDialog =
                 new DatePickerDialog(this.getContext(),
@@ -99,8 +99,8 @@ public class FoodCreateDetails extends Fragment {
                                          @Override
                                          public void onDateSet(DatePicker view, int year,
                                                                int monthOfYear, int dayOfMonth) {
-                                             date.setText(format("%d/%d/%d", monthOfYear + 1,
-                                                                 dayOfMonth, year));
+                                             mDate.setText(format("%d/%d/%d", monthOfYear + 1,
+                                                                  dayOfMonth, year));
                                          }
                                      }, mYear, mMonth, mDay);
         datePickerDialog.show();
@@ -108,11 +108,9 @@ public class FoodCreateDetails extends Fragment {
 
     @OnClick(R.id.foodCreate_timeText)
     void selectTime() {
-        // Get Current Time
-        final Calendar c = Calendar.getInstance();
+        // Get current Time
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
-        final EditText time = view.findViewById(R.id.foodCreate_timeText);
 
         // Launch Time Picker Dialog
         TimePickerDialog timePickerDialog =
@@ -121,7 +119,7 @@ public class FoodCreateDetails extends Fragment {
                                          @Override
                                          public void onTimeSet(TimePicker view, int hourOfDay,
                                                                int minute) {
-                                             time.setText(format("%d:%d", hourOfDay, minute));
+                                             mTime.setText(format("%d:%02d", hourOfDay, minute));
                                          }
                                      }, mHour, mMinute, true);
         timePickerDialog.show();
@@ -132,6 +130,9 @@ public class FoodCreateDetails extends Fragment {
         DatabaseReference mDatabaseReference;
         FoodEntity foodEvent;
         String id;
+        String dateIs = "";
+        boolean validDate = false;
+        boolean validTime = false;
 
         // Grab Strings from views
         String foodDate = mDate.getText().toString();
@@ -141,14 +142,43 @@ public class FoodCreateDetails extends Fragment {
         String foodDuration = mDuration.getText().toString();   // !! - Could be null
         String foodComments = mComments.getText().toString();
 
+        // Validate Date and Time booleans
+        dateIs = validateDate(foodDate);
+        Log.d(TAG, "createClicked: dateIs: " + dateIs);
+        switch (dateIs) {
+            case "past":
+                validDate = false;
+                validTime = false;
+                break;
+            case "present":
+                // Date is today so we have to verify the time is correct
+                validDate = true;
+                validTime = validateTime(foodTime);
+                break;
+            default:
+                // Date is good. Continue with the rest of the code
+                validDate = true;
+                validTime = true;
+                break;
+        }
+
         if (foodDate.equals("") || foodTime.equals("") || foodNum.equals("")) {
 
-            // TODO: Alert user that certain fields are empty
-            foodEvent = new FoodEntity(foodDate, foodPlace, foodTime, foodNum, foodDuration,
-                                       foodComments, name, mParam1);
+            Toast.makeText(this.getContext(),
+                           "Date, time, and number of people are required",
+                           Toast.LENGTH_LONG).show();
+
+            foodEvent = new FoodEntity(name, foodTime, foodDuration, foodDate,
+                                       mParam1, foodNum, foodComments, "Food",
+                                       foodNum);
             Log.d(TAG, "createClicked: " + foodEvent.toString());
+
+        } else if (!validDate) {
+            Toast.makeText(this.getContext(), "Invalid date", Toast.LENGTH_SHORT).show();
+        } else if (!validTime) {
+            Toast.makeText(this.getContext(), "Invalid time", Toast.LENGTH_SHORT).show();
         } else {
-            // All fields filled - add to Firebase DB
+            /* All fields filled - add to Firebase DB */
 
             // Data validation
             if (foodDuration.equals("")) {
@@ -158,8 +188,9 @@ public class FoodCreateDetails extends Fragment {
                 foodComments = "n/a";
             }
 
-            foodEvent = new FoodEntity(foodDate, foodPlace, foodTime, foodNum, foodDuration,
-                                       foodComments, name, mParam1);
+            foodEvent = new FoodEntity(name, foodTime, foodDuration, foodDate,
+                                       mParam1, foodNum, foodComments, "Food",
+                                       foodNum);
 
             // Add data to Firebase
             id = databaseFood.push().getKey();
@@ -183,7 +214,6 @@ public class FoodCreateDetails extends Fragment {
                     .addToBackStack("create")
                     .commit();
         }
-
     }
     //endregion
 
@@ -197,7 +227,6 @@ public class FoodCreateDetails extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
         }
 
@@ -220,5 +249,83 @@ public class FoodCreateDetails extends Fragment {
         mPlace.setText(mParam1);
 
         return view;
+    }
+
+    /**
+     * Validate the date that the user has selected
+     *
+     * @param date - Date to be validated
+     * @return - String describing the date (past, present, or future)
+     */
+    private String validateDate(String date) {
+
+        String[] splitDate = date.split("/");
+        int[] dateSplit = new int[splitDate.length];
+        for (int i = 0; i < dateSplit.length; i++) {
+            dateSplit[i] = Integer.parseInt(splitDate[i]);
+        }
+
+        String userDateIs = "";
+
+        int month = c.get(Calendar.MONTH) + 1;
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int year = c.get(Calendar.YEAR);
+
+        // Validate date
+        if (dateSplit[2] > year) {
+            userDateIs = "future";
+
+        } else if (dateSplit[2] == year) {
+            // Same year - check the month first
+            if (dateSplit[0] > month) {
+                userDateIs = "future";
+
+            } else if (dateSplit[0] == month) {
+                // Same year & same month - check the day
+                if (dateSplit[1] > day) {
+                    userDateIs = "future";
+
+                } else if (dateSplit[1] == day) {
+                    // Same year, month, and day
+                    userDateIs = "present";
+
+                } else {
+                    // Same year, same month, but past day
+                    userDateIs = "past";
+                }
+            } else {
+                // Past month selected
+                userDateIs = "past";
+            }
+        } else {
+            // Year is in the past
+            userDateIs = "past";
+        }
+
+        return userDateIs;
+    }
+
+    /**
+     * Verifies that the time the user is trying to set for the event is after right now
+     *
+     * @param time - Time trying to be set
+     * @return - true if the time is past the present
+     */
+    private boolean validateTime(String time) {
+
+        String[] splitTime = time.split(":");
+        int[] timeSplit = new int[splitTime.length];
+        for (int i = 0; i < timeSplit.length; i++) {
+            timeSplit[i] = Integer.parseInt(splitTime[i]);
+        }
+
+        boolean vTime = false;
+
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        vTime = timeSplit[0] > hour || timeSplit[0] == hour && timeSplit[1] > minute;
+
+        return vTime;
     }
 }

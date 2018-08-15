@@ -3,38 +3,25 @@ package com.example.beachrendezvous.database;
 public class FoodEntity {
 
     // Variables shown
-    /** Date of the Food event */
     private String date;
-
-    /** The location where the restaurant is at */
     private String location;
-
-    /** The time when the event happens */
     private String time;
-
-    /** Max number of people who can attend the event */
     private String num_max;
-
-    /** How long the event is going to last */
     private String duration;
-
-    /** Comments regarding the event, submitted by the creator */
     private String comments;
 
     // Variables stored, but not shown
-    /** Who created the event */
     private String created_by;
-
-    /** Restaurant venue */
-    private String restaurant;
+    private String type;
+    private String limit;
 
     //region Constructors
     public FoodEntity() {
         // required empty constructor
     }
 
-    public FoodEntity(String date, String location, String time, String num_max, String duration,
-                      String comments, String created_by, String restaurant) {
+    public FoodEntity(String created_by, String time, String duration, String date,
+                      String location, String num_max, String comments, String type, String limit) {
         this.date = date;
         this.location = location;
         this.time = time;
@@ -42,7 +29,8 @@ public class FoodEntity {
         this.duration = duration;
         this.comments = comments;
         this.created_by = created_by;
-        this.restaurant = restaurant;
+        this.type = type;
+        this.limit = limit;
     }
 
     //endregion
@@ -77,9 +65,13 @@ public class FoodEntity {
 
     public void setCreated_by(String created_by) { this.created_by = created_by; }
 
-    public String getRestaurant() { return restaurant; }
+    public String getType() { return type; }
 
-    public void setRestaurant(String restaurant) { this.restaurant = restaurant; }
+    public void setType(String type) { this.type = type; }
+
+    public String getLimit() { return limit; }
+
+    public void setLimit(String limit) { this.limit = limit; }
 
     //endregion
 
@@ -90,11 +82,12 @@ public class FoodEntity {
                 "date='" + date + '\'' +
                 ", location='" + location + '\'' +
                 ", time='" + time + '\'' +
-                ", num_max=" + num_max +
-                ", duration=" + duration +
+                ", num_max='" + num_max + '\'' +
+                ", duration='" + duration + '\'' +
                 ", comments='" + comments + '\'' +
                 ", created_by='" + created_by + '\'' +
-                ", restaurant='" + restaurant + '\'' +
+                ", type='" + type + '\'' +
+                ", limit='" + limit + '\'' +
                 '}';
     }
 }
