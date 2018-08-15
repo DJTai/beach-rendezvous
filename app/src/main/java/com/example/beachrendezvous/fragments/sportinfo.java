@@ -74,8 +74,8 @@ public class sportinfo extends Fragment {
                     header.setText(R.string.sport_info_create);
                 }
 
-                final String[] gameNames = {"SOCCER", "TENNNIS", "BASEBALL", "FOOTBALL",
-                        "VOLLEYBALL", "SOFTBALL"};
+                final String[] gameNames = {"Soccer", "Tennis", "Baseball", "Football",
+                        "Volleyball", "Softball"};
 
                 int[] gameImages = {
                         R.drawable.soccer,

@@ -121,23 +121,24 @@ public class MoviesSearchDetails extends Fragment {
             Log.i("Movies Search Details", "Running oncreateView");
             view = inflater.inflate(R.layout.fragment_movies_search_details, container, false);
             TextView type = view.findViewById(R.id.moviesSearch_eventType);
-            TextView date = view.findViewById(R.id.searchEvent_dateText);
+            TextView date = view.findViewById(R.id.searchMoviesEvent_dateText);
             date.setText(moviesEntity.getDate());
-            TextView place = view.findViewById(R.id.searchEvent_placeText);
+            TextView place = view.findViewById(R.id.searchMoviesEvent_placeText);
             place.setText(moviesEntity.getLocation());
-            TextView time = view.findViewById(R.id.searchEvent_timeText);
+            TextView time = view.findViewById(R.id.searchMoviesEvent_timeText);
             time.setText(moviesEntity.getTime());
 
-            TextView people = view.findViewById(R.id.searchEvent_numText);
+            TextView people = view.findViewById(R.id.searchMoviesEvent_numText);
             people.setText(moviesEntity.getNum_max());
 
-            TextView additionalInfo = view.findViewById(R.id.searchEvent_commentText);
+            TextView additionalInfo = view.findViewById(R.id.searchMoviesEvent_commentText);
             additionalInfo.setText(moviesEntity.getComments());
 
-            TextView duration = view.findViewById(R.id.searchEvent_DurationText);
+            TextView duration = view.findViewById(R.id.searchMoviesEvent_DurationText);
             duration.setText(moviesEntity.getDuration());
-            TextView limit = view.findViewById(R.id.searchEvent_limitText);
-            limit.setText(moviesEntity.getLimit());
+            //This ID "searchEvent_limitText" is not unique to movies. Cannot find location of ID declaration.
+            //TextView limit = view.findViewById(R.id.searchEvent_limitText);
+            //limit.setText(moviesEntity.getLimit());
 
         }
         // Bind view using ButterKnife
