@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +44,9 @@ public class SportsSearchDetails extends Fragment {
     Unbinder mUnbinder;
     View view = null;
     SportsEntity sportsEntity;
+    int limit;
     private static final String EVENT_ID="event_id";
+    String ALREADY_JOINED="alreadyJoined";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,12 +62,12 @@ public class SportsSearchDetails extends Fragment {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.hasChild(event_id)) {
-                    // run some code
+
                 }
                 else
                 {
                     mDatabaseReference.child(event_id).setValue(mParam1);
-                    int limit=Integer.parseInt(sportsEntity.getLimit())-1;
+                    limit=Integer.parseInt(sportsEntity.getLimit())-1;
                     DatabaseReference mDatabaseReference1= FirebaseDatabase.getInstance().getReference().child(mParam1).child(event_id);
                     mDatabaseReference1.child("limit").setValue(Integer.toString(limit));
                 }
@@ -80,6 +83,14 @@ public class SportsSearchDetails extends Fragment {
         Bundle args = new Bundle();
         args.putString(MainActivity.ARG_GIVEN_NAME, name);
         args.putString(CREATE_SEARCH,"search");
+        if(limit==Integer.parseInt(sportsEntity.getLimit()))
+        {
+            args.putString(ALREADY_JOINED,"joined");
+        }
+        else
+        {
+            args.putString(ALREADY_JOINED,"new");
+        }
         f.setArguments(args);
               FragmentManager fragmentManager = getActivity()
                 .getSupportFragmentManager();
@@ -138,6 +149,23 @@ public class SportsSearchDetails extends Fragment {
             duration.setText(sportsEntity.getDuration());
             TextView limit = view.findViewById(R.id.searchEvent_limitText);
             limit.setText(sportsEntity.getLimit());
+            final DatabaseReference mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users")
+                    .child(name).child("Event_Id");//.child(event_id);
+            // mDatabaseReference.setValue(mParam1);
+            mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.hasChild(event_id)) {
+                        Button b=view.findViewById(R.id.sportsSearch_btn);
+                        b.setVisibility(View.GONE);
+                    }
+                                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
                   }
         // Bind view using ButterKnife
