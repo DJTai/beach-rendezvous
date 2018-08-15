@@ -1,17 +1,12 @@
 package com.example.beachrendezvous.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.beachrendezvous.MainActivity;
@@ -32,7 +27,8 @@ public class popup extends Fragment {
     private String mParam2;
     Unbinder mUnbinder;
     View view;
-    private  String create_search;
+    private String create_search;
+
     public popup() {
         // Required empty public constructor
     }
@@ -42,9 +38,9 @@ public class popup extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
-            create_search=getArguments().getString(CREATE_SEARCH);
+            create_search = getArguments().getString(CREATE_SEARCH);
 
-           // mParam2 = getArguments().getString(ARG_PARAM2);
+            // mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -52,38 +48,25 @@ public class popup extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view=inflater.inflate(R.layout.fragment_popup, container, false);
+        view = inflater.inflate(R.layout.fragment_popup, container, false);
         mUnbinder = ButterKnife.bind(this, view);
         TextView confirmText = view.findViewById(R.id.confirmtext);
-        if(create_search.equals("search"))
-        {
-
+        if (create_search.equals("search")) {
             confirmText.setText("You Successfully Joined Event");
-        }
-        else {
+        } else {
             confirmText.setText("You Successfully Created Event");
         }
 
-
         return view;
     }
+
     @OnClick(R.id.Okbutton)
     void OkbuttonClicked() {
-        Log.i("button clicked","popup");
+        Log.i("button clicked", "popup");
         FragmentManager fragmentManager;
-        FragmentTransaction fragmentTransaction;
-        Fragment f = new MainMenu();
-
-        Bundle args = new Bundle();
-        args.putString(MainActivity.ARG_GIVEN_NAME, name);
-        f.setArguments(args);
-               fragmentManager = getActivity().getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction
-                .replace(R.id.frame_fragment, f)
-                .addToBackStack("search")
-                .commit();
-
+        fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.popBackStack(fragmentManager.getBackStackEntryAt(0).getId(),
+                                     fragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 }
 
