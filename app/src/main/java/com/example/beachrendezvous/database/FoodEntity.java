@@ -13,10 +13,10 @@ public class FoodEntity {
     private String time;
 
     /** Max number of people who can attend the event */
-    private int num_max;
+    private String num_max;
 
     /** How long the event is going to last */
-    private int duration;
+    private String duration;
 
     /** Comments regarding the event, submitted by the creator */
     private String comments;
@@ -33,7 +33,7 @@ public class FoodEntity {
         // required empty constructor
     }
 
-    public FoodEntity(String date, String location, String time, int num_max, int duration,
+    public FoodEntity(String date, String location, String time, String num_max, String duration,
                       String comments, String created_by, String restaurant) {
         this.date = date;
         this.location = location;
@@ -61,13 +61,13 @@ public class FoodEntity {
 
     public void setTime(String time) { this.time = time; }
 
-    public int getNum_max() { return num_max; }
+    public String getNum_max() { return num_max; }
 
-    public void setNum_max(int num_max) { this.num_max = num_max; }
+    public void setNum_max(String num_max) { this.num_max = num_max; }
 
-    public int getDuration() { return duration; }
+    public String getDuration() { return duration; }
 
-    public void setDuration(int duration) { this.duration = duration; }
+    public void setDuration(String duration) { this.duration = duration; }
 
     public String getComments() { return comments; }
 
