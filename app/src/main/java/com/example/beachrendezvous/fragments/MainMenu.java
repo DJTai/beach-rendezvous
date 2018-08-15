@@ -81,7 +81,7 @@ public class MainMenu extends Fragment {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             SportsEntity sportsevent = dataSnapshot.getValue(
                                     SportsEntity.class);
-                            Log.i("in menu created", sportsevent.getCreated_by());
+//                            Log.i("in menu created", sportsevent.getCreated_by());
                             event_id.add(dataSnapshot.getKey());
 
                             type1.add(sportsevent.getType());

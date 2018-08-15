@@ -73,18 +73,21 @@ public class MoviesCreateDetails extends Fragment {
             dob_var = date.getText().toString();
             String time1 = time.getText().toString();
             MoviesEntity eventdetais = new MoviesEntity(name, time1, duration.getText().toString(),
-                    dob_var, place.getSelectedItem().toString(),
-                    people.getText().toString(),
-                    comments.getText().toString(), mParam,people.getText().toString());
+                                                        dob_var, place.getSelectedItem().toString(),
+                                                        people.getText().toString(),
+                                                        comments.getText().toString(), mParam,
+                                                        people.getText().toString());
 
             String id = databaseMovies.push().getKey();
             databaseMovies.child(id).setValue(eventdetais);
-            DatabaseReference mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child(name).child("Event_Id");
+            DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference()
+                                                                   .child("Users").child(name)
+                                                                   .child("Event_Id");
             mDatabaseReference.child(id).setValue(mParam);
             Fragment f = new popup();
             Bundle args = new Bundle();
             args.putString(MainActivity.ARG_GIVEN_NAME, name);
-            args.putString(CREATE_SEARCH,"create");
+            args.putString(CREATE_SEARCH, "create");
             f.setArguments(args);
             FragmentManager fragmentManager = getActivity()
                     .getSupportFragmentManager();
@@ -114,14 +117,14 @@ public class MoviesCreateDetails extends Fragment {
 
         DatePickerDialog datePickerDialog =
                 new DatePickerDialog(this.getContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                date.setText(format("%d/%d/%d", monthOfYear + 1,
-                                        dayOfMonth, year));
-                            }
-                        }, mYear, mMonth, mDay);
+                                     new DatePickerDialog.OnDateSetListener() {
+                                         @Override
+                                         public void onDateSet(DatePicker view, int year,
+                                                               int monthOfYear, int dayOfMonth) {
+                                             date.setText(format("%d/%d/%d", monthOfYear + 1,
+                                                                 dayOfMonth, year));
+                                         }
+                                     }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }
 
@@ -136,21 +139,17 @@ public class MoviesCreateDetails extends Fragment {
         // Launch Time Picker Dialog
         TimePickerDialog timePickerDialog =
                 new TimePickerDialog(this.getContext(),
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay,
-                                                  int minute) {
-                                time.setText(format("%d:%d", hourOfDay, minute));
-                            }
-                        }, mHour, mMinute, true);
+                                     new TimePickerDialog.OnTimeSetListener() {
+                                         @Override
+                                         public void onTimeSet(TimePicker view, int hourOfDay,
+                                                               int minute) {
+                                             time.setText(format("%d:%d", hourOfDay, minute));
+                                         }
+                                     }, mHour, mMinute, true);
         timePickerDialog.show();
     }
 
     //endregion
-
-
-
-
 
     public MoviesCreateDetails() {
         // Required empty public constructor
