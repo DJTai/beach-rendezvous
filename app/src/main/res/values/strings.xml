@@ -61,5 +61,9 @@
     <string name="food_create_header">Let\'s add some info</string>
     <string name="success_joined_event">You Successfully Joined An Event</string>
     <string name="success_created_event">You Successfully Created An Event</string>
+    <string name="header_admin">Admin</string>
+    <string name="header_event_type">Type</string>
+    <string name="header_date">Date</string>
+    <string name="header_place">Place</string>
 
 </resources>
