@@ -1,6 +1,7 @@
 package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
@@ -17,12 +18,9 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class popup extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String CREATE_SEARCH = "createOrSearch";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String name;
     private String mParam2;
     Unbinder mUnbinder;
@@ -39,22 +37,21 @@ public class popup extends Fragment {
         if (getArguments() != null) {
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             create_search = getArguments().getString(CREATE_SEARCH);
-
             // mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_popup, container, false);
         mUnbinder = ButterKnife.bind(this, view);
         TextView confirmText = view.findViewById(R.id.confirmtext);
         if (create_search.equals("search")) {
-            confirmText.setText("You Successfully Joined Event");
+            confirmText.setText(R.string.success_joined_event);
         } else {
-            confirmText.setText("You Successfully Created Event");
+            confirmText.setText(R.string.success_created_event);
         }
 
         return view;
