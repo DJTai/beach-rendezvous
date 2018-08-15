@@ -126,7 +126,7 @@ public class FoodCreateDetails extends Fragment {
     }
 
     @OnClick(R.id.btn_foodCreate)
-    void createClicked() {
+    void createFoodEventClicked() {
         DatabaseReference mDatabaseReference;
         FoodEntity foodEvent;
         String id;
@@ -217,7 +217,6 @@ public class FoodCreateDetails extends Fragment {
     }
     //endregion
 
-    //region Constructors
     public FoodCreateDetails() {
         // Required empty public constructor
     }

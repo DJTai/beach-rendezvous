@@ -92,7 +92,7 @@ public class SportsSearchDetails extends Fragment {
                 .beginTransaction();
         fragmentTransaction
                 .replace(R.id.frame_fragment, f)
-                .addToBackStack("create")
+                .addToBackStack("search")
                 .commit();
 
 
@@ -126,27 +126,33 @@ public class SportsSearchDetails extends Fragment {
             view = inflater.inflate(R.layout.fragment_sports_search_details, container, false);
             TextView type = view.findViewById(R.id.sportsSearch_eventType);
             TextView date = view.findViewById(R.id.searchEvent_dateText);
-            date.setText(sportsEntity.getDate());
             TextView place = view.findViewById(R.id.searchEvent_placeText);
-            place.setText(sportsEntity.getLocation());
             TextView time = view.findViewById(R.id.searchEvent_timeText);
-            time.setText(sportsEntity.getTime());
-
             TextView people = view.findViewById(R.id.searchEvent_numText);
-            people.setText(sportsEntity.getNum_max());
-
             TextView additionalInfo = view.findViewById(R.id.searchEvent_commentText);
-            additionalInfo.setText(sportsEntity.getComments());
-
             TextView duration = view.findViewById(R.id.searchEvent_DurationText);
-            duration.setText(sportsEntity.getDuration());
             TextView limit = view.findViewById(R.id.searchEvent_limitText);
+
+            date.setText(sportsEntity.getDate());
+            place.setText(sportsEntity.getLocation());
+            time.setText(sportsEntity.getTime());
+            people.setText(sportsEntity.getNum_max());
+            additionalInfo.setText(sportsEntity.getComments());
+            duration.setText(sportsEntity.getDuration());
             limit.setText(sportsEntity.getLimit());
         }
 
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
     }
 
 }
