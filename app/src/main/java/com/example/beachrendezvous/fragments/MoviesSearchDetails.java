@@ -24,17 +24,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-///**
-// * A simple {@link Fragment} subclass.
-// * Activities that contain this fragment must implement the
-// * {@link SportsSearchDetails.OnFragmentInteractionListener} interface
-// * to handle interaction events.
-// * Use the {@link SportsSearchDetails#newInstance} factory method to
-// * create an instance of this fragment.
-// */
+
 public class MoviesSearchDetails extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
     private static final String ARG_PARAM2 = "param2";
     private static final String CREATE_SEARCH = "createOrSearch";
@@ -43,29 +35,34 @@ public class MoviesSearchDetails extends Fragment {
     Unbinder mUnbinder;
     View view = null;
     MoviesEntity moviesEntity;
-    private static final String EVENT_ID="event_id";
+    int limit;
+    private static final String EVENT_ID = "event_id";
+    String ALREADY_JOINED = "alreadyJoined";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     @OnClick(R.id.moviesSearch_btn)
     void joinClicked() {
 
-        final DatabaseReference mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users")
-                .child(name).child("Event_Id");//.child(event_id);
+        final DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference()
+                                                                     .child("Users")
+                                                                     .child(name)
+                                                                     .child("Event_Id");//.child
+        // (event_id);
         // mDatabaseReference.setValue(mParam1);
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.hasChild(event_id)) {
                     // run some code
-                }
-                else
-                {
+                } else {
                     mDatabaseReference.child(event_id).setValue(mParam1);
-                    int limit=Integer.parseInt(moviesEntity.getLimit())-1;
-                    DatabaseReference mDatabaseReference1= FirebaseDatabase.getInstance().getReference().child(mParam1).child(event_id);
+                    int limit = Integer.parseInt(moviesEntity.getLimit()) - 1;
+                    DatabaseReference mDatabaseReference1 = FirebaseDatabase.getInstance()
+                                                                            .getReference()
+                                                                            .child(mParam1)
+                                                                            .child(event_id);
                     mDatabaseReference1.child("limit").setValue(Integer.toString(limit));
                 }
             }
@@ -79,7 +76,12 @@ public class MoviesSearchDetails extends Fragment {
         Fragment f = new popup();
         Bundle args = new Bundle();
         args.putString(MainActivity.ARG_GIVEN_NAME, name);
-        args.putString(CREATE_SEARCH,"search");
+        args.putString(CREATE_SEARCH, "search");
+
+        args.putString(
+                ALREADY_JOINED,
+                limit == Integer.parseInt(moviesEntity.getLimit()) ? "joined" : "new");
+
         f.setArguments(args);
         FragmentManager fragmentManager = getActivity()
                 .getSupportFragmentManager();
@@ -87,9 +89,8 @@ public class MoviesSearchDetails extends Fragment {
                 .beginTransaction();
         fragmentTransaction
                 .replace(R.id.frame_fragment, f)
-                .addToBackStack("create")
+                .addToBackStack("search")
                 .commit();
-
 
 
     }
@@ -103,8 +104,8 @@ public class MoviesSearchDetails extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             //mParam2 = getArguments().getString(ARG_PARAM2);
-            event_id=getArguments().getString(EVENT_ID);
-            name=getArguments().getString(MainActivity.ARG_GIVEN_NAME);
+            event_id = getArguments().getString(EVENT_ID);
+            name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
 
 
             moviesEntity = (MoviesEntity) getArguments().getSerializable("entityObject");
@@ -120,25 +121,23 @@ public class MoviesSearchDetails extends Fragment {
         if (mParam1 != null) {
             Log.i("Movies Search Details", "Running oncreateView");
             view = inflater.inflate(R.layout.fragment_movies_search_details, container, false);
+
+            // Get TextViews
             TextView type = view.findViewById(R.id.moviesSearch_eventType);
             TextView date = view.findViewById(R.id.searchMoviesEvent_dateText);
-            date.setText(moviesEntity.getDate());
             TextView place = view.findViewById(R.id.searchMoviesEvent_placeText);
-            place.setText(moviesEntity.getLocation());
             TextView time = view.findViewById(R.id.searchMoviesEvent_timeText);
-            time.setText(moviesEntity.getTime());
-
             TextView people = view.findViewById(R.id.searchMoviesEvent_numText);
-            people.setText(moviesEntity.getNum_max());
-
             TextView additionalInfo = view.findViewById(R.id.searchMoviesEvent_commentText);
-            additionalInfo.setText(moviesEntity.getComments());
-
             TextView duration = view.findViewById(R.id.searchMoviesEvent_DurationText);
+
+            date.setText(moviesEntity.getDate());
+            place.setText(moviesEntity.getLocation());
+            time.setText(moviesEntity.getTime());
+            people.setText(moviesEntity.getNum_max());
+            additionalInfo.setText(moviesEntity.getComments());
             duration.setText(moviesEntity.getDuration());
-            //This ID "searchEvent_limitText" is not unique to movies. Cannot find location of ID declaration.
-            //TextView limit = view.findViewById(R.id.searchEvent_limitText);
-            //limit.setText(moviesEntity.getLimit());
+
 
         }
         // Bind view using ButterKnife
