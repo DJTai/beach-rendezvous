@@ -38,7 +38,7 @@ public class MainActivity
     private static final String ARG_PARAM = "param";
     public static final String ARG_GIVEN_NAME = "givenName";
     public static final String ARG_DISPLAY_ID = "displayableId";
-    String name = " ";
+    String name = "";
 
     //region References
 
@@ -68,8 +68,8 @@ public class MainActivity
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.action_settings:
-                return initFragment(new Settings(), "settings");
+//            case R.id.action_settings:
+//                return initFragment(new Settings(), "settings");
             case R.id.action_info:
                 return initFragment(new Info(), "info");
             case R.id.action_signOut:
