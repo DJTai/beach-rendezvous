@@ -146,25 +146,25 @@ public class MainActivity
                                     .getBackStackEntryAt(mFragManager.getBackStackEntryCount() - 1)
                                     .getName();
 
-                            if (name.equals(home)) {
-                                // FIXME
-                                mFragManager.findFragmentById(R.id.frame_fragment).onResume();
-
-                                shown = navigation.getMenu().getItem(0);
-                                shown.setChecked(true);
-                            } else if (name.equals(search)) {
-                                shown = navigation.getMenu().getItem(1);
-                                shown.setChecked(true);
-                            } else if (name.equals(create)) {
-                                shown = navigation.getMenu().getItem(2);
-                                shown.setChecked(true);
+                            switch (name) {
+                                case home:
+                                    mFragManager.findFragmentById(R.id.frame_fragment).onResume();
+                                    shown = navigation.getMenu().getItem(0);
+                                    shown.setChecked(true);
+                                    break;
+                                case search:
+                                    shown = navigation.getMenu().getItem(1);
+                                    shown.setChecked(true);
+                                    break;
+                                case create:
+                                    shown = navigation.getMenu().getItem(2);
+                                    shown.setChecked(true);
+                                    break;
                             }
                         } else {
                             shown = navigation.getMenu().getItem(0);
                             shown.setChecked(true);
                         }
-
-
                     }
                 });
 
@@ -206,7 +206,7 @@ public class MainActivity
             users = authManager.getPublicClient().getUsers();
 
             if (users == null) {
-                // TODO: Code?
+                Toast.makeText(this, "No users", Toast.LENGTH_SHORT).show();
             } else if (users.size() == 1) {
                 authManager.getPublicClient().remove(users.get(0));
                 finish();
@@ -216,8 +216,7 @@ public class MainActivity
                 }
             }
 
-            Toast.makeText(getBaseContext(), "Signed Out!", Toast.LENGTH_SHORT)
-                 .show();
+            Toast.makeText(getBaseContext(), "Signed Out!", Toast.LENGTH_SHORT).show();
 
         } catch (MsalClientException e) {
             Log.d(TAG, "MSAL Exception Generated while getting users: " + e.toString());
