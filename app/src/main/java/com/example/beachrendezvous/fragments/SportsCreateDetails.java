@@ -185,7 +185,6 @@ public class SportsCreateDetails extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -232,4 +231,11 @@ public class SportsCreateDetails extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
+    }
 }

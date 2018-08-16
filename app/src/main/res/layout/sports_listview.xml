@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sportsview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="horizontal">
 
 
@@ -12,24 +12,28 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.1"
         android:background="@android:color/transparent"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.6"
-        android:padding="10dp"
+        android:fontFamily="@font/martel_sans_bold"
+        android:gravity="start"
+        android:padding="6dp"
         android:text="@string/tv_fillerText"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:autoSizeTextType="uniform" />
 
     <ImageView
         android:id="@+id/arrowdown"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_weight="0.2"
+        android:layout_gravity="end"
+        android:layout_weight="0.1"
+        android:maxWidth="35dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/img_arrow"
         android:gravity="end"
