@@ -21,12 +21,7 @@
                 android:id="@+id/sportsSearch_eventType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/tv_event_type"
                 android:textColor="@color/colorPrimary"
@@ -62,9 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_margin="8dp"
-                android:layout_marginTop="8dp"
                 android:ems="10"
-                android:focusable="false"
                 android:fontFamily="sans-serif-medium"
                 app:layout_constraintBottom_toTopOf="@+id/guide_sportsSearch_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="103dp" />
+                app:layout_constraintGuide_begin="130dp" />
 
             <TextView
                 android:id="@+id/searchEvent_placeLabel"
@@ -88,11 +81,8 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_sportsSearch_placeTime"
                 app:layout_constraintEnd_toStartOf="@+id/guide_sportsSearch_vert"
-                app:layout_constraintHorizontal_bias="0.53"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_sportsSearch_datePlace"
-
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintTop_toTopOf="@+id/guide_sportsSearch_datePlace" />
 
             <TextView
                 android:id="@+id/searchEvent_placeText"
@@ -104,14 +94,14 @@
                 app:layout_constraintBottom_toTopOf="@+id/guide_sportsSearch_placeTime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guide_sportsSearch_vert"
-                app:layout_constraintTop_toBottomOf="@+id/searchEvent_dateText" />
+                app:layout_constraintTop_toTopOf="@+id/guide_sportsSearch_datePlace" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guide_sportsSearch_placeTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="155dp" />
+                app:layout_constraintGuide_begin="195dp" />
 
             <TextView
                 android:id="@+id/searchEvent_timeLabel"
@@ -144,15 +134,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="220dp" />
+                app:layout_constraintGuide_begin="260dp" />
 
             <TextView
                 android:id="@+id/searchEvent_numOfPeople"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
@@ -179,16 +167,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="285dp" />
+                app:layout_constraintGuide_begin="325dp" />
 
             <TextView
                 android:id="@+id/searchEvent_limit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="Limit:"
                 android:textSize="18sp"
@@ -215,7 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="350dp" />
+                app:layout_constraintGuide_begin="390dp" />
 
             <TextView
                 android:id="@+id/searchEvent_Duration"
@@ -247,7 +232,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="415dp" />
+                app:layout_constraintGuide_begin="455dp" />
 
             <TextView
                 android:id="@+id/searchEvent_commentLabel"
@@ -276,8 +261,7 @@
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/sportsSearch_btn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_search_DurationComments" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/sportsSearch_btn"
