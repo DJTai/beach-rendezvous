@@ -19,7 +19,8 @@ public class MoviesEntity implements Serializable {
     }
 
     public MoviesEntity(String created_by, String time, String duration, String date,
-                        String location, String num_max, String comments, String type, String limit) {
+                        String location, String num_max, String comments, String type,
+                        String limit) {
         this.time = time;
         this.duration = duration;
         this.date = date;
@@ -28,21 +29,20 @@ public class MoviesEntity implements Serializable {
         this.comments = comments;
         this.created_by = created_by;
         this.type = type;
-        this.limit=limit;
+        this.limit = limit;
     }
 
     //endregion
 
     //region Getters & Setters
 
-    public  String  getLimit()
-    {
-        return  limit;
+    public String getLimit() {
+        return limit;
 
     }
-    public void setLimit(String limit)
-    {
-        this.limit=limit;
+
+    public void setLimit(String limit) {
+        this.limit = limit;
     }
 
     public String getTime() {
@@ -115,7 +115,7 @@ public class MoviesEntity implements Serializable {
     @Override
     public String toString() {
         return "MoviesEntity{" + "created_by=" + created_by + "type=" + type +
-                "time=" + time + ", duration=" + duration +", limit=" + limit +
+                "time=" + time + ", duration=" + duration + ", limit=" + limit +
                 ", date=" + date +
                 ", location='" + location + '\'' +
                 ", num_max=" + num_max +

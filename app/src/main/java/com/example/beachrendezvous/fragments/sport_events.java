@@ -31,7 +31,7 @@ public class sport_events extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
-    private static final String EVENT_ID="event_id";
+    private static final String EVENT_ID = "event_id";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -68,21 +68,20 @@ public class sport_events extends Fragment {
                     SportsEntity sportsevent = dataSnapshot.getValue(
                             SportsEntity.class);    // Deserialize msg from DB -> POJO
 
-                        if(!name.equals(sportsevent.getCreated_by()))
-                        {
-                            event_id.add(dataSnapshot.getKey());
-                            type1.add(sportsevent.getType());
-                            date1.add(sportsevent.getDate());
-                            place1.add(sportsevent.getLocation());
-                            admin.add(sportsevent.getCreated_by());
-                            sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
-                                    getContext().getApplicationContext(), type1, date1, place1,
-                                    admin);
-                            //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
-                            // .getApplicationContext(), )
-                            entityObjects.add(sportsevent);
-                            mListView.setAdapter(myAdapter);
-                        }
+                    if (!name.equals(sportsevent.getCreated_by())) {
+                        event_id.add(dataSnapshot.getKey());
+                        type1.add(sportsevent.getType());
+                        date1.add(sportsevent.getDate());
+                        place1.add(sportsevent.getLocation());
+                        admin.add(sportsevent.getCreated_by());
+                        myAdapter = new sportsEventDetailsAdapter(
+                                getContext().getApplicationContext(), type1, date1, place1,
+                                admin);
+                        //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
+                        // .getApplicationContext(), )
+                        entityObjects.add(sportsevent);
+                        mListView.setAdapter(myAdapter);
+                    }
                 }
 
                 @Override
@@ -118,7 +117,7 @@ public class sport_events extends Fragment {
 
             // Get the type of sport
             mParam1 = getArguments().getString(ARG_PARAM1);
-            Log.i("in sportevnts argu size",Integer.toString(getArguments().size()));
+            Log.i("in sportevnts argu size", Integer.toString(getArguments().size()));
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mDatabaseReference = mFirebaseDatabase.getReference().child(mParam1);
@@ -154,8 +153,8 @@ public class sport_events extends Fragment {
                         Bundle args = new Bundle();
                         args.putString(ARG_PARAM1, mParam1);
                         args.putString(MainActivity.ARG_GIVEN_NAME, name);
-                        Log.i("name in sportevent",name);
-                        args.putString(EVENT_ID,event_id.get(i));
+                        Log.i("name in sportevent", name);
+                        args.putString(EVENT_ID, event_id.get(i));
                         f.setArguments(args);
                         args.putSerializable("entityObject", entityObjects.get(i));
 
@@ -167,9 +166,7 @@ public class sport_events extends Fragment {
                                 .addToBackStack("search")
                                 .commit();
                     }
-                }
-                                        );
-
+                });
 
         return view;
     }

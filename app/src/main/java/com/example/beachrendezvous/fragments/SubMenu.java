@@ -40,7 +40,6 @@ public class SubMenu extends Fragment {
         if (mParam != null) {
             String msg = "";
             if (mParam.equals("search")) {
-                // TODO: Handle searching for food
                 msg = "search food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
 
@@ -59,7 +58,6 @@ public class SubMenu extends Fragment {
                         .commit();
 
             } else {
-                // TODO: Handle creating an event for food
                 msg = "create food opened";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
 
@@ -121,7 +119,6 @@ public class SubMenu extends Fragment {
                         .replace(R.id.frame_fragment, fragment)
                         .addToBackStack(ARG_PARAM1)
                         .commit();
-
 
 
             }

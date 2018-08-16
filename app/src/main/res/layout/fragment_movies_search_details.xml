@@ -7,18 +7,18 @@
     tools:context=".fragments.MoviesSearchDetails">
 
     <ScrollView
-        android:id="@+id/searchMoviesEvent_scrollView"
+        android:id="@+id/sv_moviesSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/moviesSearch_constLay"
+            android:id="@+id/cl_moviesSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="168dp">
 
             <TextView
-                android:id="@+id/moviesSearch_eventType"
+                android:id="@+id/header_moviesSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -26,10 +26,17 @@
                 android:text="@string/tv_event_type"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_headerDate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideH_headerDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="65dp" />
 
             <TextView
                 android:id="@+id/moviesSearch_dateLabel"
@@ -39,164 +46,208 @@
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_date"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_datePlace"
-                app:layout_constraintEnd_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintBottom_toTopOf="@+id/guideH_datePlace"
+                app:layout_constraintEnd_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideH_headerDate" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_dateText"
+                android:id="@+id/moviesSearch_dateText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:ems="10"
-                android:focusable="false"
                 android:fontFamily="sans-serif-medium"
-                app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_datePlace"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_moviesSearch_vert" />
+                app:layout_constraintStart_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintTop_toBottomOf="@+id/guideH_headerDate" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_moviesSearch_datePlace"
+                android:id="@+id/guideH_datePlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="103dp" />
+                app:layout_constraintGuide_begin="130dp" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_placeLabel"
+                android:id="@+id/moviesSearch_placeLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_place"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_placeTime"
-                app:layout_constraintEnd_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintHorizontal_bias="0.53"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_placeTime"
+                app:layout_constraintEnd_toStartOf="@+id/guideV_moviesSearch"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_moviesSearch_datePlace"
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintTop_toBottomOf="@+id/guideH_datePlace" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_placeText"
+                android:id="@+id/moviesSearch_placeText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_placeTime"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_placeTime"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintTop_toBottomOf="@+id/searchMoviesEvent_dateText" />
+                app:layout_constraintStart_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintTop_toTopOf="@+id/guideH_datePlace" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_moviesSearch_placeTime"
+                android:id="@+id/guideH_placeTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="155dp" />
+                app:layout_constraintGuide_begin="195dp" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_timeLabel"
+                android:id="@+id/moviesSearch_timeLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_time"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_timeNum"
-                app:layout_constraintEnd_toStartOf="@+id/guide_moviesSearch_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_timeNum"
+                app:layout_constraintEnd_toStartOf="@+id/guideV_moviesSearch"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_moviesSearch_placeTime" />
+                app:layout_constraintTop_toTopOf="@+id/guideH_placeTime" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_timeText"
+                android:id="@+id/moviesSearch_timeText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:ems="10"
-                android:focusable="false"
                 android:fontFamily="sans-serif-medium"
-                app:layout_constraintBottom_toTopOf="@+id/guide_moviesSearch_timeNum"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_timeNum"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guide_moviesSearch_placeTime" />
+                app:layout_constraintStart_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintTop_toTopOf="@+id/guideH_placeTime" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_moviesSearch_timeNum"
+                android:id="@+id/guideH_timeNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="220dp" />
+                app:layout_constraintGuide_begin="260dp" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_numOfPeople"
+                android:id="@+id/moviesSearch_numOfPeople"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_MoviesnumDuration"
-                app:layout_constraintEnd_toStartOf="@+id/guide_moviesSearch_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_numLimit"
+                app:layout_constraintEnd_toStartOf="@+id/guideV_moviesSearch"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_moviesSearch_timeNum" />
+                app:layout_constraintTop_toTopOf="@+id/guideH_timeNum" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_numText"
+                android:id="@+id/moviesSearch_numText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_numMoviesDuration"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_numLimit"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guide_moviesSearch_timeNum" />
+                app:layout_constraintStart_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintTop_toTopOf="@+id/guideH_timeNum" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_numMoviesDuration"
+                android:id="@+id/guideH_numLimit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="276dp" />
+                app:layout_constraintGuide_begin="325dp" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_Duration"
+                android:id="@+id/moviesSearch_limitLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="Limit:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_limitDuration"
+                app:layout_constraintEnd_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideH_numLimit" />
+
+            <TextView
+                android:id="@+id/moviesSearch_limitText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_limitDuration"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintTop_toTopOf="@+id/guideH_numLimit" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideH_limitDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="390dp" />
+
+            <TextView
+                android:id="@+id/moviesSearch_durationLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_duration"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_MoviesDurationComment"
-                app:layout_constraintEnd_toStartOf="@+id/guide_moviesSearch_vert"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_durationComments"
+                app:layout_constraintEnd_toStartOf="@+id/guideV_moviesSearch"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_numMoviesDuration" />
+                app:layout_constraintTop_toTopOf="@+id/guideH_limitDuration" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_DurationText"
+                android:id="@+id/moviesSearch_durationText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:ems="10"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:hint="@string/hint_time"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_MoviesDurationComment"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideH_durationComments"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_moviesSearch_vert"
-                app:layout_constraintTop_toTopOf="@+id/guideline_numMoviesDuration" />
+                app:layout_constraintStart_toStartOf="@+id/guideV_moviesSearch"
+                app:layout_constraintTop_toTopOf="@+id/guideH_limitDuration" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guideline_MoviesDurationComment"
+                android:id="@+id/guideH_durationComments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="331dp" />
+                app:layout_constraintGuide_begin="455dp" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_commentLabel"
+                android:id="@+id/moviesSearch_commentLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -204,29 +255,30 @@
                 android:layout_marginRight="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_additional_info"
+                android:textAllCaps="false"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/moviesSearch_commentText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline_MoviesDurationComment" />
+                app:layout_constraintTop_toTopOf="@+id/guideH_durationComments" />
 
             <TextView
-                android:id="@+id/searchMoviesEvent_commentText"
+                android:id="@+id/moviesSearch_commentText"
                 android:layout_width="360dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
-                android:hint="@string/hint_additional_info"
+                android:gravity="start"
                 android:padding="8dp"
                 android:textColor="@color/colorPrimary"
-                app:layout_constraintBottom_toTopOf="@+id/moviesSearch_btn"
+                app:layout_constraintBottom_toTopOf="@+id/btn_moviesSearch"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchMoviesEvent_commentLabel" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/moviesSearch_btn"
+                android:id="@+id/btn_moviesSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="75dp"
@@ -234,13 +286,13 @@
                 android:layout_marginRight="28dp"
                 android:layout_marginTop="8dp"
                 android:background="@color/colorAccent"
+                android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/btn_join"
-                app:layout_constraintBottom_toBottomOf="@id/moviesSearch_constLay"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchMoviesEvent_commentText" />
+                app:layout_constraintTop_toBottomOf="@+id/moviesSearch_commentText" />
 
             <android.support.constraint.Guideline
-                android:id="@+id/guide_moviesSearch_vert"
+                android:id="@+id/guideV_moviesSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

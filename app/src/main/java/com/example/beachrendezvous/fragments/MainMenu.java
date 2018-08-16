@@ -33,17 +33,16 @@ public class MainMenu extends Fragment {
 
     private static final String DEBUG = "debug";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    //region Bundle parameters
     private static final String ARG_PARAM1 = "param1";  // param1 gives the type of sport
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-   // private String mParam1;
+    private String mParam1;
     private String mParam2;
+    //endregion
+
     ListView mListView;
     String name;
-    private static final String EVENT_ID="event_id";
+    private static final String EVENT_ID = "event_id";
     ArrayList<String> type1 = new ArrayList<>();
     ArrayList<String> date1 = new ArrayList<>();
     ArrayList<String> place1 = new ArrayList<>();
@@ -71,24 +70,26 @@ public class MainMenu extends Fragment {
                     // Triggered for every child msg in the list when the listener is first attached
                     // - DataSnapshot will contain the message that just got added to the DB
                     Log.i("onchildadd", dataSnapshot.getKey());
-                    final DatabaseReference mDatabaseReference1 = FirebaseDatabase.getInstance().getReference().
-                            child(dataSnapshot.getValue().toString()).child(dataSnapshot.getKey());
+                    final DatabaseReference mDatabaseReference1 =
+                            FirebaseDatabase.getInstance()
+                                            .getReference()
+                                            .child(dataSnapshot.getValue().toString())
+                                            .child(dataSnapshot.getKey());
+
                     mDatabaseReference1.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             SportsEntity sportsevent = dataSnapshot.getValue(
-                              SportsEntity.class);
-                            Log.i("in menu created", sportsevent.getCreated_by());
+                                    SportsEntity.class);
+//                            Log.i("in menu created", sportsevent.getCreated_by());
                             event_id.add(dataSnapshot.getKey());
 
                             type1.add(sportsevent.getType());
                             date1.add(sportsevent.getDate());
                             place1.add(sportsevent.getLocation());
-                            if(sportsevent.getCreated_by().equals(name))
-                            {
+                            if (sportsevent.getCreated_by().equals(name)) {
                                 admin.add("My Event");
-                            }
-                            else {
+                            } else {
                                 admin.add(sportsevent.getCreated_by());
                             }
 
@@ -103,7 +104,7 @@ public class MainMenu extends Fragment {
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-
+                            //
                         }
                     });
                 }
@@ -140,7 +141,8 @@ public class MainMenu extends Fragment {
         if (getArguments() != null) {
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
             mFirebaseDatabase = FirebaseDatabase.getInstance();
-            mDatabaseReference =  mFirebaseDatabase.getReference().child("Users").child(name).child("Event_Id");
+            mDatabaseReference = mFirebaseDatabase.getReference().child("Users").child(name)
+                                                  .child("Event_Id");
             attachDatabaseReadListener();
         }
     }
@@ -171,8 +173,8 @@ public class MainMenu extends Fragment {
                         Bundle args = new Bundle();
                         //args.putString(ARG_PARAM1, mParam1);
                         args.putString(MainActivity.ARG_GIVEN_NAME, name);
-                        Log.i("name in sportevent",name);
-                        args.putString(EVENT_ID,event_id.get(i));
+                        Log.i("name in sportevent", name);
+                        args.putString(EVENT_ID, event_id.get(i));
                         f.setArguments(args);
                         args.putSerializable("entityObject", entityObjects.get(i));
                         fragmentManager = getActivity().getSupportFragmentManager();
@@ -183,7 +185,7 @@ public class MainMenu extends Fragment {
                                 .commit();
                     }
                 }
-        );
+                                        );
 
 
         return view;

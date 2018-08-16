@@ -1,45 +1,40 @@
 package com.example.beachrendezvous.database;
 
-public class FoodEntity {
+import java.io.Serializable;
+
+public class FoodEntity implements Serializable {
 
     // Variables shown
-    /** Date of the Food event */
     private String date;
-
-    /** The location where the restaurant is at */
     private String location;
-
-    /** The time when the event happens */
     private String time;
-
-    /** Max number of people who can attend the event */
-    private int num_max;
-
-    /** Comments regarding the event, submitted by the creator */
+    private String num_max;
+    private String duration;
     private String comments;
 
     // Variables stored, but not shown
-    /** Who created the event */
     private String created_by;
-
-    /** Restaurant venue */
-    private String restaurant;
+    private String type;
+    private String limit;
 
     //region Constructors
     public FoodEntity() {
         // required empty constructor
     }
 
-    public FoodEntity(String date, String location, String time, int num_max, String comments,
-                      String created_by, String restaurant) {
+    public FoodEntity(String created_by, String time, String duration, String date,
+                      String location, String num_max, String comments, String type, String limit) {
         this.date = date;
         this.location = location;
         this.time = time;
         this.num_max = num_max;
+        this.duration = duration;
         this.comments = comments;
         this.created_by = created_by;
-        this.restaurant = restaurant;
+        this.type = type;
+        this.limit = limit;
     }
+
     //endregion
 
     //region Getters & Setters
@@ -56,9 +51,13 @@ public class FoodEntity {
 
     public void setTime(String time) { this.time = time; }
 
-    public int getNum_max() { return num_max; }
+    public String getNum_max() { return num_max; }
 
-    public void setNum_max(int num_max) { this.num_max = num_max; }
+    public void setNum_max(String num_max) { this.num_max = num_max; }
+
+    public String getDuration() { return duration; }
+
+    public void setDuration(String duration) { this.duration = duration; }
 
     public String getComments() { return comments; }
 
@@ -68,11 +67,16 @@ public class FoodEntity {
 
     public void setCreated_by(String created_by) { this.created_by = created_by; }
 
-    public String getRestaurant() { return restaurant; }
+    public String getType() { return type; }
 
-    public void setRestaurant(String restaurant) { this.restaurant = restaurant; }
+    public void setType(String type) { this.type = type; }
+
+    public String getLimit() { return limit; }
+
+    public void setLimit(String limit) { this.limit = limit; }
 
     //endregion
+
 
     @Override
     public String toString() {
@@ -80,10 +84,12 @@ public class FoodEntity {
                 "date='" + date + '\'' +
                 ", location='" + location + '\'' +
                 ", time='" + time + '\'' +
-                ", num_max=" + num_max +
+                ", num_max='" + num_max + '\'' +
+                ", duration='" + duration + '\'' +
                 ", comments='" + comments + '\'' +
                 ", created_by='" + created_by + '\'' +
-                ", restaurant='" + restaurant + '\'' +
+                ", type='" + type + '\'' +
+                ", limit='" + limit + '\'' +
                 '}';
     }
 }

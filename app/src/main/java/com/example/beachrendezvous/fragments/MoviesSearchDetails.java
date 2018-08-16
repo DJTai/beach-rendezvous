@@ -1,6 +1,7 @@
 package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +44,7 @@ public class MoviesSearchDetails extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    @OnClick(R.id.moviesSearch_btn)
+    @OnClick(R.id.btn_moviesSearch)
     void joinClicked() {
 
         final DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference()
@@ -107,13 +109,12 @@ public class MoviesSearchDetails extends Fragment {
             event_id = getArguments().getString(EVENT_ID);
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
 
-
             moviesEntity = (MoviesEntity) getArguments().getSerializable("entityObject");
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -123,13 +124,14 @@ public class MoviesSearchDetails extends Fragment {
             view = inflater.inflate(R.layout.fragment_movies_search_details, container, false);
 
             // Get TextViews
-            TextView type = view.findViewById(R.id.moviesSearch_eventType);
-            TextView date = view.findViewById(R.id.searchMoviesEvent_dateText);
-            TextView place = view.findViewById(R.id.searchMoviesEvent_placeText);
-            TextView time = view.findViewById(R.id.searchMoviesEvent_timeText);
-            TextView people = view.findViewById(R.id.searchMoviesEvent_numText);
-            TextView additionalInfo = view.findViewById(R.id.searchMoviesEvent_commentText);
-            TextView duration = view.findViewById(R.id.searchMoviesEvent_DurationText);
+            TextView type = view.findViewById(R.id.header_moviesSearch); // Not used?
+            TextView date = view.findViewById(R.id.moviesSearch_dateText);
+            TextView place = view.findViewById(R.id.moviesSearch_placeText);
+            TextView time = view.findViewById(R.id.moviesSearch_timeText);
+            TextView people = view.findViewById(R.id.moviesSearch_numText);
+            TextView additionalInfo = view.findViewById(R.id.moviesSearch_commentText);
+            TextView duration = view.findViewById(R.id.moviesSearch_durationText);
+            TextView limit = view.findViewById(R.id.moviesSearch_limitText);
 
             date.setText(moviesEntity.getDate());
             place.setText(moviesEntity.getLocation());
@@ -137,12 +139,42 @@ public class MoviesSearchDetails extends Fragment {
             people.setText(moviesEntity.getNum_max());
             additionalInfo.setText(moviesEntity.getComments());
             duration.setText(moviesEntity.getDuration());
+            limit.setText(moviesEntity.getLimit());
+
+            final DatabaseReference dbRef = FirebaseDatabase.getInstance()
+                    .getReference()
+                    .child("Users")
+                    .child(name)
+                    .child("Event_Id");
+
+            dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChild(event_id)) {
+                        Button btn = view.findViewById(R.id.btn_moviesSearch);
+                        btn.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
 
         }
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
     }
 
 }

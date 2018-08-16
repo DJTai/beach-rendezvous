@@ -58,7 +58,13 @@
     <string name="food_info_create">Where should we go eat at?</string>
     <string name="movies_info_search">What movie would you like to watch?</string>
     <string name="movies_info_create">Which movie should we watch?</string>
+    <string name="food_create_header">Let\'s add some info</string>
     <string name="success_joined_event">You Successfully Joined An Event</string>
     <string name="success_created_event">You Successfully Created An Event</string>
+    <string name="header_admin">Admin</string>
+    <string name="header_event_type">Type</string>
+    <string name="header_date">Date</string>
+    <string name="header_place">Place</string>
+    <string name="header_food_events">Which date and time look best?</string>
 
 </resources>

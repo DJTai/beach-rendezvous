@@ -1,14 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.FoodSearchDetails">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:id="@+id/sv_foodSearch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_foodSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="170dp">
+
+            <TextView
+                android:id="@+id/foodSearch_eventType"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/tv_event_type"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_labelDate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_foodSearch_labelDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="65dp" />
+
+            <TextView
+                android:id="@+id/foodSearch_dateLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_date"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_datePlace"
+                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_labelDate" />
+
+            <TextView
+                android:id="@+id/foodSearch_dateText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_datePlace"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_labelDate" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_foodSearch_datePlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="130dp" />
+
+            <TextView
+                android:id="@+id/foodSearch_placeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_place"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_placeTime"
+                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_datePlace" />
+
+            <TextView
+                android:id="@+id/foodSearch_placeText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_placeTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_datePlace" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_foodSearch_placeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="195dp" />
+
+            <TextView
+                android:id="@+id/foodSearch_timeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_time"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_timeNum"
+                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_placeTime" />
+
+            <TextView
+                android:id="@+id/foodSearch_timeText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodSearch_timeNum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_placeTime" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_foodSearch_timeNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="260dp" />
+
+            <TextView
+                android:id="@+id/foodSearch_numOfPeople"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_num_people"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_numSeats"
+                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_timeNum" />
+
+            <TextView
+                android:id="@+id/foodSearch_numText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_numSeats"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_foodSearch_timeNum" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_numSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="325dp" />
+
+            <TextView
+                android:id="@+id/foodSearch_limitLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="Seats Left:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_limitDuration"
+                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_numSeats" />
+
+            <TextView
+                android:id="@+id/foodSearch_limitText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_search_limitDuration"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guide_foodSearch_vert"
+                app:layout_constraintTop_toBottomOf="@id/guideline_numSeats" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_search_limitDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="390dp" />
+
+            <TextView
+                android:id="@+id/foodSearch_Duration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_duration"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_DurationComment"
+                app:layout_constraintEnd_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline_search_limitDuration" />
+
+            <TextView
+                android:id="@+id/foodSearch_durationText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_DurationComment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guide_foodSearch_vert"
+                app:layout_constraintTop_toBottomOf="@id/guideline_search_limitDuration" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_DurationComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="455dp" />
+
+            <TextView
+                android:id="@+id/foodSearch_commentLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/martel_sans_bold"
+                android:text="@string/label_additional_info"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_DurationComment" />
+
+            <TextView
+                android:id="@+id/foodSearch_commentText"
+                android:layout_width="360dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_edittext"
+                android:ems="10"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="start"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_foodSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/foodSearch_commentLabel" />
+
+            <Button
+                android:id="@+id/btn_foodSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="75dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorAccent"
+                android:text="@string/btn_create"
+                app:layout_constraintBottom_toBottomOf="@id/cl_foodSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/foodSearch_commentText" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_foodSearch_vert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="195dp" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 
 </FrameLayout>

@@ -5,10 +5,69 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FoodEvents">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/linLay_foodEvents"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/header_foodEvents"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:gravity="center"
+            android:text="@string/tv_fillerText"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <LinearLayout
+            android:id="@+id/linLay_foodEvents_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_foodEvents_admin"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:text="@string/header_admin" />
+
+            <TextView
+                android:id="@+id/tv_foodEvents_type"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/header_event_type" />
+
+            <TextView
+                android:id="@+id/tv_foodEvents_date"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/header_date" />
+
+            <TextView
+                android:id="@+id/tv_foodEvents_place"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/header_place" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_foodEvents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </FrameLayout>

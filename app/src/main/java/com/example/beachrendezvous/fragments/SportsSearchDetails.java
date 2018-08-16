@@ -1,6 +1,7 @@
 package com.example.beachrendezvous.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -56,10 +57,10 @@ public class SportsSearchDetails extends Fragment {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.hasChild(event_id)) {
-
+                    // run some code
                 } else {
                     mDatabaseReference.child(event_id).setValue(mParam1);
-                    limit = Integer.parseInt(sportsEntity.getLimit()) - 1;
+                    int limit = Integer.parseInt(sportsEntity.getLimit()) - 1;
                     DatabaseReference mDatabaseReference1 = FirebaseDatabase.getInstance()
                                                                             .getReference()
                                                                             .child(mParam1)
@@ -108,13 +109,12 @@ public class SportsSearchDetails extends Fragment {
             event_id = getArguments().getString(EVENT_ID);
             name = getArguments().getString(MainActivity.ARG_GIVEN_NAME);
 
-
             sportsEntity = (SportsEntity) getArguments().getSerializable("entityObject");
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -124,7 +124,7 @@ public class SportsSearchDetails extends Fragment {
             view = inflater.inflate(R.layout.fragment_sports_search_details, container, false);
 
             // Get TextViews
-            TextView type = view.findViewById(R.id.sportsSearch_eventType);
+            TextView type = view.findViewById(R.id.sportsSearch_eventType); // Not used?
             TextView date = view.findViewById(R.id.searchEvent_dateText);
             TextView place = view.findViewById(R.id.searchEvent_placeText);
             TextView time = view.findViewById(R.id.searchEvent_timeText);
@@ -165,6 +165,14 @@ public class SportsSearchDetails extends Fragment {
         // Bind view using ButterKnife
         mUnbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
     }
 
 }

@@ -106,6 +106,7 @@ public class SportsCreateDetails extends Fragment {
                                                         people.getText().toString(),
                                                         comments.getText().toString(), mParam,people.getText().toString());
 
+
             String id = databaseSports.push().getKey();
             databaseSports.child(id).setValue(eventdetais);
             DatabaseReference mDatabaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child(name).child("Event_Id");
@@ -115,6 +116,8 @@ public class SportsCreateDetails extends Fragment {
             args.putString(MainActivity.ARG_GIVEN_NAME, name);
             args.putString(CREATE_SEARCH,"create");
             f.setArguments(args);
+
+            // FIXME: Don't add to backstack, instead POP BACK UNTIL HOME
             FragmentManager fragmentManager = getActivity()
                     .getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager
@@ -228,8 +231,4 @@ public class SportsCreateDetails extends Fragment {
         return view;
     }
 
-    public void showDatePicker(View v) {
-        DialogFragment newFragment = new BRDatePicker();
-        //newFragment.show(getSupportFragmentManager(), "date picker");
-    }
 }
