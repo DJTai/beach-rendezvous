@@ -231,4 +231,11 @@ public class SportsCreateDetails extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // Unbind view to free some memory
+        mUnbinder.unbind();
+    }
 }
