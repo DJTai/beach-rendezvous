@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,6 +89,7 @@ public class FoodCreateDetails extends Fragment {
 
     @OnClick(R.id.foodCreate_dateText)
     void selectDate() {
+
         // Get current date
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
@@ -101,6 +103,8 @@ public class FoodCreateDetails extends Fragment {
                                                                int monthOfYear, int dayOfMonth) {
                                              mDate.setText(format("%d/%d/%d", monthOfYear + 1,
                                                                   dayOfMonth, year));
+
+                                             mDate.setError(null);
                                          }
                                      }, mYear, mMonth, mDay);
         datePickerDialog.show();
@@ -120,6 +124,7 @@ public class FoodCreateDetails extends Fragment {
                                          public void onTimeSet(TimePicker view, int hourOfDay,
                                                                int minute) {
                                              mTime.setText(format("%d:%02d", hourOfDay, minute));
+                                             mTime.setError(null);
                                          }
                                      }, mHour, mMinute, true);
         timePickerDialog.show();
@@ -142,6 +147,30 @@ public class FoodCreateDetails extends Fragment {
         String foodDuration = mDuration.getText().toString();   // !! - Could be null
         String foodComments = mComments.getText().toString();
 
+        // Validate date field
+        if (TextUtils.isEmpty(foodDate)) {
+            mDate.setError("Mandatory field");
+            Toast.makeText(this.getContext(), "Date required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validate time field
+        if (TextUtils.isEmpty(foodTime)) {
+            mTime.setError("Mandatory field");
+            Toast.makeText(this.getContext(), "Time required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(foodNum)) {
+            mNumOfPeople.setError("Mandatory field");
+            Toast.makeText(this.getContext(), "Number of people needs a number", Toast.LENGTH_SHORT)
+                 .show();
+            return;
+        } else {
+            mNumOfPeople.setError(null);
+        }
+
+
         // Validate Date and Time booleans
         dateIs = validateDate(foodDate);
         Log.d(TAG, "createClicked: dateIs: " + dateIs);
@@ -162,21 +191,12 @@ public class FoodCreateDetails extends Fragment {
                 break;
         }
 
-        if (foodDate.equals("") || foodTime.equals("") || foodNum.equals("")) {
-
-            Toast.makeText(this.getContext(),
-                           "Date, time, and number of people are required",
-                           Toast.LENGTH_LONG).show();
-
-            foodEvent = new FoodEntity(name, foodTime, foodDuration, foodDate,
-                                       mParam1, foodNum, foodComments, "Food",
-                                       foodNum);
-            Log.d(TAG, "createClicked: " + foodEvent.toString());
-
-        } else if (!validDate) {
+        if (!validDate) {
             Toast.makeText(this.getContext(), "Invalid date", Toast.LENGTH_SHORT).show();
+            mDate.setError("Date is in the past");
         } else if (!validTime) {
             Toast.makeText(this.getContext(), "Invalid time", Toast.LENGTH_SHORT).show();
+            mTime.setError("Can't go back in time, sorry");
         } else {
             /* All fields filled - add to Firebase DB */
 

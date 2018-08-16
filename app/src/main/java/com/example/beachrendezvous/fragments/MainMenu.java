@@ -93,8 +93,11 @@ public class MainMenu extends Fragment {
                                 admin.add(sportsevent.getCreated_by());
                             }
 
-                            myAdapter = new sportsEventDetailsAdapter(
-                                    getContext().getApplicationContext(), type1, date1, place1,
+                            sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
+                                    getContext().getApplicationContext(),
+                                    type1,
+                                    date1,
+                                    place1,
                                     admin);
                             //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
                             // .getApplicationContext(), )
@@ -184,8 +187,7 @@ public class MainMenu extends Fragment {
                                 .addToBackStack("search")
                                 .commit();
                     }
-                }
-                                        );
+                });
 
 
         return view;
