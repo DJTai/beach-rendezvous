@@ -93,7 +93,7 @@ public class MainMenu extends Fragment {
                                 admin.add(sportsevent.getCreated_by());
                             }
 
-                            sportsEventDetailsAdapter myAdapter = new sportsEventDetailsAdapter(
+                            myAdapter = new sportsEventDetailsAdapter(
                                     getContext().getApplicationContext(),
                                     type1,
                                     date1,
@@ -146,7 +146,7 @@ public class MainMenu extends Fragment {
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mDatabaseReference = mFirebaseDatabase.getReference().child("Users").child(name)
                                                   .child("Event_Id");
-            attachDatabaseReadListener();
+//            attachDatabaseReadListener();
         }
     }
 
