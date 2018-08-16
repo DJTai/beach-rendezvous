@@ -94,7 +94,10 @@ public class MainMenu extends Fragment {
                             }
 
                             myAdapter = new sportsEventDetailsAdapter(
-                                    getContext().getApplicationContext(), type1, date1, place1,
+                                    getContext().getApplicationContext(),
+                                    type1,
+                                    date1,
+                                    place1,
                                     admin);
                             //sportsEventDetailsAdapter m=new sportsEventDetailsAdapter(getContext()
                             // .getApplicationContext(), )
@@ -143,7 +146,7 @@ public class MainMenu extends Fragment {
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mDatabaseReference = mFirebaseDatabase.getReference().child("Users").child(name)
                                                   .child("Event_Id");
-            attachDatabaseReadListener();
+//            attachDatabaseReadListener();
         }
     }
 
@@ -184,8 +187,7 @@ public class MainMenu extends Fragment {
                                 .addToBackStack("search")
                                 .commit();
                     }
-                }
-                                        );
+                });
 
 
         return view;
