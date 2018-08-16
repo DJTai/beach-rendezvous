@@ -27,41 +27,53 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guide_movieCreate_labelDate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guide_movieCreate_labelDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="65dp" />
 
             <TextView
                 android:id="@+id/moviesCreate_dateLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_date"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_datePlace"
                 app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guide_movieCreate_labelDate" />
 
             <EditText
                 android:id="@+id/createEvent_dateText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:focusable="false"
                 android:fontFamily="sans-serif-medium"
                 android:hint="@string/hint_dateFormat"
                 app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_datePlace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert" />
+                app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert"
+                app:layout_constraintTop_toTopOf="@+id/guide_movieCreate_labelDate" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guide_moviesCreate_datePlace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="103dp" />
+                app:layout_constraintGuide_begin="125dp" />
 
             <TextView
                 android:id="@+id/createEvent_placeLabel"
@@ -73,10 +85,8 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_placeTime"
                 app:layout_constraintEnd_toStartOf="@+id/guide_moviesCreate_vert"
-                app:layout_constraintHorizontal_bias="0.53"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_datePlace"
-                app:layout_constraintVertical_bias="0.8" />
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_datePlace" />
 
             <Spinner
                 android:id="@+id/createEvent_placeText"
@@ -87,14 +97,14 @@
                 app:layout_constraintBottom_toTopOf="@+id/guide_moviesCreate_placeTime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guide_moviesCreate_vert"
-                app:layout_constraintTop_toBottomOf="@+id/createEvent_dateText" />
+                app:layout_constraintTop_toTopOf="@+id/guide_moviesCreate_datePlace" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guide_moviesCreate_placeTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="155dp" />
+                app:layout_constraintGuide_begin="185dp" />
 
             <TextView
                 android:id="@+id/createEvent_timeLabel"
@@ -128,14 +138,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="220dp" />
+                app:layout_constraintGuide_begin="245dp" />
 
             <TextView
                 android:id="@+id/createEvent_numOfPeople"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:layout_marginTop="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/label_num_people"
                 android:textSize="18sp"
@@ -162,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="276dp" />
+                app:layout_constraintGuide_begin="305dp" />
 
             <TextView
                 android:id="@+id/createEvent_Duration"
@@ -196,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="331dp" />
+                app:layout_constraintGuide_begin="365dp" />
 
             <TextView
                 android:id="@+id/createEvent_commentLabel"
@@ -218,6 +227,7 @@
                 android:background="@drawable/rounded_edittext"
                 android:ems="10"
                 android:fontFamily="sans-serif-medium"
+                android:gravity="start"
                 android:hint="@string/hint_additional_info"
                 android:inputType="textMultiLine"
                 android:padding="8dp"
@@ -246,7 +256,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="190dp" />
+                app:layout_constraintGuide_begin="195dp" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

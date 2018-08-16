@@ -22,12 +22,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/martel_sans_bold"
                 android:text="@string/tv_event_type"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guide_foodCreate_labelDate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -71,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="130dp" />
+                app:layout_constraintGuide_begin="125dp" />
 
             <TextView
                 android:id="@+id/foodCreate_placeLabel"
@@ -103,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="195dp" />
+                app:layout_constraintGuide_begin="185dp" />
 
             <TextView
                 android:id="@+id/foodCreate_timeLabel"
@@ -137,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="260dp" />
+                app:layout_constraintGuide_begin="245dp" />
 
             <TextView
                 android:id="@+id/foodCreate_numOfPeople"
@@ -171,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="325dp" />
+                app:layout_constraintGuide_begin="305dp" />
 
             <TextView
                 android:id="@+id/foodCreate_Duration"
@@ -205,7 +207,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="390dp" />
+                app:layout_constraintGuide_begin="365dp" />
 
             <TextView
                 android:id="@+id/foodCreate_commentLabel"
