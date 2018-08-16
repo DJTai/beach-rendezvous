@@ -200,7 +200,7 @@ public class FoodCreateDetails extends Fragment {
         } else {
             /* All fields filled - add to Firebase DB */
 
-            // Data validation
+            // Force String if EditText is empty
             if (foodDuration.equals("")) {
                 foodDuration = "n/a";
             }
@@ -219,6 +219,7 @@ public class FoodCreateDetails extends Fragment {
                                                  .child("Users").child(name).child("Event_Id");
             mDatabaseReference.child(id).setValue(mParam1);
 
+            // Confirmation pop-up
             Fragment popUp = new popup();
             Bundle args = new Bundle();
             args.putString(MainActivity.ARG_GIVEN_NAME, name);

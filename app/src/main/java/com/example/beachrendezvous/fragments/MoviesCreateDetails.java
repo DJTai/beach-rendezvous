@@ -143,7 +143,8 @@ public class MoviesCreateDetails extends Fragment {
                                          @Override
                                          public void onTimeSet(TimePicker view, int hourOfDay,
                                                                int minute) {
-                                             time.setText(format("%d:%d", hourOfDay, minute));
+                                             time.setText(format("%d:%02d", hourOfDay, minute));
+                                             time.setError(null);
                                          }
                                      }, mHour, mMinute, true);
         timePickerDialog.show();
